@@ -14,4 +14,4 @@ the quartiles of a distribution are the 25th, 50th and 75th percentiles.
 
 >> `scipy.stats.norm` functions [link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html)
 
-[[https://github.com/karina7rang/notes/machine_learning/picture/statistic_terms-cdf_pdf_pmf_relationship.PNG]]
+[[https://github.com/karina7rang/notes/blob/master/machine_learning/picture/statistic_term-cdf_pdf_pmf_relationship.PNG]]
