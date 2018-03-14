@@ -2,6 +2,7 @@
 * [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
 * execute another script(not fun or class)
+
   once run this another script will be run
   then don't need to be on top of import
   use it where needed
@@ -69,6 +70,7 @@
 
 ### install
 * Git clone URL
+  
   set up git in command, find git.exe then add to PATH
 
 * list modules in library
