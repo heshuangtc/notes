@@ -113,4 +113,33 @@
     U3 = (B,F)      B -> F
   ```
 
-### class 4
+### class 4 More Normal Form
+* terms
+  - always fix 2NF and 3NF
+  - sometimes cannot fix BCNF without data loss
+  - unfix-able BCNF is rare in practice
+* inference rules
+  - Y is a subset of X ---> X->Y
+  - X->Y  ---> XZ->YZ
+  - X->Y Y->Z  ---> X->Z
+  - X->YZ  ---> X->Y X->Z
+  - X->Y X->Z  ---> X->YZ
+  - X->Y WY->Z  ---> WX->Z
+* if fd can be inferred from other fds then drop it from the minimal set
+* 4NF
+  - fourth normal form
+  - based on multi-value ds
+  - A -> B: each A determines a set of B (e.g. parent -> children / person -> address)
+* 5NF
+  - conside joins
+  - advanced NF let any pattern be identified
+  - pattern is predetermined -> make sure that instances of the pattern are stored exactly once
+
+### class 5 E-R diagrams
+
+
+
+### class 6
+
+
+### class 7
