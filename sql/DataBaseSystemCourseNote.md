@@ -34,6 +34,7 @@
   - key in RI often in other than RI
   - key is compound values/synthetic
 
+
 ### class 2 Relational Algebra
 * intension `R=(A1, A2, ...)` 
 * extension `R  A1 A2 A3` R is relation, A1 A2 A3 are attributes/tuple
@@ -65,5 +66,51 @@
 * Equi-join
   - names of the attributes to be joined
   - student JOINss# grade are given as arguments 
-*outer join
-  - dont loose data from the arguments that is not joined
+*outer join: dont loose data from the arguments that is not joined
+
+
+### class 3 Normal Forms
+* tips"
+  - dont put 2 pieces of information into one
+  - dont record the same information twice
+  - minimize the volume of a database
+* normal forms
+  - mathematical technique
+  - are a way of saving that every tuple in every relation should only hold information about one thing
+* functional dependencies
+  - to prove 'the relations are correct or incorrect'
+  - are a way to identify the information in a database
+* good relation design: all of attributes (and only) depend on keys of that relation
+* superkey
+  - a set of one or more attributes that determine all of the other attributes in a relation
+  - every relation has at least one superkey
+* key: a superkey without any redundant attributes
+* if a relation has bad fds. this relation must be divided without lossing information(eg. fds attributes)
+* 1NF
+  - First Normal Form
+  - all attributes are atomic
+  - no nested attributes
+  - no hidden data structures
+* 2NF
+  - second normal form
+  - no partial fds
+* 3NF
+  - third normal form
+  - no transitive fds
+  - no attributes on the left side
+* BCNF
+  - boyce codd normal form
+  - every fds is a key fds
+  - no keys on the right side
+* divide attributes if not meet NF
+  - lossless: get same result if put divided relations back together again
+  - dependency preserving: all of the dependencies belong to at least one relation after decomposition. can be enforced by the relation keys
+  ```
+    U = (A,B,C,D,E,F)  A -> B,C,D   D -> E   B -> F
+    become
+    U1 = (A,B,C,D)  A -> B,C,D
+    U2 = (D,E)      D -> E
+    U3 = (B,F)      B -> F
+  ```
+
+### class 4
