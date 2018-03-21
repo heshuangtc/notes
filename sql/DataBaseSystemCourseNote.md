@@ -131,15 +131,91 @@
   - based on multi-value ds
   - A -> B: each A determines a set of B (e.g. parent -> children / person -> address)
 * 5NF
-  - conside joins
+  - consider joins
   - advanced NF let any pattern be identified
   - pattern is predetermined -> make sure that instances of the pattern are stored exactly once
 
 ### class 5 E-R diagrams
+* divide（A/B）
+  - attributes of B must be in A
+  - result is A attributes minus B attributes
+  - example 1: `A={X,Y,Z} B={X,Z}` result `Y`
+  - example 2: `A= a c b  B=a d` result `{ac match ad}`
+  - example 3: `A= 1 2 3  B=1 2` result `{3}` first match -> minus
+* entity relationship models（E-R）
+  - information modeling
+  - E-R diagram: create database from ER diagrams
+  - create database from ER diagrams
+* information modeling
+  - information level: logical organization/ what is information in the data/ no system constraints
+  - data level: data definition in a specific system/ relational network
+  - internal level: organization of bits and bytes on media
+* info model
+  - capture the information that will be in DB exactly and precisely without concern for the practicality of mapping
+  - good one should be extensible as it will never need to change its exiting facts only add new ones
+* info diagram
+  - relate to it easily
+  - examples, ER diagrams, NIAM diagrams, IDEF diagrams, EXPRESS-G diagrams
+  - object oriented diagramming techniques/ OMT/ GOOCH/ unified model
+* terms
+  - entities: things in the real world
+  - attributes: properties of things or relationships
+  - relationships: dependencies between things in the real world
+  - IS-A Hierarchies/Cardinalities/Dependencies
+* ER diagram [link](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning)
+* cardinalities describe constraints between instances how many instances participate in a relationship
+* total participation: every instance must be in the relationship
+* weak entity
+  - its instances cannot be identified using its own key
+  - use another entity's key for additional identification
+  - must be total participation with the another entity
+* map to SQL
+  - each entity becomes a table
+  - each relationship becomes a table
+  - borrow key from parent if dependent(weak)
+
+
+### class 6 More ER diagrams
+* attributes
+  - simple attribute
+  - key
+  - attribute is derived
+  - multi-value attribute
+  - composite attribute has its won attributes
+* relationship: binary/ ternary/ connect or attribute box
+* cardinalities
+  - give upper and lower limit
+  - upper limit --> fancy arrow
+  - lower limt=1 --> double line
+  - 1->N
+* weak entity
+  - must be in total participation
+  - key borrow from that participation
+* ER -> relations
+  - entity: include all attributes
+  - attribute: entity key + own attributes
+  - weak entity: own attributes + borrow key
+  - relationship: n->m 2 borrow key/ own attribute
+  - never 1-N to be written
+
+
+### class 7 SQL
+* select
+  `SELECT attribute 1 2 3 FROM relation 1 2 3 WHERE condition 1 AND 2 AND 3`
+* create table 
+  ```CREATE TABLE employee (FNAME VARCHAR(5) 
+                            SSNUM CHAR(9) 
+                            SALARY INTEGER)
+  ```
+* drop table: delete table and all its data `DROP TABLE employee`
+* alter table: null values put into exiting tuples `ALTER TABLE employee ADD age INTERGER`
+* create index: `CREATE INDEX`
+
+### class 8
+
+
+### class 9
 
 
 
-### class 6
-
-
-### class 7
+### class 10
