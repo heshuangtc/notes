@@ -1,4 +1,5 @@
 ## Data Base System Course Note
+### ------- PHASE 1 -------
 ### class 1 Intro
 * database
   - share data (cross applications/organization/time)
@@ -199,6 +200,7 @@
   - never 1-N to be written
 
 
+### ------- PHASE 2 -------
 ### class 7 SQL
 * select
   `SELECT attribute 1 2 3 FROM relation 1 2 3 WHERE condition 1 AND 2 AND 3`
@@ -209,10 +211,103 @@
   ```
 * drop table: delete table and all its data `DROP TABLE employee`
 * alter table: null values put into exiting tuples `ALTER TABLE employee ADD age INTERGER`
-* create index: `CREATE INDEX`
+* create index: `CREATE INDEX index-name ON employee(SSNUM)`
+* attribute names can be distinguished by A.x = A(relation table) X attribute name
+* select all attributes `SELECT * FROM relation 1,2,...`
 
-### class 8
 
+### class 8 MORE SQL
+* equivalent algorithms: make use of indexes/more efficient
+* WHERE: nested query in it
+* nested query: be tried for each row in table formed by the Cartesian product `EXITS`,`IN`,`ALL`,`NOT EXITS`
+* IN: employee name from people in dependent with same first name
+  ```
+    SELECT E.FNAME, E.LNAME
+    FROM EMPLOYEE E
+    WHERE E.SSN IN (  SELECT ESSN
+                      FROM DEPENDENT
+                      WHERE ESSN = E.SSN
+                      AND E.FNAME=DEPENDENT_NAME
+                   )
+  ```
+* EXISTS
+  - same requirement but use different query. change IN -> EXISTS
+  ```
+    SELECT E.FNAME, E.LNAME
+    FROM EMPLOYEE E
+    WHERE EXISTS (  SELECT *
+                    FROM DEPENDENT
+                    WHERE ESSN=E.SSN
+                    AND DEPENDENT_NAME
+      )
+  ```
+  - contrary: have no dependents, need name employ
+  ```
+    SELECT E.FNAME, E.LNAME
+    FROM EMPLOYEE E
+    WHERE NOT EXISTS (  SELECT *
+                    FROM DEPENDENT
+                    WHERE ESSN=E.SSN
+      )
+  ```
+  - names of managers who have at least one dependent. only need those in both manage table and dependent table. manager is also in employee table. 
+  ```
+    SELECT E.FNAME, E.LNAME
+    FROM EMPLOYEE E
+    WHERE EXISTS (  SELECT *
+                    FROM DEPENDENT
+                    WHERE ESSN=E.SSN
+      )
+    AND EXISTS (SELECT *
+                FROM DEPARTMENT
+                WHERE SSN=MGRSSN
+      )
+  ```
+* AGGREGATE
+  - sum,max,min,avg
+  ```
+    SELECT SUM(SALARY), MAX(SALARY), MIN(SALARY), AVG(SALARY)
+    FROM EMPLOYEE, DEPARTMENT
+    WHERE DNO=DNUMBER
+    AND DNAME='Research'
+  ```
+  - count
+  ```
+    SELECT COUNT(DISTINCT SALARY)
+    FROM EMPLOYEE
+  ```
+  - count: more than 2 dependent
+  ```
+    SELECT *
+    FROM EMPLOYEE
+    WHERE ( SELECT COUNT(*)
+            FROM DEPENDENT
+            WHERE SSN=ESSN
+            AND DEPENDENT_NAME NOT NULL)
+  ```
+* GROUP BY: all tuples with same value are executed in the aggregate.
+  ```
+  SELECT DNO, COUNT(*), AVG(SALARY)
+  FROM EMPLOYEE
+  GROUP BY DNO
+  ```
+* HAVING: let a condition to tuples in GROUP BY
+  ```
+    SELECT DNO, COUNT(*), AVG(SALARY)
+    FROM EMPLOYEE
+    GROUP BY DNO
+    HAVING COUNT(*)>5
+  ```
+* explanation
+  - `FROM` create cartesian product of all relations
+  - `WHERE` select tuples that meet conditions
+  - `GROUP BY` group tuples as per 'by' attribute. compute aggregates for groups.
+  - `HAVING` select group that meet conditions
+  - `ORDER` order tuples
+* connect system 
+  - SQL >`connect system;` enter password: `999` SQL>`ALTER USER HR IDENTIFIED BY password1 ACCOUNT UNLOCK;`
+  - SQL >`connect hr` enter password: `password1` SQL> `select table_name from user_table`
+* HR ER diagram
 
 ### class 9
 
