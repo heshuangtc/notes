@@ -1,4 +1,11 @@
-## machine learning
+## ------- machine learning -------
+### algorithm methods
+
+from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/)
+* linear regression
+  - 
+*
+
 
 ### Ensemble learning
 * wiki link: https://en.wikipedia.org/wiki/Ensemble_learning
@@ -15,7 +22,7 @@ field-aware factorization machines
 
 factorization machines
 
-## deep learning
+## ------- deep learning -------
 
 * deep learning  [wiki](https://en.wikipedia.org/wiki/Deep_learning) [a_site](http://deeplearning.net/) [book:deeplearning](http://www.deeplearningbook.org/)
 
