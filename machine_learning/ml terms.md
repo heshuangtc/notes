@@ -33,13 +33,16 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
   - can be used for both classification and regression problems
   - stores all available cases and classifies new cases by a majority vote of its k neighbors. The case being assigned to the class is most common amongst its K nearest neighbors measured by a distance function.
   - Things to consider before selecting kNN:
-    - KNN is computationally expensive
-    - Variables should be normalized else higher range variables can bias it
-    - Works on pre-processing stage more before going for kNN like outlier, noise removal
-* K-Means
+    + KNN is computationally expensive
+    + Variables should be normalized else higher range variables can bias it
+    + Works on pre-processing stage more before going for kNN like outlier, noise removal
+* K-Means [wiki](https://en.wikipedia.org/wiki/K-means_clustering)
   - unsupervised algorithm which  solves the clustering problem
-  - How K-means forms cluster： 
-* Random Forest
+  - Given a set of observations (x1, x2, …, xn), where each observation is a d-dimensional real vector, k-means clustering aims to partition the n observations into k (≤ n) sets S = {S1, S2, …, Sk} so as to minimize the within-cluster sum of squares (WCSS). ![wcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-wcss.png)
+  - Because the total variance is constant, this is also equivalent to maximizing the squared deviations between points in different clusters (between-cluster sum of squares, BCSS).![bcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-bcss.png)
+* Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
+  - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
+  - 
 * Dimensionality Reduction Algorithms
 
 ### Gradient Boosting Algorithms
