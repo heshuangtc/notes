@@ -36,20 +36,29 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
     + KNN is computationally expensive
     + Variables should be normalized else higher range variables can bias it
     + Works on pre-processing stage more before going for kNN like outlier, noise removal
+* Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
+  - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
+
+
+
+### clustering algorithms
 * K-Means [wiki](https://en.wikipedia.org/wiki/K-means_clustering)
   - unsupervised algorithm which  solves the clustering problem
   - Given a set of observations (x1, x2, …, xn), where each observation is a d-dimensional real vector, k-means clustering aims to partition the n observations into k (≤ n) sets S = {S1, S2, …, Sk} so as to minimize the within-cluster sum of squares (WCSS). ![wcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-wcss.png)
   - Because the total variance is constant, this is also equivalent to maximizing the squared deviations between points in different clusters (between-cluster sum of squares, BCSS).![bcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-bcss.png)
-* Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
-  - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
-  - 
 * Dimensionality Reduction Algorithms
+  - identify highly significant variable(s)
+  - dimensionality reduction algorithm helps us along with various other algorithms like Decision Tree, Random Forest, PCA, Factor Analysis, Identify based on correlation matrix, missing value ratio and others.
+
+
 
 ### Gradient Boosting Algorithms
 
-from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/)
+from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/) and boost blog [link](https://www.analyticsvidhya.com/blog/2015/05/boosting-algorithms-simplified/)
 
+* AdaBoost
 * GBM
+  - an ensemble of learning algorithms which combines the prediction of several base estimators in order to improve robustness over a single estimator. It combines multiple weak or average predictors to a build strong predictor.
 * XGBoost
 * LightGBM
 * Catboost
