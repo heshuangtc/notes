@@ -36,23 +36,28 @@
 
   `load() 5.34 0.12 5.45 454MB`
   
-* Load sas data/spss data/excel data/etc data
-
- https://www.datacamp.com/community/tutorials/importing-data-r-part-two#gs.9cAlaqw
+* Load sas data/spss data/excel data/etc data [link](https://www.datacamp.com/community/tutorials/importing-data-r-part-two#gs.9cAlaqw)
 
 * When read csv file with large number and don't let it be scientific number 1E5
 
   `options(scipen=999)` or `format(dfr$x, scientific = FALSE)`
 
-* define column data type when read csv
-
+* read csv
+  - define column data type when read csv 
   `colClasses=c(rep('character',5))` or `colClass=rep('character',1)`
-
-* `read.csv()`
+  - basic package `read.csv()`
 
 * `load(file.RData)`
 
-* `read.xlsx('./path/file.xlsx',sheet=i,colName = TRUE,skipEmptyRows = TRUE,cols = 1:12))`
+* read excel 
+  - `openxlsx::read.xlsx('./path/file.xlsx',sheet=i,colName = TRUE,skipEmptyRows = TRUE,cols = 1:12))`
+
+* list excel sheets
+  - openxlsx package 
+  `openxlsx::getSheetNames('./Data_Files/file.xlsx')`
+  - readxl pacakge
+  `readxl::excel_sheets('./Data_Files/file.xlsx')`
+
   
 #### save
 
