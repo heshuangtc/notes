@@ -60,8 +60,17 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 * GBM
   - an ensemble of learning algorithms which combines the prediction of several base estimators in order to improve robustness over a single estimator. It combines multiple weak or average predictors to a build strong predictor.
 * XGBoost
+  - The XGBoost has an immensely high predictive power which makes it the best choice for accuracy in events as it possesses both linear model and the tree learning algorithm, making the algorithm almost 10x faster than existing gradient booster techniques.
+  -  it is also called a regularized boosting technique. This helps to reduce over-fit modeling.
 * LightGBM
+  - uses tree based learning algorithms
+  - it splits the tree leaf wise with the best fit BUT other boosting algorithms split the tree depth wise or level wise rather than leaf-wise.
+  - Faster training speed and higher efficiency / Lower memory usage / Better accuracy / Parallel and GPU learning supported / Capable of handling large-scale data
 * Catboost
+  - easily integrate with deep learning frameworks like Google’s TensorFlow and Apple’s Core ML
+  - handle missing data well before you proceed with the implementation
+  - can automatically deal with categorical variables without showing the type conversion error
+ 
 
 
 ### Ensemble learning
