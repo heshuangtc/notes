@@ -1,5 +1,4 @@
 #### basic
-
 * assign
 
   `<-` is assign to object. 
@@ -20,6 +19,7 @@
 
   `system('zip path/filename.zip path/filename.RData')`
 
+* remove element from environment
   `rm(obj1,obj2)`
 
 #### run R in command line
@@ -165,3 +165,9 @@
     if has warning, the process will be stopped by warning.
     if has error, the process will be stopped by error.
     every case, finally will run
+
+### RStudio
+* convert r script to doc report with print results/graphs
+  - in script window, click `compile report`=`Ctrl+Shift+K` choose `MS Word` or `HTML` or `PDF` (this requires `pdflatex` package installed. But didn't work for me)
+  - use markdown: create a Rmarkdown file(output can be Word or PDF or HTML) and copy those codes to the right place. this requires `knitr` package
+*

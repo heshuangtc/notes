@@ -10,6 +10,11 @@
 
   `plot()` `abline(h=mean(y$sales),v=0,col="red")`
 
+* plot with equation/function
+  - `curve(x^0,0,10, xlab = 'markting effort', ylab = 'demand', main='title string')`
+
+*
+
 * Combine plots
 
   4 figures arranged 2 rows and 2 cols `par( mfrow = c(2,2))`

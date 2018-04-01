@@ -1,6 +1,12 @@
-* Extra day of week
-
-  `as.numeric(strftime( date_data, format='%u'))`
+* Extra element from date
+  - day of week
+    `as.numeric(strftime( date_data, format='%u'))`
+  - month
+    + month string `months.Date(df$date)` = `format(df$date,"%B")`= `strftime(df$date,"%b")`,`format(df$date,"%b")`= `strftime(df$date,"%B")` 
+    + month number `format(df$date,"%m")` = `strftime(df$date,"%m")`
+  - year `strftime(df$date,"%Y")`
+  - day `strftime(df$date,"%d")`
+  - 
 
 * Character to Date. if it is numeric date, needs origin to define yearcutoff date
 

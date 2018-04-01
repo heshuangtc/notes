@@ -2,28 +2,38 @@
 
 * `colnames(df)`
 
-* `rownames(df)`
+* row names
+  - list row names `rownames(df)`
+  - remove row name `rownames(data) <- c()` = `rownames(data) <- NULL`
 
 * duplicates
+  - `df2$dup <- duplicated(df)`
+  - `duplicated(df,incomparables = FALSE,na.rm=TRUE)`
+  - remove duplicates from data frame`df <- df[duplicated(df)==FALSE,]`
 
-  `df2$dup <- duplicated(df)`
-
-  `duplicated(df,incomparables = FALSE,na.rm=TRUE)`
 
 * `ftable(df$col)`
+
+* missing values
+  - fill missing values with previous non na values `zoo::na.locf(object, na.rm = TRUE, ...)`
+
+*
+
 
 #### transpose dataframe
 
 * col to row or row to col `t(df)`
-
 * `pivot()`
+* 
+* wide to long
+  - `melt(df, id.var='idx_combination')`
+* long to wide
+  - `dcast(df, rowidx~colidx, value.var = 'value')`
 
 #### combine data frames
 
 * Rbind data frames, append by rows
-
   * same number of columns `rbind`
-
   * different number of columns `rbind.fill`
 
 * Cbind data frames, concatenated by columns
@@ -31,33 +41,23 @@
   `cbind` or `cbind.data.frame`
 
 * Inner join:[key] match both A and B
-
   * `merge(A,B)`
-
   * `sqldf::sqldf('select * from A JOIN B using()')`
-
   * `dplyr::inner_join(A,B,by=NULL,copy=FALSE)` if 2 diff source only keep A. if B copy or not
-
   * `plyr::join(A, B, by=NULL, type='inner', match='all')` by=NULL means key is all column. match:if duplicated ids, use 'all' columns to match. OR 'first', use one and applied to some id
 
 * Left join:[key] match A and B + extra in A
 
   * `merge(A,B, all.x=TRUE)`
-
   * `sqldf::sqldf('select * from A LEFT JOIN B using()')`
-  
   * `dplyr::left_join(A,B,by=NULL,copy=FALSE)`
-  
   * `plyr::join(A, B, by=NULL, type='left', match='first')`
 
 * Right join:[key] match A and B + extra in B
 
   * `merge(A,B, all.y=TRUE)`
-
   * `sqldf::sqldf("select * from A RIGHT JOIN B using()")`
-
   * `dplyr::right_join(A,B,by=NULL,copy=FALSE)`
-
   * `plyr::join(A, B, by=NULL, type='right', match='first')`
 
 * Full join:[key] all in both A and B
@@ -137,27 +137,30 @@
 
 * lapply
 
-  `lapply(1:7,function(i) mean(df[df$col1==i,'col2'],na.rm = T))`
+  - `lapply(1:7,function(i) mean(df[df$col1==i,'col2'],na.rm = T))`
+  - output a list of string. each string is from a data frame row `unlist(lapply(x, function(i) paste(unlist(i),collapse = '')))`
 
 * aggregate
 
-  * `aggregate(df$col1,list(df$col2),function(i) length(unique(i)))`
+  col1 is aggregation values, col2 is level
 
-  * `aggregate(df$col1,list(df$col2,df$col3),function(i) max(i))`
+  - `aggregate(df$col1,list(df$col2),function(i) length(unique(i)))`
 
-  * `aggregate(df$col1,list(df$col2),sum)`
+  - `aggregate(df$col1,list(df$col2,df$col3),function(i) max(i))`
 
-  * `aggregate(df$col1,list(name=df$col2),sum,na.rm=TRUE)`
+  - `aggregate(df$col1,list(df$col2),sum)`
 
-  * `aggregate(col1~col2,data=df,FUN=sum)`
+  - `aggregate(df$col1,list(name=df$col2),sum,na.rm=TRUE)`
 
-  * `aggregate(col1~col2,data=df,FUN=sum,na.rm=T,na.action=NULL)` remove na and also on those na rows no actions keep keys
+  - aggregate one column `aggregate(col1~col2,data=df,FUN=sum)`
+  - aggregate multiple columns `x <- aggregate(.~col2,data=df,FUN=sum)`
+
+  - `aggregate(col1~col2,data=df,FUN=sum,na.rm=T,na.action=NULL)` remove na and also on those na rows no actions keep keys
 
 
 
 
-#### other
-
+#### modify
 * sort data frame
 
   * `df[order(df$col1,-df$col2),]`
@@ -166,6 +169,19 @@
 
   * `df[order(df[,col1], -df[,col2]),]`
 
+* change multiple columns types
+  - change from chr to int with column index `x[,2:6] <- as.integer(unlist(x[,2:6]))`
+  - change from int to chr with column names `x[,c('NA','SA','EU')] <- as.character(unlist(x[,c('NA','SA','EU')]))`
+
+* remove a column
+  `x <- x[!colnames(x) %in% c('date')]`
+
+* select few columns
+  - `x <- x[[c('a','b')]]` `x <- x[[c(1,2,3)]]`
+  - `x <- subset(x,select=c('a','b'))`
+
+
+#### other
 * Create empty data frame 
 
   * `data.frame()`
@@ -182,6 +198,12 @@
 
 
 ### LIST
+
+* find all combination by given list
+  - pick with order `combn(c(1,2),c(3),2)` from c(1,2,3) pick 2 elements
+  - like a union join `expand.grid(var1,var2,var3)`
+
+*
 
 * Remove elements from list 
 
