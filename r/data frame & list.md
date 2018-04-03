@@ -17,7 +17,10 @@
 * missing values
   - fill missing values with previous non na values `zoo::na.locf(object, na.rm = TRUE, ...)`
 
-*
+* data frame overview statistic
+  - `summary(df)`
+  - `psych::describe(df)`
+  - `pastecs::stat.desc(df)`
 
 
 #### transpose dataframe
@@ -85,6 +88,11 @@
 * Filter dataframe based on list of values (keep) `Df[which(df$col %in% c()), ]` or `df[which(df$col1 == 'xxx' | df$col2 == 'yyy'), ]`
 
 * Filter dataframe based on list of values (exclude) `Df[!which(df$col %in% c()), ]` `df[which(!df$col %in% c(6,7)),]`
+
+* count number of cells when match a condition
+  - `length(which(df$col1== 1))`
+
+*
 
 * Select a single col 
 

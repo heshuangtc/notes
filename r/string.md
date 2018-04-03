@@ -32,13 +32,13 @@
 
 * Cut string by certain chr
 
-  `strsplit( string, split='term')`
+  - `strsplit( string, split='term')`
 
-  `sub('term', '', string)`
+  - `sub('term', '', string)`
 
-  `gsub('term','',string)`
+  - replace 'term' by '' `gsub('term','',string)`
 
-  `gsub('s','',df$col)`
+  - replace 's' by '' `gsub('s','',df$col)`
 
 * match certain words
 
