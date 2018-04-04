@@ -13,7 +13,7 @@
 * plot with equation/function
   - `curve(x^0,0,10, xlab = 'markting effort', ylab = 'demand', main='title string')`
 
-*
+* clean graph `dev.off()`
 
 * Combine plots
 
@@ -129,3 +129,25 @@
 
 
 
+#### gridExtra
+
+[sample codes](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
+
+* simple graph `grid.table(df)`
+
+* put color on each row
+  - repeated a few colors
+  ```
+  t1 <- ttheme_default(core=list(
+    bg_params = list(rep(c("grey95", "grey90"),length.out=4))
+    ))
+  grid.table(df[1:10,'col'],theme = t1)
+  ```
+  - color column for each row
+  ```
+  t1 <- ttheme_default(core=list(
+    bg_params = list( fill= df$color.col)
+  ))
+  grid.table(df[1:10,'col'],theme = t1)
+  ```
+* 

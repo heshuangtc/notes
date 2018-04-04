@@ -52,4 +52,8 @@
 
 * case tranformation
 
-  * `tolower('WORD')`
+  - `tolower('WORD')`
+
+* special string
+  - `gsub('[(]','',string)`
+*

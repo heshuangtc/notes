@@ -188,6 +188,10 @@
   - `x <- x[[c('a','b')]]` `x <- x[[c(1,2,3)]]`
   - `x <- subset(x,select=c('a','b'))`
 
+* numeric data to category/ categorize into groups
+  `cut(df$col, c(0,10,20))`
+
+*
 
 #### other
 * Create empty data frame 
