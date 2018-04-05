@@ -1,3 +1,5 @@
+### basic
+
 * Plots + lines with same range and axis(no x-axes)
 
   `plot(df$col,type='l',col='black')` `lines(df$col2,type='l',col='red')`
@@ -84,6 +86,17 @@
 * Use category clol to colorful plot
 
   `with( df, plot( col1, col2, col = col2))`
+
+* grouped bar plot [link](https://www.statmethods.net/graphs/bar.html)
+  ```
+  counts <- table(mtcars$vs, mtcars$gear)
+  barplot(counts, main="Car Distribution by Gears and VS",
+    xlab="Number of Gears", col=c("darkblue","red"),
+    legend = rownames(counts), beside=TRUE)
+  ```
+
+*
+
 
 #### GGPLOT2
 
