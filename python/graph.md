@@ -2,16 +2,19 @@
 [Plotly](https://plot.ly/) is Python library is free and open source and makes interactive, publication-quality graphs online.
 
 ### matloplib
-* create a plot
+* create a plot simple charts
+    - plot chart
+      ```
+      import matplotlib.pylab as plt
+      plt.plot(ts_df)
+      ```
+    - hist charts [link](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html)
+      `plt.hist(df.col, bins=20)`
+    - bar charts
+  
+* Add a vertical line across the axes [link](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline)
 
-  * simple plot
-    ```
-    import matplotlib.pylab as plt
-    plt.plot(ts_df)
-    ```
-  * Add a vertical line across the axes [link](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline)
-
-    `axvline(linewidth=4, color='r')`
+  `axvline(linewidth=4, color='r')`
 
   * multiple layers plot
     ```
@@ -33,10 +36,11 @@
     ```
   
 * plot options
-  * size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
-
+  - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
     `plt.figure(figsize=(8, 6),dpi=80)`
-  
+  - add label to x or y axis `plt.xlabel('Smarts')` `plt.ylabel('Probability')`
+  - add title `plt.title('Histogram of IQ')` 
+
 * clean memory
 
 in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
