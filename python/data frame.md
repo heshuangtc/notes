@@ -9,6 +9,11 @@
 
 * `.copy()` before subset
 
+* frequency table
+  - `pandas.crosstab(index=df.col_label,columns=df.col_count)` [link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.crosstab.html)
+
+*
+
 ### column
 * col has same values or not
   ```
