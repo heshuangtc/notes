@@ -2,8 +2,8 @@
 [Plotly](https://plot.ly/) is Python library is free and open source and makes interactive, publication-quality graphs online.
 
 ### matloplib
-* create a plot simple charts
-    - plot chart
+* create a plot simple charts 
+    - line chart [plt.plot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html)
       ```
       import matplotlib.pylab as plt
       plt.plot(ts_df)
@@ -11,6 +11,8 @@
     - hist charts [link](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html)
       `plt.hist(df.col, bins=20)`
     - bar charts
+    - scatter plot [plt.scatter](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html)
+      `plt.scatter(x,y)`
   
 * Add a vertical line across the axes [link](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline)
 
