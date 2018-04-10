@@ -279,6 +279,8 @@
 * convert int to timedelta[link](https://pandas.pydata.org/pandas-docs/stable/timedeltas.html)
 `pd.to_timedelta(df.col, unit='s')`
 
+* convert timedelta to int
+
 * unix time to date
   ```
   from datetime import datetime

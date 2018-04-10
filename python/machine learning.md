@@ -1,3 +1,21 @@
+### basic info
+* store a model object
+  - save a pickle file [pickle doc](https://docs.python.org/2/library/pickle.html)
+    ```
+    import pickle
+    output = open('./path/filename.pkl', 'wb')
+    pickle.dump(model, output)
+    output.close()
+    ```
+  - load a pickle file
+    ```
+    import pickle
+    pkl_file = open('./path/filename.pkl', 'rb')
+    model = pickle.load(pkl_file)
+    pkl_file.close()
+    ```
+*
+
 ### data preparation
 * split data frame into train/test
   - sklearn [link](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
@@ -22,7 +40,59 @@
 * pca with sklearn
 
 *
-###classification
+
+### Regression
+* linear regression [link](http://scikit-learn.org/stable/modules/linear_model.html)
+  - linear regression
+  ```
+  from sklearn import linear_model
+  reg = linear_model.LinearRegression()
+  reg.fit(df_train)
+  reg.predict(df_test)
+  ```
+  - Ridge regression: Ridge regression addresses some of the problems of Ordinary Least Squares by imposing a penalty on the size of coefficients. 
+  `reg = linear_model.Ridge (alpha = .5)`
+  - Lasso regression:The Lasso is a linear model that estimates sparse coefficients. It is useful in some contexts due to its tendency to prefer solutions with fewer parameter values, effectively reducing the number of variables upon which the given solution is dependent. 
+  `reg = linear_model.Lasso(alpha = 0.1)`
+  - logistic regression
+  ```
+  reg = linear_model.LogisticRegression()
+  ```
+* Gradient Boosting Regression [link](http://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html)
+  - ensemble.GradientBoostingRegressor
+  ```
+  from sklearn import ensemble
+  params = {'n_estimators': 500, 'max_depth': 4, 'min_samples_split': 2,
+          'learning_rate': 0.01, 'loss': 'ls'}
+  clf = ensemble.GradientBoostingRegressor(**params)
+  clf.fit(X_train, y_train)
+  clf.predict(X_test)
+  clf.feature_importances_
+  ```
+* grid search cv
+  - linear regression
+  ```
+  from sklearn.model_selection import GridSearchCV
+  from sklearn import linear_model
+  reg0 = linear_model.LinearRegression()
+  parameters = {'fit_intercept':[True,False], 'normalize':[True,False]} 
+  #all parameters for linear regression
+  reg = GridSearchCV(reg0,parameters)
+  reg.fit(df_train)
+  df_test['predict'] = reg.predict(df_test)
+  ```
+  - gbr
+  ```
+  parameters_gbr = {'n_estimators': [5,10], 'max_depth': [3,4], 'min_samples_split': [2,5]}
+  model_gbr0 = ensemble.GradientBoostingRegressor()
+  model_gbr = GridSearchCV(model_gbr0, parameters_gbr)
+  model_gbr.fit(df_train[ls_train_cols], df_train.target_col)
+  df_test['predict'] = model_gbr.predict(df_test[ls_train_cols])
+  ```
+*
+
+
+### classification
 
 
 
@@ -82,3 +152,16 @@ model.predict(100)
 model = ARIMA(ts_log, order=(2, 1, 2))  
 results_ARIMA = model.fit(disp=-1)
 ```
+
+
+### validation
+* mean squared error
+  - sklearn
+    ```
+    from sklearn.metrics import mean_squared_error
+    mse = mean_squared_error(y_real, y_predict)
+    print("MSE: %.4f" % mse)
+    ```
+  - 
+* r2/variance
+  - linear `model_linear.score(df_test[ls_train_cols],df_test.hist_target)`

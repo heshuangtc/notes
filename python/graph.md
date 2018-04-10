@@ -138,3 +138,70 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
   graph[0].write_png('output/tree/tree_num.png')
   graph[0].write_pdf('output/tree/tree_num.pdf')
   ```
+
+### folium geog graph
+* doc
+  - quick start guide[link](http://folium.readthedocs.io/en/latest/quickstart.html)
+  - sample [link](https://github.com/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb) [link](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb)
+* simple geog graph
+  ```
+  import folium
+  map_nyc = folium.Map(location=(40.7, -74), zoom_start=10, tiles='Stamen Toner')
+  map_nyc
+  map_nyc.save('./map.html')
+  ```
+* add marker/circle marker
+  ```
+  import folium
+  map_nyc = folium.Map(location=(40.7, -74), zoom_start=10, tiles='Stamen Toner')
+  folium.Marker(location = [40.7, -74], popup = 'picked here').add_to(map_nyc)
+  folium.CircleMarker(location = [40.7, -74],popup = 'a string',
+    color='#3186cc', fill_color='#3186cc',radius=50).add_to(map_nyc)
+  map_nyc
+  map_nyc.save('./map.html')
+  ```
+* clustering marker
+  - normal way
+  ```
+  import folium
+  from folium.plugins import MarkerCluster
+  map_nyc = folium.Map(location=(40.7, -74), zoom_start=10, tiles='Stamen Toner')
+  marker_cluster = MarkerCluster().add_to(map_nyc)
+  folium.Marker(location = [a_latitude,a_longitude],
+  popup='picked here').add_to(marker_cluster)
+   map_nyc
+  map_nyc.save('./map.html') 
+  ```
+  - faster way
+  ```
+  import folium
+  from folium.plugins import FastMarkerCluster
+  map_nyc = folium.Map(location=(40.7, -74), zoom_start=10, tiles='Stamen Toner')
+  FastMarkerCluster(data=list(zip(ls_latitude, ls_longitude))).add_to(map_nyc)
+  map_nyc
+  map_nyc.save('./map.html') 
+  ```
+  - with different layers
+  ```
+  map_nyc = folium.Map(location=(40.7, -74), zoom_start=10, tiles='Stamen Toner')
+
+  marker_cluster = MarkerCluster(
+      locations=list(zip(df_input.Pickup_latitude, df_input.Pickup_longitude)),
+      popups='pickup',
+      name='pickup',
+      overlay=True,
+      control=True).add_to(map_nyc)
+
+  marker_cluster = MarkerCluster(
+      locations=list(zip(df_input.Dropoff_latitude, df_input.Dropoff_longitude)),
+      popups='dropoff',
+      name='dropoff',
+      overlay=True,
+      control=True).add_to(map_nyc)
+  
+  folium.LayerControl().add_to(map_nyc)
+
+  map_nyc.save('./map.html')
+
+  ```
+* circle marker
