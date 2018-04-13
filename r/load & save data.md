@@ -1,4 +1,4 @@
-#### load/read
+#### load
 
 * From http and get text contents
 
@@ -58,6 +58,11 @@
   - readxl pacakge
   `readxl::excel_sheets('./Data_Files/file.xlsx')`
 
+* list all files in a path/folder
+  - `list.files('path')`
+  - `dir('../path')`
+
+*
   
 #### save
 
