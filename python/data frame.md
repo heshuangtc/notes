@@ -327,7 +327,14 @@
 
 * save a excel file
 
-  `df.to_excel('path')`
+  - simple file `df.to_excel('path')`
+  - multiple sheets
+  ```
+  writer = pd.ExcelWriter('output.xlsx')
+  df1.to_excel(writer,'Sheet1')
+  df2.to_excel(writer,'Sheet2')
+  writer.save()
+  ```
 
 ### load 
 * read without header
