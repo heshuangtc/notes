@@ -11,6 +11,12 @@
   - `duplicated(df,incomparables = FALSE,na.rm=TRUE)`
   - remove duplicates from data frame`df <- df[duplicated(df)==FALSE,]`
 
+* shape of a data frame
+  - `dim(df)` output: #rows #cols
+  - `nrow(df)`
+  - `ncol(df)`
+
+*
 
 * `ftable(df$col)`
 
