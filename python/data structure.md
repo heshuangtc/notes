@@ -63,13 +63,18 @@
   
   `str.lower()` `str.upper()`
 
-* extract number from string
+* extract values from string
+  - number from string
   ```
   import re
   re.findall('\d+',string)
   re.findall('[0-9]',string)
   ```
-
+  - character from string
+  ```
+  import re
+  re.findall('\D+',string)
+  ```
 * add string to every element in a list `[i+'string' for i in a_list]`
 
 * regular expression subset string `df.col.str.extract('(^[0-9]+/[0-9]+)',expand=False)`

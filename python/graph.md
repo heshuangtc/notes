@@ -18,7 +18,8 @@
 
   `axvline(linewidth=4, color='r')`
 
-  * multiple layers plot
+* multiple plot
+  - multiple layers plot
     ```
     import matplotlib.pylab as plt
     graph_layer1 = plt.plot(ts_df, color='blue',label='Original')
@@ -28,7 +29,7 @@
     plt.show(block=False)
     ```
 
-  * multiple lines in one graph
+  - multiple lines in one graph
 
     until execute `plt.figure()` again all previous one are in one chart
     ```
@@ -36,10 +37,22 @@
     plt.plot()
     plt.plot()
     ```
-  
+  - multiple hist in one graph - overlap
+    ```
+    plt.hist(x[x.Pclass==1].Survived, bins=2, alpha=0.5, label='class1')
+    plt.hist(x[x.Pclass==2].Survived, bins=2, alpha=0.5, label='class2')
+    plt.legend(loc='best')
+    ```
+  - multiple hist in one graph - side by side
+    ```
+    plt.hist([x[x.Pclass==1].Survived.values,x[x.Pclass==2].Survived.values], bins=5, alpha=0.4, label=['pclass1','pclass2'])
+    plt.legend(loc='best')
+    ```
+
 * plot options
   - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
-    `plt.figure(figsize=(8, 6),dpi=80)`
+    `plt.figure(figsize=(8, 6),dpi=80)` size(width,height)
+  - pandas hist plot size[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.hist.html) `DataFrame.hist(data,column=None, by=None, figsize=None)`
   - add label to x or y axis `plt.xlabel('Smarts')` `plt.ylabel('Probability')`
   - add title `plt.title('Histogram of IQ')` 
 
@@ -88,6 +101,10 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
 * multiple lines in one graph
 
   `df.plot()` df only has those data want to be in graph
+
+* multiple hist graph by group
+  - `df['value_col'].hist(by=df['group_col'])`
+  - `df.groupby('group_col').hist('value_col')`
 
 * boxplot [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.boxplot.html)
   ```

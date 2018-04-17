@@ -26,9 +26,10 @@
 
   `df.col.round(1)`
 
-* extract number from string col. warning current return list but later expeand=True return df
+* extract values from string col. warning current return list but later expeand=True return df
 
-  `df['B'].str.extract('(\d+)').astype(int)`
+  - number `df['B'].str.extract('(\d+)').astype(int)`
+  - character `df['B'].str.extract('(\D+)')
 
 * count unique values in a col/series [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html)
 
