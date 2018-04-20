@@ -37,13 +37,14 @@
 * wide to long
   - `melt(df, id.var='idx_combination')`
 * long to wide
-  - `dcast(df, rowidx~colidx, value.var = 'value')`
+  - `reshape2::dcast(df, rowidx~colidx, value.var = 'value')`
 
 #### combine data frames
 
 * Rbind data frames, append by rows
-  * same number of columns `rbind`
-  * different number of columns `rbind.fill`
+  - same number of columns `rbind()`
+  - same number of columns and rbind many times need avoid new data as factors `rbind(alist,stringsAsFactors=F)`
+  - different number of columns `rbind.fill` 
 
 * Cbind data frames, concatenated by columns
 
@@ -220,6 +221,7 @@
 * find all combination by given list
   - pick with order `combn(c(1,2),c(3),2)` from c(1,2,3) pick 2 elements
   - like a union join `expand.grid(var1,var2,var3)`
+  - pick with order `gtools::permutations(n=#choices,r=#pick,v=choices_pool)`
 
 *
 
@@ -252,3 +254,7 @@
   * `list()`
 
   * `split(df,f=df$col1)`
+
+
+
+

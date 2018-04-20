@@ -1,3 +1,26 @@
+### statistic terms
+* basic
+  - mean `mean(a_list,na.rm=T)`
+  - standard deviation `sd(a_list,na.rm=T)`
+  - variance `var(sd(a_list,na.rm=T)`
+  - interquartile/50% quartile/median `IQR(a_list,na.rm=T)`
+  - quantile 20% 70% `quantile(a_list,probs=c(.2,.7))`
+  - z score `scale(a_list)` or `x-mean(a_list)/sd(a_list)`
+  - kurtosis `e1071::kurtosis`
+  - covariance `cov(a_list,b_list)` relationship 2 variables (negative/positive)
+  - correlation `cor(a_list,b_list)`
+  - cumulative `ecdf(a_list)`
+
+* 
+
+* 
+
+* 
+
+* 
+
+* 
+
 #### variable detection
 
 * `library(Boruta)`
@@ -47,18 +70,6 @@
     `predict(fit,df2)`
 
 
-
-#### time series
-
-* anova
-
-  `tm1 = gl(k1, 1, n*k1*k2, factor(f1))`
-
-  `tm2 = gl(k2, n*k1, n*k1*k2, factor(f2))`
-
-  `aov(r ~ tm1 * tm2)`
-
-  `summary(av)`
 
 
 #### text mining
@@ -204,3 +215,12 @@
 
 * `scale(df,center = TRUE,scale=(sd(df,na.rm = TRUE)))`
 
+* anova
+
+  `tm1 = gl(k1, 1, n*k1*k2, factor(f1))`
+
+  `tm2 = gl(k2, n*k1, n*k1*k2, factor(f2))`
+
+  `aov(r ~ tm1 * tm2)`
+
+  `summary(av)`

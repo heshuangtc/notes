@@ -1,8 +1,10 @@
 ### basic
 
-* Plots + lines with same range and axis(no x-axes)
-
+* Plots + lines [line guide](https://www.statmethods.net/advgraphs/axes.html)
+  - with same range and axis(no x-axes)
   `plot(df$col,type='l',col='black')` `lines(df$col2,type='l',col='red')`
+  - when default axis is shorter than line values
+  `plot(df$col, type='l',col='black',ylim=c(new_range,new_range),xlim=c(new_range,new_range))` `abline(a_value,col='red')`
 
 * Plots + lines with different range but draw in same axes
 
