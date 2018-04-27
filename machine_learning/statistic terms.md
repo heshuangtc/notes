@@ -11,8 +11,6 @@ is the difference in the means.
 * interquartile range: The difference between the 75th and 25th percentiles, used as a measure of spread.
 * quantile: A sequence of values that correspond to equally spaced percentile ranks; for example,
 the quartiles of a distribution are the 25th, 50th and 75th percentiles.
-* standard error: sd/sqrt(n)
-* z score: x-mean()/standard deviation()
 * kurtosis: flat or sharp
 * skewness: tail longer one right or left
 * covariance: relationship 2 variables (negative/positive)
@@ -21,11 +19,16 @@ the quartiles of a distribution are the 25th, 50th and 75th percentiles.
   - range: max - min
   - LCL: mean-3sd
   - UCL: mean + 3sd
-*
+* 
 * `scipy.stats.norm` functions [link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html)
 
 ![cdf_pdf_pmf_relationship](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/statistic_term-cdf_pdf_pmf_relationship.PNG)
 
+* z test
+  - z score: x-mean()/standard deviation()
+  - [wiki link](https://en.wikipedia.org/wiki/Z-test)
+  - standard error(SE): sd/sqrt(n)
+  - 2 sample testing [link](https://www.cliffsnotes.com/study-guides/statistics/univariate-inferential-tests/two-sample-z-test-for-comparing-two-means)
 * defining the different kinds of variables
   - A categorical variable, also called a nominal variable, is for mutual exclusive, but not ordered, categories. 
   - A ordinal variable, is one where the order matters but not the difference between values.

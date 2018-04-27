@@ -11,11 +11,20 @@
   - correlation `cor(a_list,b_list)`
   - cumulative `ecdf(a_list)`
 
-* 
+* normal distribution
+  - by given mean and sd to find observed value probability `pnorm(observed_value,mean,sd)`
+  - by given mean and sd to find 95% value point/upper 5% `qnorm(.95,mean,sd)`
 
-* 
+* exponential distribution
+  - (also known as negative exponential distribution) is the probability distribution that describes the time between events in a Poisson point process
+  - `dexp` gives the density
+  - `pexp` gives the distribution function
+  - `qexp` gives the quantile function
+  - `rexp` generates random deviates
+  - by given mean and observed value to find probability `pexp(observed_value/mean)`
 
-* 
+* z test
+  - `BSDA::z.test(alist, sigma.x = sd)`
 
 * 
 
