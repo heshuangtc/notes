@@ -26,16 +26,9 @@
 
   `df.col.round(1)`
 
-* extract values from string col. warning current return list but later expeand=True return df
-
-  - number `df['B'].str.extract('(\d+)').astype(int)`
-  - character `df['B'].str.extract('(\D+)')
-
 * count unique values in a col/series [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html)
 
   `df.col.value_counts()`
-
-* remove spaces `df['col1'] = df.col1.str.strip()`
 
 * if is duplicates `df.duplicated([col1,col2])`
 
@@ -43,6 +36,7 @@
   * change col type
 
     `df['col1'] = pd.to_datetime(df.col1)`
+
   * category col
     ```
     df['col'] = df['col'].astype('category')
@@ -57,60 +51,77 @@
     `df.select_dtypes(include=['float64'])`
 
 * missing values
-  * check which col has missing in df 
+  - check which col has missing in df 
     `df_out.isnull().any().values`
 
-  * fill missing values[link](https://pandas.pydata.org/pandas-docs/stable/missing_data.html#cleaning-filling-missing-data)
+  - fill missing values[link](https://pandas.pydata.org/pandas-docs/stable/missing_data.html#cleaning-filling-missing-data)
 
     `fillna()`
     `interpolate()`
 
-  * fillna
+  - fillna
     ```
     df['col1'] = fillna(replacement)
     df['col1'] = fillna(method='bfill')
     df['col1'] = fillna(method='ffill')
     ```
 
-  * drop na if row has
+  - drop na if row has
 
     `df.dropna(axis=0,how='any')`
 
-  * drop na if col has
+  - drop na if col has
 
     `df.dropna(axis=1,how='any')`
 
-  * drop na if entire row is na
+  - drop na if entire row is na
 
     `df.dropna(axis=0,how='all')`
 
-  * drop na if entire col is na
+  - drop na if entire col is na
 
     `df.dropna(axis=1,how='all')`
 
-  * combine 2 text/str columns with nan
+  - combine 2 text/str columns with nan
     ```
     df = pd.DataFrame({'col1':['a','b','c',np.nan], 'col2':['1','2','3','4']})
     df['col3'] = df.col1.fillna('') + df.col2.fillna('')
     ```
 
-  * sum 2 columns ignore nan
+  - sum 2 columns ignore nan
     ```
     df['source'] = df[['source1','source2']].sum(axis=1)
     df['source'] = df.source1.fillna(0)+df.source2.fillna(0)
     ```
 
-* string as col pointer 
+* string column
+  - remove spaces `df['col1'] = df.col1.str.strip()`
+  - split a string 
+    ```
+    df.col.str.split('delimeter')
 
+    x['FName'] = [i[1] for i in x.Name.str.split(',')]
+    x['LName'] = [i[0] for i in x.Name.str.split(',')]
+    ```
+  - string as col pointer 
   `df['col1'] = getattr(df, 'col1').fillna(1)`
 
-* select certain col based on string pattern[link](https://pandas.pydata.org/pandas-docs/stable/text.html)
+  - select certain col based on string pattern[link](https://pandas.pydata.org/pandas-docs/stable/text.html)
   ```
   prod1.columns.str.startswith('geog')
   df.columns[df.columns.str.contains('^hol[0-9]+$')]
   ```
 
-* substring in col `df.col = df.col.str[:3]`
+  - substring in col `df.col = df.col.str[:3]`
+
+  - extract values from string col. warning current return list but later expeand=True return df
+    + number `df['B'].str.extract('(\d+)').astype(int)`
+    + character `df['B'].str.extract('(\D+)')
+  - replace string
+    ```
+    df.col.str.replace(be_replaced, replacement)
+    df.col.str.replace(be_replaced, replacement).str.replace(be_replaced, replacement)
+    ```
 
 * find max between col and isolated value
   ```
@@ -121,10 +132,10 @@
 * find min/max in each col `df.max(asxi=0)` `df.min(asxi=0)`
 
 * change values
-  * replace values
+  - replace values
 
     `DataFrame.replace(to_replace=None, value=None, inplace=False, limit=None, regex=False, method=’pad’, axis=None)[source]`
-  * change existing col value by assign
+  - change existing col value by assign
 
     `df = df.assign('col1' = value)`
 
@@ -248,6 +259,16 @@
 * 
 
 ### data type
+#### numeric
+* change col data type to numeric[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.to_numeric.html#pandas.to_numeric)
+
+  `pd.to_numeric(df.col, errors='coerce') return nan if cannot convert`
+* astype(if nan will give error)
+  `df.col = df.col.astype('int64')`
+  `df.col = df.col.astype('int32')`
+  `df.col = df.col.astype('int')`
+*
+
 #### datetime
 * convert timedelta to int
   ```
@@ -290,9 +311,7 @@
 
 * only date from datetime `pd.to_datetime(df.col2, format='%m/%d/%Y').dt.date`
 
-* change col data type to numeric[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.to_numeric.html#pandas.to_numeric)
 
-  `pd.to_numeric(df.col, errors='coerce') return nan if cannot convert`
 
 * extract month or day from datetime in dataframe
   ```
