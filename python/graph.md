@@ -48,6 +48,13 @@
     plt.hist([x[x.Pclass==1].Survived.values,x[x.Pclass==2].Survived.values], bins=5, alpha=0.4, label=['pclass1','pclass2'])
     plt.legend(loc='best')
     ```
+  - 2 axis plots
+    ```
+    fig, ax1 = plt.subplots()
+    ax2 = ax1.twinx()
+    ax1.plot(x, y1, 'g-')
+    ax2.plot(x, y2, 'b-')
+    ```
 
 * plot options
   - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)

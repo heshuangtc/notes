@@ -165,3 +165,16 @@ results_ARIMA = model.fit(disp=-1)
   - 
 * r2/variance
   - linear `model_linear.score(df_test[ls_train_cols],df_test.hist_target)`
+
+* cross validation
+  - what is over-fitting [link](https://elitedatascience.com/overfitting-in-machine-learning#how-to-detect)
+  - on train side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
+  ```
+  from sklearn.model_selection import cross_val_score
+  cross_val_score(model_object, X_train[['dayofweek','month','year','dayofmonth']], X_train[['order_count']], cv=5)
+  ```
+  - on test side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
+  ```
+  from sklearn.model_selection import cross_val_score
+  cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
+  ```

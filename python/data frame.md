@@ -311,8 +311,6 @@
 
 * only date from datetime `pd.to_datetime(df.col2, format='%m/%d/%Y').dt.date`
 
-
-
 * extract month or day from datetime in dataframe
   ```
   from datetime import datetime
@@ -357,9 +355,12 @@
   ```
 
 ### load 
-* read without header
-  `pd.read_csv('./data/file.csv',skiprows=i,nrows=n,header=None)`
-
+* read csv[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
+  - without header
+    `pd.read_csv('./data/file.csv',skiprows=i,nrows=n,header=None)`
+  - with different delimiter
+    `pd.read_csv('./data/file.csv', delimiter=None)`
+  - 
 * list all files in directory [glob link](https://docs.python.org/3/library/glob.html)
   ```
   from glob import glob
