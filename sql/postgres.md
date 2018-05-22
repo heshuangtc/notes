@@ -23,6 +23,11 @@
 
   `select distinct on (col1),col1,col2 from table`
 
+* select with if statement and group by
+  
+  `select sum(if(col1=='value',1,0))/sum(if(col2=='value',1,0)) from table group by col3`
+
+*
 
 ### with (common to expression)
 * 

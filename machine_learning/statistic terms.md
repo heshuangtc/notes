@@ -27,8 +27,13 @@ the quartiles of a distribution are the 25th, 50th and 75th percentiles.
 * z test
   - z score: x-mean()/standard deviation()
   - [wiki link](https://en.wikipedia.org/wiki/Z-test)
-  - standard error(SE): sd/sqrt(n)
+  - standard error(SE): `sd/sqrt(n)`or`square root((p-p^2)/n)`
   - 2 sample testing [link](https://www.cliffsnotes.com/study-guides/statistics/univariate-inferential-tests/two-sample-z-test-for-comparing-two-means)
+  - confidence interval `mean+-z_score*SE`
+* t test
+  - when unknown population/sample standard deviation, use number of sampling to calculate t test statistic
+  - 
+
 * defining the different kinds of variables
   - A categorical variable, also called a nominal variable, is for mutual exclusive, but not ordered, categories. 
   - A ordinal variable, is one where the order matters but not the difference between values.

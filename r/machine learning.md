@@ -27,7 +27,9 @@
 * z test
   - `BSDA::z.test(alist, sigma.x = sd)`
 
-* 
+* ANOVA
+  - basic info/example [link](http://personality-project.org/r/r.guide/r.anova.html#oneway)
+  - 1way anova `aov(y~a+b,data=df)` y usually numeric data, a/b can be string
 
 * 
 
@@ -39,7 +41,10 @@
 
 #### regression
 
-* `lm(y~x1+x2+x3,data=df)` `summary(fit)`
+* linear regression
+  - basic `lm(y~x1+x2+x3,data=df)` `summary(fit)`
+  - confidence interval from lm `predict(lm,newdataframe,level=.95,interval='confidence'`
+  - prediction interval from lm `predict(lm,data.frame(ROOMS=6),interval="prediction")`
 
 * `glm(y~., data=df)`
 

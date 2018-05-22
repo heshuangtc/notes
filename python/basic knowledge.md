@@ -66,8 +66,11 @@
     import shutil
     shutil.make_archive(output_filename, 'zip', dir_name)
     ```
-
-
+* ignore warnings
+  ```
+  import warnings
+  warnings.filterwarnings('ignore')
+  ```
 ### install
 * Git clone URL
   

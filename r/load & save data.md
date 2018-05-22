@@ -46,6 +46,7 @@
   - define column data type when read csv 
   `colClasses=c(rep('character',5))` or `colClass=rep('character',1)`
   - basic package `read.csv()`
+  - read few lines `read.csv()`
 
 * `load(file.RData)`
 

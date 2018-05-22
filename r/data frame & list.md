@@ -35,7 +35,7 @@
 * `pivot()`
 * 
 * wide to long
-  - `melt(df, id.var='idx_combination')`
+  - `reshape2::melt(df, id.var='idx_combination')`
 * long to wide
   - `reshape2::dcast(df, rowidx~colidx, value.var = 'value')`
 
@@ -103,10 +103,11 @@
 
 * Select a single col 
 
-  * `df$col` will be an array instead of 1 col dataframe
+  - `df$col` will be an array instead of 1 col dataframe
 
-  * `Df[, 'col']` or `df[['col']]` will still be data frame
-
+  - `Df[, 'col']` or `df[['col']]` will still be data frame
+* select multiple cols
+  - `df[,c("A","B","E")]`
 * Not include some col based on colname
 
   * `Df[ -grep('pattern', colnames(df))]`
