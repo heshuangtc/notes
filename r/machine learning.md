@@ -31,7 +31,18 @@
   - basic info/example [link](http://personality-project.org/r/r.guide/r.anova.html#oneway)
   - 1way anova `aov(y~a+b,data=df)` y usually numeric data, a/b can be string
 
-* 
+* chisquare
+  - tbl is numeric table `library('MASS');chisq.test(tbl)`
+
+* DW test
+  - if there is a correlation in linear model
+    ```
+    linear_model <- lm(y~x,data=df)
+    summary(linear_model)
+    plot(linear_model_b)
+    library(lmtest)
+    dwtest(linear_model)
+    ```
 
 #### variable detection
 
