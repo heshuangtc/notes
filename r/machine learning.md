@@ -54,7 +54,7 @@
 
 * linear regression
   - basic `lm(y~x1+x2+x3,data=df)` `summary(fit)`
-  - confidence interval from lm `predict(lm,newdataframe,level=.95,interval='confidence'`
+  - confidence interval from lm `predict(lm,newdataframe,level=.95,interval='confidence')`
   - prediction interval from lm `predict(lm,data.frame(ROOMS=6),interval="prediction")`
 
 * `glm(y~., data=df)`

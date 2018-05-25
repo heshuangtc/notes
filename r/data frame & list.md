@@ -16,12 +16,14 @@
   - `nrow(df)`
   - `ncol(df)`
 
-*
+* 
 
 * `ftable(df$col)`
 
 * missing values
   - fill missing values with previous non na values `zoo::na.locf(object, na.rm = TRUE, ...)`
+  - fill missing values with certain value `df[is.na(df$col),'col'] <- 0  `
+  - `fill.missing(df, method="knn", k=20, dist.method="euclidean")` [link](https://www.rdocumentation.org/packages/maanova/versions/1.42.0/topics/fill.missing)
 
 * data frame overview statistic
   - `summary(df)`
@@ -38,13 +40,17 @@
   - `reshape2::melt(df, id.var='idx_combination')`
 * long to wide
   - `reshape2::dcast(df, rowidx~colidx, value.var = 'value')`
+* swift value
+  - `libarary('data.table');swift(alist,lagvalue)`
+
+*
 
 #### combine data frames
 
 * Rbind data frames, append by rows
   - same number of columns `rbind()`
   - same number of columns and rbind many times need avoid new data as factors `rbind(alist,stringsAsFactors=F)`
-  - different number of columns `rbind.fill` 
+  - different number of columns `plyr::rbind.fill` 
 
 * Cbind data frames, concatenated by columns
 

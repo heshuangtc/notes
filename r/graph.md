@@ -21,13 +21,14 @@
 
 * Combine plots
 
-  4 figures arranged 2 rows and 2 cols `par( mfrow = c(2,2))`
-
-  1st row has 1 figure and 2nd row has 2 figures `layout( matrix( c(1,1,2,3), 2,2, byrow=TRUE))` 
+  - 4 figures arranged 2 rows and 2 cols `par( mfrow = c(2,2))`
+  - 1 row 2 graphes `par(mfrow=c(1,2))` width, height
+  - 1st row has 1 figure and 2nd row has 2 figures `layout( matrix( c(1,1,2,3), 2,2, byrow=TRUE))` 
   
-  space: 1st col 3/(3+1), 2nd 1/(3+1) `<option> widths = c(3,1)`
+  - space: 1st col 3/(3+1), 2nd 1/(3+1) `<option> widths = c(3,1)`
 
-  space: 1st row 1/(1+2), 2nd 2/(1+2) `Heights = c(1,2)`
+  - space: 1st row 1/(1+2), 2nd 2/(1+2) `Heights = c(1,2)`
+  
 
 * Legend
 
@@ -97,7 +98,9 @@
     legend = rownames(counts), beside=TRUE)
   ```
 
-*
+* graph parameter [link](https://www.statmethods.net/advgraphs/parameters.html)
+  - graph size `par(pin=c(width, height))`
+  
 
 
 #### GGPLOT2
