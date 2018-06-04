@@ -205,9 +205,6 @@
 * numeric data to category/ categorize into groups
   `cut(df$col, c(0,10,20))`
 
-*
-
-#### other
 * Create empty data frame 
 
   * `data.frame()`
@@ -221,7 +218,7 @@
     `temp_df_template[0,]` remove all rows.
 
 
-
+#### other
 
 ### LIST
 

@@ -56,6 +56,10 @@
   - basic `lm(y~x1+x2+x3,data=df)` `summary(fit)`
   - confidence interval from lm `predict(lm,newdataframe,level=.95,interval='confidence')`
   - prediction interval from lm `predict(lm,data.frame(ROOMS=6),interval="prediction")`
+  - plot linear regression
+    `plot(df$y)`
+
+    `abline(lm_model)` or `abline(lm_model$coefficients[1],lm_model$coefficients[2])`#slop is coefficients[2][2] if there is only one x variable
 
 * `glm(y~., data=df)`
 
@@ -148,9 +152,12 @@
 
 #### optimization
 
-* `library(lpSolve)`
+* lpSolve and lpSolveAPI package `library(lpSolve)`
+  - pdf intro of lpSolveAPI [link](https://cran.r-project.org/web/packages/lpSolveAPI/lpSolveAPI.pdf)
+  - pdf intro of lpSolve [link](https://cran.r-project.org/web/packages/lpSolve/lpSolve.pdf)
+  - r blogger samples [link](http://horicky.blogspot.com/2013/01/optimization-in-r.html)
 
-  * sample 1
+  - sample 1
 
   `A1 <- cbind(diag(2*n),0) # One constraint per row: a[i], b[i] >= 0`
 
@@ -162,7 +169,7 @@
 
   `median(x)`
 
-  * sample 2
+  - sample 2
 
   `tau <- .1`
 
@@ -172,7 +179,7 @@
 
   `quantile(x,tau)`
 
-  * sample 3
+  - sample 3
 
   `tau <- .3`
 
