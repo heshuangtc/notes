@@ -61,7 +61,10 @@
     `plt.figure(figsize=(8, 6),dpi=80)` size(width,height)
   - pandas hist plot size[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.hist.html) `DataFrame.hist(data,column=None, by=None, figsize=None)`
   - add label to x or y axis `plt.xlabel('Smarts')` `plt.ylabel('Probability')`
-  - add title `plt.title('Histogram of IQ')` 
+  - add title `plt.title('Histogram of IQ')`
+  - figure axis range
+    `plt.ylim(-70.999,-71.175);plt.xlim(42.236,42.395)`
+  - scatter plot dot size `pd.scatter(y,x,s=value)`
 
 * clean memory
 
