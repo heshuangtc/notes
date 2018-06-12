@@ -50,6 +50,7 @@
 
   `Boruta(y~., data=na.omit(df))`
 
+
 #### regression
 
 * linear regression
@@ -99,7 +100,16 @@
 
     `predict(fit,df2)`
 
-
+* random forest
+  - randomforest
+    ```
+    library(randomForest)
+    model = randomForest(y ~ . , data = df_train, ntree=10)
+    model
+    plot(model)
+    pred = predict(model,df_test) 
+    ```
+  - 
 
 
 #### text mining
@@ -257,3 +267,13 @@
   `aov(r ~ tm1 * tm2)`
 
   `summary(av)`
+
+  #### validation
+  * split data into train/test
+    - by index
+    ```
+    list_sample <- sample(nrow(df),round(nrow(df)*0.7))
+    df_train <- df[list_sample,]
+    df_test <- df[-list_sample,]
+    ```
+    - 

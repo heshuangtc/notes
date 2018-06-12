@@ -1,5 +1,4 @@
 #### basic dataframe func
-
 * `colnames(df)`
 
 * row names
@@ -16,7 +15,9 @@
   - `nrow(df)`
   - `ncol(df)`
 
-* 
+* string as column name
+  - `df[c('col1','col2','col3')]` return df
+  - `df[['col1']]` = `df$col1`return a col
 
 * `ftable(df$col)`
 
@@ -143,6 +144,9 @@
 
 
 #### aggregation functions
+* apply
+  - by col `apply (df,2,function)`
+  - by row `apply (df,2,function)`
 
 * sapply 
 

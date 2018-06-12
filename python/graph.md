@@ -60,7 +60,7 @@
   - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
     `plt.figure(figsize=(8, 6),dpi=80)` size(width,height)
   - pandas hist plot size[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.hist.html) `DataFrame.hist(data,column=None, by=None, figsize=None)`
-  - add label to x or y axis `plt.xlabel('Smarts')` `plt.ylabel('Probability')`
+  - add label to x or y axis `plt.xlabel('Smarts',fontsize=18)` `plt.ylabel('Probability',fontsize=18)`
   - add title `plt.title('Histogram of IQ')`
   - figure axis range
     `plt.ylim(-70.999,-71.175);plt.xlim(42.236,42.395)`
@@ -101,6 +101,18 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
   plt.show()
   ```
 
+* 3d graph
+  - basic 3d graph
+  ```
+  import matplotlib.pyplot as plt
+  from mpl_toolkits import mplot3d
+  ax = plt.axes(projection='3d')
+  ax.scatter3D(x,y,z)
+  ax.set_xlabel('accommodates')
+  ax.set_ylabel('minstay')
+  ax.set_zlabel('availability_365')
+  ax.view_init(60, 35) #vertical,horizontal
+  ```
 
 
 ### pandas
