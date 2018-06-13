@@ -44,6 +44,17 @@
     dwtest(linear_model)
     ```
 
+* log/exp
+
+  `log()`
+
+  `exp()`
+
+* `sd(df, na.rm = TRUE)`
+
+* `scale(df,center = TRUE,scale=(sd(df,na.rm = TRUE)))`
+
+
 #### variable detection
 
 * `library(Boruta)`
@@ -63,6 +74,8 @@
     `abline(lm_model)` or `abline(lm_model$coefficients[1],lm_model$coefficients[2])`#slop is coefficients[2][2] if there is only one x variable
 
 * `glm(y~., data=df)`
+
+
 
 #### classification
 
@@ -109,6 +122,21 @@
     plot(model)
     pred = predict(model,df_test) 
     ```
+  - 
+* KNN
+  - library(class) [link](https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html) [sample](https://rstudio-pubs-static.s3.amazonaws.com/123438_3b9052ed40ec4cd2854b72d1aa154df9.html)
+  - basic
+    ```
+    library(class)
+    knn_model = knn(df_train,df_test,cl=as.factor(df_train$y),k=5)
+    ```
+
+
+
+### cluster
+* kmeans
+  - remove missing `na.omit(df)`
+  - fit `fit = kmeans(df,4)` result`fit$cluster`
   - 
 
 
@@ -211,6 +239,20 @@
 
   `tail(r$solution,3)`
 
+  - linear optimization (max)
+    ```
+    library(lpSolveAPI)
+    op_model = make.lp(0,2) #2 decision variable
+    set.objfn(op_model,c(-24,-40)) #max use negative coefficient
+    add.constraint(op_model,c(18,12),'<=',4000)
+    add.constraint(op_model,c(6,10),'<=',3500)
+    add.constraint(op_model,c(1,0),'>=',0)
+    add.constraint(op_model,c(0,1),'>=',0)
+    solve(op_model)
+    get.variables(op_model)
+    get.objective(op_model)
+    ```
+
 * basic pkg
 
   * sample 1
@@ -231,6 +273,19 @@
 ### time series
 
 [link](https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/)
+* change data frame col to time series type/vector[link](https://www.statmethods.net/advstats/timeseries.html)
+  - by month `myts <- ts(df$col, start=c(2009, 1), end=c(2014, 12), frequency=12)`
+  - by day `myts <- ts(df$col, start=c(2009, 1), end=c(2009, 1), frequency=1)`
+  - can only specify start date `myts <- ts(df$col, start=c(2009, 1), frequency=12)`
+
+* Exponential Models[link](https://www.statmethods.net/advstats/timeseries.html)
+  - simple exponential - models level
+    `fit <- HoltWinters(myts, beta=FALSE, gamma=FALSE)`
+  - double exponential - models level and trend
+    `fit <- HoltWinters(myts, gamma=FALSE)`
+  - triple exponential - models level, trend, and seasonal components
+    `fit <- HoltWinters(myts)`
+
 
 * moving average
 
@@ -248,23 +303,13 @@
 
     `rollsum(df$col, 2, fill=NA)`
 
-* log/exp
-
-  `log()`
-
-  `exp()`
-
-* `sd(df, na.rm = TRUE)`
-
-* `scale(df,center = TRUE,scale=(sd(df,na.rm = TRUE)))`
-
 * anova
 
   `tm1 = gl(k1, 1, n*k1*k2, factor(f1))`
 
   `tm2 = gl(k2, n*k1, n*k1*k2, factor(f2))`
 
-  `aov(r ~ tm1 * tm2)`
+  `aov(r ~ tm1 * tm2,data=df)`
 
   `summary(av)`
 
