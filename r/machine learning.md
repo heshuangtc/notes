@@ -75,6 +75,8 @@
 
 * `glm(y~., data=df)`
 
+* non linear regression
+  - nonlinear by given a and b start value and formula `nls(y~a*exp(-b*x),start=list(a=a_start,b=b_start))`
 
 
 #### classification
@@ -313,12 +315,14 @@
 
   `summary(av)`
 
-  #### validation
-  * split data into train/test
+#### validation
+* split data into train/test
     - by index
     ```
     list_sample <- sample(nrow(df),round(nrow(df)*0.7))
     df_train <- df[list_sample,]
     df_test <- df[-list_sample,]
     ```
-    - 
+
+* compare y and predict y
+  - `cor(y,predict(model,newdata))` 
