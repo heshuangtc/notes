@@ -57,7 +57,7 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
   - Simple Linear Regression is characterized by one independent variable. And, Multiple Linear Regression is characterized by multiple independent variables.
 
 * logistic regression [link](https://developers.google.com/machine-learning/crash-course/logistic-regression/calculating-a-probability)
-  -  a classification not a regression algorithm
+  -  a classification not a regression algorithm. returns a probability and need classification threshold (also called the decision threshold).
   -  estimate discrete values ( Binary values like 0/1, yes/no, true/false ) based on given set of independent variable(s). In simple words, it predicts the probability of occurrence of an event by fitting data to a logit function (a sigmoid function to make sure output always falls between 0 and 1).
   -  the log odds of the outcome is modeled as a linear combination of the predictor variables.
   ```
@@ -136,7 +136,9 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 
 
 ### validation
-
+* binary classification: confusion table/confusion matrix
+  |True Positive (TP)|False Positive (FP)|
+  |False Negative (FN)|True Negative (TN)|
 * generalization curve, which shows the loss for both the training set and validation set against the number of training iterations
 * loss: measures how well the model fits the data
 * regularization: measures model complexity. 
