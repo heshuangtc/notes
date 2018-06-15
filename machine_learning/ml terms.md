@@ -1,52 +1,4 @@
-## ------- data engineering -------
-### feature engineering
-*
-* good features [link](https://developers.google.com/machine-learning/crash-course/representation/qualities-of-good-features)
-  - Avoid rarely used discrete feature values
-  - Prefer clear and obvious meanings
-  - Don't mix "magic" values with actual data. To work around magic values, convert the feature into two features:One feature holds only quality ratings, never magic values. One feature holds a boolean value indicating whether or not.
-  - The definition of a feature shouldn't change over time
-
-### clean data [link](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data)
-* Scaling feature values
-
-  Scaling means converting floating-point feature values from their natural range (for example, 100 to 900) into a standard range (for example, 0 to 1 or -1 to +1). 
-
-  If a feature set consists of only a single feature, then scaling provides little to no practical benefit. If, however, a feature set consists of multiple features, then feature scaling provides the following benefits:
-
-  - Helps gradient descent converge more quickly.
-  - Helps avoid the "NaN trap," in which one number in the model becomes a NaN (e.g., when a value exceeds the floating-point precision limit during training), and—due to math operations—every other number in the model also eventually becomes a NaN.
-  - Helps the model learn appropriate weights for each feature. Without feature scaling, the model will pay too much attention to the features having a wider range.
-
-* Handling extreme outliers
-  - log(series values)
-  - set boundary (mean+3sd or upper/lower)
-  - binning. Instead of having one floating-point feature, divide feature into "bins", which N distinct boolean features.
-
-* Omitted values: missing values
-* Duplicate examples.
-* Bad labels: wrong label.
-* Bad feature values: wrong values.
-
-### Feature Crosses
-* Encoding Nonlinearity
-  - nonlinear problem: to split nonlinear dots
-  - features are continuously feature
-  - feature cross is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together
-  - use feature cross like other features in linear formula
-    + [A X B]: a feature cross formed by multiplying the values of two features.
-    + [A x B x C x D x E]: a feature cross formed by multiplying the values of five features.
-    + [A x A]: a feature cross formed by squaring a single feature.
-* Crossing One-Hot Vectors
-  - feature crosses of one-hot feature vectors as logical conjunctions
-  - features here are categorical feature
-  - A(NY, CA) B(English,Spanish) --> feature crossL: NY and English, NY and Spanish, CA and English, CA and Spanish
-
-
-
-
-## ------- machine learning -------
-### supervised algorithm methods
+## ------- regression algorithm -------
 
 from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/)
 
@@ -67,6 +19,8 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
   ```
   -  p is the probability of presence of the characteristic of interest. It chooses parameters that maximize the likelihood of observing the sample values rather than that minimize the sum of squared errors (like in ordinary regression).
 
+
+## ------- classification algorithm -------
 * Decision Tree
   - works for both categorical and continuous dependent variables. split the population into two or more homogeneous sets. To split the population into different heterogeneous groups, it uses various techniques like Gini, Information Gain, Chi-square, entropy.
   - This is done based on most significant attributes/ independent variables to make as distinct groups as possible.
@@ -92,9 +46,10 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 * Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
   - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
 
+### Neural Networks
 
 
-### clustering algorithms
+## ------- clustering algorithms -------
 * K-Means [wiki](https://en.wikipedia.org/wiki/K-means_clustering)
   - unsupervised algorithm which  solves the clustering problem
   - Given a set of observations (x1, x2, …, xn), where each observation is a d-dimensional real vector, k-means clustering aims to partition the n observations into k (≤ n) sets S = {S1, S2, …, Sk} so as to minimize the within-cluster sum of squares (WCSS). ![wcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-wcss.png)
@@ -126,7 +81,7 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
  
 
 
-### Ensemble learning
+## ------- Ensemble learning -------
 * wiki link: https://en.wikipedia.org/wiki/Ensemble_learning
 
 ### representation learning
@@ -135,14 +90,44 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 
 
 
-### validation
-* binary classification: confusion table/confusion matrix
+## ------- validation -------
+
+### logistic regression
+* confusion matrix(for binary classification)
+  - confusion table/confusion matrix
 
 |..|Actual True|Actual False|
 |-------|-------|-------|
 |Predict postive|True Positive (TP)|False Positive (FP) type I error|
 |Predict negative|False Negative (FN) type II error|True Negative (TN)|
 
+  - accuracy = `#correct predictions/total # predictions` = `(TP+TN)/(TP+TN+FP+FN)`
+  - precision = `TP/(TP+FP)` What proportion of positive identifications was actually correct?
+  - recall = `TP/(TP+FN)` What proportion of actual positives was identified correctly?
+
+* ROC curve
+  -  ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds
+  -  plot: x,y is FPR,TPR with different thresholds
+  -  True Positive Rate = recall = `TP/(TP+FN)`
+  -  False Positive Rate = `FP/(FP+TN)`
+* AUC
+  - Area Under the ROC Curve
+  - AUC provides an aggregate measure of performance across all possible classification thresholds.
+  - AUC ranges in value from 0 to 1. A model whose predictions are 100% wrong has an AUC of 0.0; one whose predictions are 100% correct has an AUC of 1.0.
+  - AUC is scale-invariant. It measures how well predictions are ranked, rather than their absolute values.Scale invariance is not always desirable. 
+  - AUC is classification-threshold-invariant. It measures the quality of the model's predictions irrespective of what classification threshold is chosen. Classification-threshold invariance is not always desirable.
+
+* prediction bias
+  - Logistic regression predictions should be unbiased. `average of predictions should ≈ average of observations`
+  - Prediction bias = `average of predictions - average of labels in dataset`
+  - Possible root causes of prediction bias are:
+    + Incomplete feature set
+    + Noisy data set
+    + Buggy pipeline
+    + Biased training sample
+    + Overly strong regularization
+
+#### regularization
 * generalization curve, which shows the loss for both the training set and validation set against the number of training iterations
 * loss: measures how well the model fits the data
 * regularization: measures model complexity. 
@@ -159,26 +144,27 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
     + weights close to zero have little effect on model complexity, while outliers weights can have a huge impact
   - a function of the total number of features with nonzero weights.
 
+* L1 regularization[link](https://developers.google.com/machine-learning/crash-course/regularization-for-sparsity/l1-regularization)
+  - problem: Given such high-dimensional feature vectors, model size may become huge and require huge amounts of RAM.
+  - solution: 
+    + A weight of exactly 0 essentially removes the corresponding feature from the model. Zeroing out features will save RAM and may reduce noise in the model.
+    + Unfortunately not. L2 regularization encourages weights to be small, but doesn't force them to exactly 0.0.
+    + use L1 regularization to encourage many of the uninformative coefficients in our model to be exactly 0, and thus reap RAM savings at inference time.
 
-### other
+* L1 vs L2
+|L2|L1|
+|----|----|
+|L2 penalizes weight2|L1 penalizes |weight||
+|The derivative of L2 is 2 * weight|The derivative of L1 is k (a constant, whose value is independent of weight)|
+|removes x% of the weight every time|subtracts some constant from the weight every time|
 
+
+
+
+
+## ------- other -------
 alphago zero nature article [link](https://www.nature.com/nature/journal/v550/n7676/full/nature24270.html)
 
 field-aware factorization machines
 
 factorization machines
-
-
-
-
-## ------- deep learning -------
-
-* deep learning  [wiki](https://en.wikipedia.org/wiki/Deep_learning) [a_site](http://deeplearning.net/) [book:deeplearning](http://www.deeplearningbook.org/)
-
-* feedforward deep network, or multilayer perceptron(MLP)
-
-* CNN [beginner guide](https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/) [tutorial](http://deeplearning.net/tutorial/lenet.html)
-
-* RNN [intro](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/)
-
-* LSTM 
