@@ -137,8 +137,10 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 
 ### validation
 * binary classification: confusion table/confusion matrix
-  |True Positive (TP)|False Positive (FP)|
-  |False Negative (FN)|True Negative (TN)|
+
+||..||Actual True||Actual False||
+|Predict postive|True Positive (TP)|False Positive (FP)|
+|Predict negative|False Negative (FN)|True Negative (TN)|
 * generalization curve, which shows the loss for both the training set and validation set against the number of training iterations
 * loss: measures how well the model fits the data
 * regularization: measures model complexity. 
