@@ -27,8 +27,10 @@
 ### string
 * find certain str index in string 
 
-  * forewards `string.index('a')`
-  * backwards `string.rindex('b')`
+  - forewards `string.index('a')`
+  - backwards `string.rindex('b')`
+* find certain str in list element
+  - `[s for s in a_list if "abc" in s]`
 
 * split string into list `string.split(',')`
 
@@ -200,6 +202,10 @@ np.random.choice(df.col, replace=False) #pick unique values
 * split a number list by same distance [link](https://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.arange.html)
 
   `np.arange(startnumber,endnumber, length)`
+
+* unlist a list
+  - `flat_list = [item for sublist in nested_list for item in sublist]`
+
 
 ### function
 * use string as function pointer

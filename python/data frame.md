@@ -403,7 +403,7 @@
 
 * remove index from/to csv file
   ```
-  df.to_csv(filename ,  index = False)
+  df.to_csv(filename ,  index = False, encoding='UTF-8')
   df = pd.read_csv(filename ,  index = False)
   ```
 
