@@ -46,7 +46,18 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 * Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
   - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
 
-### Neural Networks
+### Neural Networks [link](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/anatomy)
+* neural networks might help with nonlinear problems
+* Hidden Layers
+  - a "hidden layer" of intermediary values
+  - Each yellow node in the hidden layer is a weighted sum of the blue input node values.
+  - The output is a weighted sum of the yellow nodes.
+![hidden layers](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_nn_hiddenlayers.png)
+
+
+
+
+
 
 
 ## ------- clustering algorithms -------
@@ -79,6 +90,14 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
   - handle missing data well before you proceed with the implementation
   - can automatically deal with categorical variables without showing the type conversion error
  
+
+
+
+
+
+
+
+
 
 
 ## ------- Ensemble learning -------
