@@ -64,7 +64,9 @@
 * optimization algorithms [link](https://www.tensorflow.org/api_guides/python/train)
   - stochastic gradient descent (SGD) `tf.train.GradientDescentOptimizer(learning_rate=0.01)`
 
+* define feature column [link](https://www.tensorflow.org/api_docs/python/tf/feature_column/categorical_column_with_vocabulary_list)
 
+https://www.tensorflow.org/get_started/get_started_for_beginners
 
 ## Keras
 
