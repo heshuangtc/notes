@@ -114,6 +114,8 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 
 
 ## ------- clustering algorithms -------
+* sample data comparison with python[link](http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py)![cluster_comparison](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-clustering.png)
+
 * K-Means [wiki](https://en.wikipedia.org/wiki/K-means_clustering)
   - unsupervised algorithm which  solves the clustering problem
   - Given a set of observations (x1, x2, …, xn), where each observation is a d-dimensional real vector, k-means clustering aims to partition the n observations into k (≤ n) sets S = {S1, S2, …, Sk} so as to minimize the within-cluster sum of squares (WCSS). ![wcss](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_term-kmeans-wcss.png)
