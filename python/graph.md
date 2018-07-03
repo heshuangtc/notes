@@ -55,7 +55,22 @@
     ax1.plot(x, y1, 'g-')
     ax2.plot(x, y2, 'b-')
     ```
+    - multiple subplots
+    ```
+    # plt.subplot(nrows, ncols, index, **kwargs)
+    # nrow and ncols define how many plots in rows/cols
+    # index define plot index/order
 
+    plt.figure()
+    plt.subplot(221) #left top one in 2*2 net
+    plt.plot(x,y)
+
+    plt.subplot(222) #right top one in 2*2 net
+    plt.plot(x,y)
+
+    plt.subplot(223) #left bottom one in 2*2 net
+    plt.plot(x,y)
+    ```
 * plot options
   - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
     `plt.figure(figsize=(8, 6),dpi=80)` size(width,height)
