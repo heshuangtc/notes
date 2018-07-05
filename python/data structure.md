@@ -24,6 +24,10 @@
 * divide
   `int/int = int (py2) but float(py3)``int/float = float`
 
+* fractions
+  - `from fractions import Fraction; Fraction(16, -10)`
+
+
 ### string
 * find certain str index in string 
 

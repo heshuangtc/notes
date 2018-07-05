@@ -71,6 +71,13 @@
   import warnings
   warnings.filterwarnings('ignore')
   ```
+
+* combination
+  - combination of 2 'import itertools;itertools.combinations(alist, 2)'
+
+
+
+
 ### install
 * Git clone URL
   
