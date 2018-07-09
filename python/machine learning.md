@@ -186,3 +186,93 @@ results_ARIMA = model.fit(disp=-1)
   from sklearn.model_selection import cross_val_score
   cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
   ```
+
+
+## Natural Language Processing
+* intro with python [link](https://www.analyticsvidhya.com/blog/2017/01/ultimate-guide-to-understand-implement-natural-language-processing-codes-in-python/)
+* install packages
+  - `pip install nltk` The complete toolkit for all NLP techniques.
+  - `pip install pattern` A web mining module for the with tools for NLP and machine learning.
+  - `pip install TextBlob` Easy to use nl p tools API, built on top of NLTK and Pattern.
+  - `pip install Gensim` Topic Modelling for Humans
+
+* remove words
+  - `import re``re.sub(string,'',source_str)`
+* lexicon normalization
+  - Lemmatization
+    ```
+    from nltk.stem.wordnet import WordNetLemmatizer
+    WordNetLemmatizer().lemmatize('multiplying', 'v')
+    ## 'multiply'
+    ```
+  - Stemming
+    ```
+    from nltk.stem.porter import PorterStemmer
+    PorterStemmer().stem('multiplying')
+    ## 'multipli'
+    ```
+* speech tagging
+  ```
+  from nltk import word_tokenize, pos_tag
+  pos_tag(word_tokenize(a_sentence))
+  ```
+* entity extraction
+  - Latent Dirichlet Allocation (LDA)
+    ```
+    # convert str to matrix
+    import corpora
+    dictionary = corpora.Dictionary(str.split())
+    doc_term_matrix = [dictionary.doc2bow(doc) for doc in str.split()]
+
+    # train matrix to get topics
+    import gensim from gensim
+    gensim.models.ldamodel.LdaModel(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50).print_topics()
+    ```
+* statistic features
+  - Term Frequency – Inverse Document Frequency (TF – IDF)
+    ```
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    TfidfVectorizer().fit_transform(['a sentence', 'b sentence'])
+    ```
+* Word embedding
+  - word2vec
+    ```
+    from gensim.models import Word2Vec
+    model = Word2Vec([[w1,w2],[w1,w2,w3],[w3,w4]], min_count=1)
+    model.similarity(w2, w3)
+    ```
+  - glove
+    ```
+    ```
+* text classification
+  - textblob (NaiveBayesClassifier)
+    ```
+    from textblob.classifiers import NaiveBayesClassifier as NBC
+    from textblob import TextBlob
+    # train
+    model = NBC(dftrain) #df col1:str col2:label
+    # predict
+    model.classify('new str')
+    # accuracy
+    model.accuracy(dftest)
+    ```
+  - sklearn (svm)
+    ```
+    import TfidfVectorizer from sklearn.metrics
+    train_vectors = TfidfVectorizer(min_df=4, max_df=0.9).fit_transform(dftrain) #dftrain without label
+    test_vectors = TfidfVectorizer(min_df=4, max_df=0.9).fit_transform(dftest)
+
+    from sklearn import svm
+    model = svm.SVC(kernel='linear') 
+    model.fit(train_vectors, train_labels)
+    model.predict(test_vectors)
+    ```
+* text matching/similarity
+  - Phonetic Matching
+    ```
+    import fuzzy 
+    model = fuzzy.Soundex(4)
+    model('word1')
+    model('word2')
+    ```
+  - 
