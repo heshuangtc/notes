@@ -2,6 +2,7 @@
 [Plotly](https://plot.ly/) is Python library is free and open source and makes interactive, publication-quality graphs online.
 
 ### matloplib
+* `%matplotlib inline`
 * create a plot simple charts 
     - line chart [plt.plot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html)
       ```
@@ -10,6 +11,12 @@
       ```
     - hist charts [link](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html)
       `plt.hist(df.col, bins=20)`
+    - pyplot.hist
+      ```
+      bins = np.linspace(startnum,endnum,numofcuts)
+      from matplotlib import pyplot
+      pyplot.hist(df['col'],bins=bins,alpha=.5,normed=True) #norm if normalized plot, alpha how dark the bar
+      ```
     - bar charts
     - scatter plot [plt.scatter](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html)
       `plt.scatter(x,y)`
@@ -47,6 +54,14 @@
     ```
     plt.hist([x[x.Pclass==1].Survived.values,x[x.Pclass==2].Survived.values], bins=5, alpha=0.4, label=['pclass1','pclass2'])
     plt.legend(loc='best')
+    ```
+  - multiple hist - overlap
+    ```
+    bins = np.linspace(startnum,endnum,numofcuts)
+    from matplotlib import pyplot
+    pyplot.hist(df['col'],bins=bins,alpha=.5,normed=True) #norm if normalized plot, alpha how dark the bar
+    pyplot.hist(df['col'],bins=bins,alpha=.5,normed=True)
+    pyplot.legend(loc='upper right')
     ```
   - 2 axis plots
     ```

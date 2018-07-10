@@ -30,7 +30,6 @@
 
 ### string
 * find certain str index in string 
-
   - forewards `string.index('a')`
   - backwards `string.rindex('b')`
 * find certain str in list element
@@ -39,6 +38,8 @@
 * split string into list `string.split(',')`
 
 * number to alphabet `chr(5)`
+* special character
+  - `import string;string.punctuation`
 
 * library pickle [link](https://docs.python.org/2/library/pickle.html#pickle.HIGHEST_PROTOCOL)
 
@@ -167,7 +168,7 @@ calendar().holidays(start='2016-12-01',end='2017-12-31',return_name=True)
 
 ### list
 * find index of item in a list `["foo", "bar", "baz"].index("bar")`
-
+* find every 2 elements in first 5 elements of a list `alist[1:5:2]`
 * delete element from original list
   ```
   x = [1,2,3]

@@ -195,9 +195,13 @@ results_ARIMA = model.fit(disp=-1)
   - `pip install pattern` A web mining module for the with tools for NLP and machine learning.
   - `pip install TextBlob` Easy to use nl p tools API, built on top of NLTK and Pattern.
   - `pip install Gensim` Topic Modelling for Humans
-
+### feature engineering
 * remove words
-  - `import re``re.sub(string,'',source_str)`
+  - `import re;re.sub(string,'',source_str)`
+  - `str.replace(string,'',source_str)`
+* annoying words
+  - special characters `import string;string.punctuation`
+  - english stopwords `import nltk;nltk.corpus.stopwords.words('english')`
 * lexicon normalization
   - Lemmatization
     ```
@@ -228,11 +232,32 @@ results_ARIMA = model.fit(disp=-1)
     import gensim from gensim
     gensim.models.ldamodel.LdaModel(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50).print_topics()
     ```
-* statistic features
+* statistic features/vectorization
+  - count vectorization
+    ```
+    from sklearn.feature_extraction.text import CountVectorizer
+    out = CountVectorizer().fit_transform(df[textcol]) #convert textcol to many columns and each col is one word
+    out = CountVectorizer(analyzer=afun).fit_transform(df[textcol]) # apply customized functions before fit
+    out.get_feature_names() #give all unique words
+    # output will be sparse matrix so need to convert to df
+    df = pd.DataFrame(out.toarray())
+    ```
+  - n-grams
+    ```
+    from sklearn.feature_extraction.text import CountVectorizer
+    out = CountVectorizer(ngrams_range=(1,1)).fit_transform(df[textcol]) #default 1 word 1 column
+    out = CountVectorizer(ngrams_range=(1,2)).fit_transform(df[textcol]) #1gram + bigrams
+    out = CountVectorizer(ngrams_range=(2,2)).fit_transform(df[textcol]) #bigrams
+    # output will be sparse matrix so need to convert to df
+    df = pd.DataFrame(out.toarray())
+    ```
   - Term Frequency – Inverse Document Frequency (TF – IDF)
     ```
     from sklearn.feature_extraction.text import TfidfVectorizer
-    TfidfVectorizer().fit_transform(['a sentence', 'b sentence'])
+    out = TfidfVectorizer().fit_transform(['a sentence', 'b sentence'])
+    out = TfidfVectorizer(analyzer=customized_fun).fit_transform(df[textcol]) # customized_fun can do some cleaning or transformation before vectorized
+    # output will be sparse matrix so need to convert to df
+    df = pd.DataFrame(out.toarray())
     ```
 * Word embedding
   - word2vec
@@ -244,6 +269,10 @@ results_ARIMA = model.fit(disp=-1)
   - glove
     ```
     ```
+* count text len without space
+  - `df[textcol].apply(lambda x:len(x)-x.count(' '))`
+  - `df[textcol].str.replace(' ','').apply(lambda x:len(x))`
+### use case
 * text classification
   - textblob (NaiveBayesClassifier)
     ```

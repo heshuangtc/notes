@@ -12,7 +12,10 @@
 * frequency table
   - `pandas.crosstab(index=df.col_label,columns=df.col_count)` [link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.crosstab.html)
 
-*
+* set up pandas display
+  - width of table col by num of char
+    `pd.set_option('display.max_colwidth',100)`
+  - 
 
 ### column
 * col has same values or not
@@ -179,7 +182,19 @@
 * 
 
 ### subset
-
+* select n rows
+  - select first 5 rows
+    `df[0:6]`or`df.ix[0:6,:]`
+  - select 0,2,4,6...rows
+    `df.ix[0::2,:]`
+  - select first 10 rows on every 2 rows
+    `df.ix[0:11:2,:]`
+  - select 0,3,6,9...rows
+    `df.ix[0::3,:]`
+* dont select last n rows
+  - dont select last 1 rows
+    `df.ix[:-1,:]`
+  - dont select last 2 rows
 * remove duplicates[link](http://pandas.pydata.org/pandas-docs/version/0.17.1/generated/pandas.DataFrame.drop_duplicates.html)
 
   `DataFrame.drop_duplicates(['col1','col2'],keep='first')`
@@ -507,9 +522,8 @@
 
   `df.groupby(['col1','col2']).mean()`
 
-
-
-* 
+* apply a function to each row
+  `df['col'].apply(lambda x: afunction(x))` 
 
 * 
 

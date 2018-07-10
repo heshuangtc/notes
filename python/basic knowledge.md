@@ -78,7 +78,7 @@
 
 
 
-### install
+## install
 * Git clone URL
   
   set up git in command, find git.exe then add to PATH
@@ -96,7 +96,7 @@
 
 * install certain version
 
-### control flow
+## control flow
 * Comparing Sequences
   ```
   [1, 2, 3]              < [1, 2, 4]
@@ -162,7 +162,8 @@
   one line if statement
   `print('Yes') if fruit == 'Apple' else print('No')`
 
-### load files
+
+## load files
 * if a file in folder
   * way 1
     ```
@@ -220,7 +221,7 @@
   f.closed
   ```
 
-### save files
+## save files
 
 * save as excel xlsx
   * xlsxwriter links
