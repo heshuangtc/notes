@@ -75,7 +75,9 @@
 * combination
   - combination of 2 'import itertools;itertools.combinations(alist, 2)'
 
-
+* function
+  - give all default/input parameters for afun `print(afun())`
+  - list all attributes of afun `dir(afun)`
 
 
 ## install

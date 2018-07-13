@@ -78,30 +78,39 @@
   clf.feature_importances_
   ```
 * grid search cv
+  - this is to try parameters combinations in each model to find the better model
   - linear regression
-  ```
-  from sklearn.model_selection import GridSearchCV
-  from sklearn import linear_model
-  reg0 = linear_model.LinearRegression()
-  parameters = {'fit_intercept':[True,False], 'normalize':[True,False]} 
-  #all parameters for linear regression
-  reg = GridSearchCV(reg0,parameters)
-  reg.fit(df_train)
-  df_test['predict'] = reg.predict(df_test)
-  ```
+    ```
+    from sklearn.model_selection import GridSearchCV
+    from sklearn import linear_model
+    model = linear_model.LinearRegression()
+    parameters = {'fit_intercept':[True,False], 'normalize':[True,False]} 
+    #all parameters for linear regression
+    reg = GridSearchCV(model,parameters,cv=5,n_jobs=-1)
+    reg.fit(df_train)
+    df_test['predict'] = reg.predict(df_test)
+    ```
   - gbr
-  ```
-  parameters_gbr = {'n_estimators': [5,10], 'max_depth': [3,4], 'min_samples_split': [2,5]}
-  model_gbr0 = ensemble.GradientBoostingRegressor()
-  model_gbr = GridSearchCV(model_gbr0, parameters_gbr)
-  model_gbr.fit(df_train[ls_train_cols], df_train.target_col)
-  df_test['predict'] = model_gbr.predict(df_test[ls_train_cols])
-  ```
+    ```
+    parameters_gbr = {'n_estimators': [5,10], 'max_depth': [3,4], 'min_samples_split': [2,5]}
+    model = ensemble.GradientBoostingRegressor()
+    model_gbr = GridSearchCV(model, parameters_gbr)
+    model_gbr.fit(df_train[ls_train_cols], df_train.target_col)
+    df_test['predict'] = model_gbr.predict(df_test[ls_train_cols])
+    ```
 *
 
 
 ### classification
-
+* random forest
+  - sklearn
+    ```
+    from sklearn.ensemble import RandomForestClassifier
+    rf = RandomForestClassifier(n_jobs=-1)
+    ```
+    + n_jobs: 1 run 1 tree each time, -1 run all trees parallel
+    + max_depth: None till min leaf, 4 num of leaves
+    + n_estimators: 10 trees in forest
 
 
 ### Time Series
@@ -173,19 +182,34 @@ results_ARIMA = model.fit(disp=-1)
   - 
 * r2/variance
   - linear `model_linear.score(df_test[ls_train_cols],df_test.hist_target)`
-
+* score
+  - precision, recall,fscore,support
+    ```
+    from sklearn.metrics import precision_recall_fscore_support as score
+    precision,recall,fscore,support = score(ytest,ypredict,pos_label='yes',average='binary')
+    ```
+      + pos_label: the label to measure
+      + average:
+  - 
 * cross validation
   - what is over-fitting [link](https://elitedatascience.com/overfitting-in-machine-learning#how-to-detect)
+  - kfold
+    ```
+    from sklearn.model_selection import KFold
+    cross_val_score(model_object,dffeatures,dflabel,cv=KFold(n_splits=5))
+    # cv: select which index/row
+    ```
   - on train side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
-  ```
-  from sklearn.model_selection import cross_val_score
-  cross_val_score(model_object, X_train[['dayofweek','month','year','dayofmonth']], X_train[['order_count']], cv=5)
-  ```
+    ```
+    from sklearn.model_selection import cross_val_score
+    cross_val_score(model_object, X_train[['dayofweek','month','year','dayofmonth']], X_train[['order_count']], cv=5, n_jobs=-1, scoring='accuracy')
+    ```
+    + scoring: accuracy, precision, recall
   - on test side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
-  ```
-  from sklearn.model_selection import cross_val_score
-  cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
-  ```
+    ```
+    from sklearn.model_selection import cross_val_score
+    cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
+    ```
 
 
 ## Natural Language Processing

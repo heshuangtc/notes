@@ -1,4 +1,5 @@
 ## ------- classification algorithm -------
+
 * Decision Tree
   - works for both categorical and continuous dependent variables. split the population into two or more homogeneous sets. To split the population into different heterogeneous groups, it uses various techniques like Gini, Information Gain, Chi-square, entropy.
   - This is done based on most significant attributes/ independent variables to make as distinct groups as possible.
@@ -21,10 +22,47 @@
     + Variables should be normalized else higher range variables can bias it
     + Works on pre-processing stage more before going for kNN like outlier, noise removal
 
-* Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
-  - To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).
 
-### Neural Networks [link](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/anatomy)
+
+
+## ------- Ensemble learning -------
+* ensemble method [wiki link](https://en.wikipedia.org/wiki/Ensemble_learning)
+  - create multiple models and then combine them to produce better results
+  - Gradient Boosting (boosting) / RandomForest (bagging)
+  - boosting: increase weight based on previous error. iterative, slower. weighted voting. easier to overfit.
+  - bagging: random samples. independent ,parallel. non-weighted voting.
+
+* Random Forest [wiki](https://en.wikipedia.org/wiki/Random_forest)
+  - each tree gives a classification/prediction (1 vote) independently and the forest chooses the classification with the most votes (over all the trees in the forest).
+  - accept almost all types of inputs including class, continuous, missing values etc.
+  - can be used for both classification and regression.
+
+### Gradient Boosting Algorithms
+* some links: [blog](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/) and [boost blog](https://www.analyticsvidhya.com/blog/2015/05/boosting-algorithms-simplified/)
+* defination:
+  - an iterative approach to combine weak learners to create strong learners by focusing on mistakes/error of prior iterations, heavy weight on error observation and then minimize the error.
+  - accept almost all types of inputs including class, continuous, missing values etc.
+  - GB also use decision tree.
+  - can be used for both classification and regression.
+* AdaBoost
+* GBM
+  - an ensemble of learning algorithms which combines the prediction of several base estimators in order to improve robustness over a single estimator. It combines multiple weak or average predictors to a build strong predictor.
+* XGBoost
+  - The XGBoost has an immensely high predictive power which makes it the best choice for accuracy in events as it possesses both linear model and the tree learning algorithm, making the algorithm almost 10x faster than existing gradient booster techniques.
+  -  it is also called a regularized boosting technique. This helps to reduce over-fit modeling.
+* LightGBM
+  - uses tree based learning algorithms
+  - it splits the tree leaf wise with the best fit BUT other boosting algorithms split the tree depth wise or level wise rather than leaf-wise.
+  - Faster training speed and higher efficiency / Lower memory usage / Better accuracy / Parallel and GPU learning supported / Capable of handling large-scale data
+* Catboost
+  - easily integrate with deep learning frameworks like Google’s TensorFlow and Apple’s Core ML
+  - handle missing data well before you proceed with the implementation
+  - can automatically deal with categorical variables without showing the type conversion error
+
+
+
+## ------- Neural Networks -------
+* [Google NN course](https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/anatomy)
 * neural networks might help with nonlinear problems
 * Hidden Layers
   - a "hidden layer" of intermediary values

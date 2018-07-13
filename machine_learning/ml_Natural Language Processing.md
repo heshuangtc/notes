@@ -38,7 +38,8 @@
   - power transformation: square,sqrt
   - log(): skewed data/data with outliers
 * Word Embedding
-  - redefine the high dimensional word features into low dimensional feature vectors
+  - redefine the high dimensional word features into low dimensional feature vectors 
+    + t-SNE:t distribution stochastic neighbor embedding. relative distance in high dimension to low dimension
   - widely used in deep learning models such as CNN or RNN
 
 
@@ -48,3 +49,9 @@
 * text matching/similarity
   - Phonetic Matching: takes a keyword as input and produces a character string that identifies a set of words that are (roughly) phonetically similar.
   - Cosine Similarity: output is percentage sum(str1*str2) / sqrt(sum(str1^2))*sqrt(sum(str2^2))
+* voice user interface
+  - process: voice to text --> text to text --> text to speech
+  - voice to text: time series data
+  - challenge
+    + variability: pitch, volume, speed
+    + ambiguity: word boundary, spelling, context

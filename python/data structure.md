@@ -109,6 +109,9 @@
 
 
 ### datetime
+* current time
+  - `import time; time.time()`
+
 * define a repeated holiday/event in calendar
   * dateutil pkg [github source](https://github.com/dateutil/dateutil)
     ```

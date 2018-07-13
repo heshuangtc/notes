@@ -1,32 +1,3 @@
-### Gradient Boosting Algorithms
-
-from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/) and boost blog [link](https://www.analyticsvidhya.com/blog/2015/05/boosting-algorithms-simplified/)
-
-* AdaBoost
-* GBM
-  - an ensemble of learning algorithms which combines the prediction of several base estimators in order to improve robustness over a single estimator. It combines multiple weak or average predictors to a build strong predictor.
-* XGBoost
-  - The XGBoost has an immensely high predictive power which makes it the best choice for accuracy in events as it possesses both linear model and the tree learning algorithm, making the algorithm almost 10x faster than existing gradient booster techniques.
-  -  it is also called a regularized boosting technique. This helps to reduce over-fit modeling.
-* LightGBM
-  - uses tree based learning algorithms
-  - it splits the tree leaf wise with the best fit BUT other boosting algorithms split the tree depth wise or level wise rather than leaf-wise.
-  - Faster training speed and higher efficiency / Lower memory usage / Better accuracy / Parallel and GPU learning supported / Capable of handling large-scale data
-* Catboost
-  - easily integrate with deep learning frameworks like Google’s TensorFlow and Apple’s Core ML
-  - handle missing data well before you proceed with the implementation
-  - can automatically deal with categorical variables without showing the type conversion error
- 
-
-
-
-
-
-
-
-
-## ------- Ensemble learning -------
-* wiki link: https://en.wikipedia.org/wiki/Ensemble_learning
 
 ### representation learning
 
@@ -46,8 +17,8 @@ from blog [link](https://www.analyticsvidhya.com/blog/2017/09/common-machine-lea
 |Predict negative|False Negative (FN) type II error|True Negative (TN)|
 
   - accuracy = `#correct predictions/total # predictions` = `(TP+TN)/(TP+TN+FP+FN)`
-  - precision = `TP/(TP+FP)` What proportion of positive identifications was actually correct?
-  - recall = `TP/(TP+FN)` What proportion of actual positives was identified correctly?
+  - precision = `TP/(TP+FP)` What proportion of positive identifications was actually correct? more important when care predict is real actual and not include more.
+  - recall = `TP/(TP+FN)` What proportion of actual positives was identified correctly? more important when care predict include more actual.
 
 * ROC curve
   -  ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds
