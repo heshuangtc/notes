@@ -195,7 +195,7 @@ results_ARIMA = model.fit(disp=-1)
   - what is over-fitting [link](https://elitedatascience.com/overfitting-in-machine-learning#how-to-detect)
   - kfold
     ```
-    from sklearn.model_selection import KFold
+    from sklearn.model_selection import KFold,cross_val_score
     cross_val_score(model_object,dffeatures,dflabel,cv=KFold(n_splits=5))
     # cv: select which index/row
     ```
@@ -257,11 +257,13 @@ results_ARIMA = model.fit(disp=-1)
     gensim.models.ldamodel.LdaModel(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50).print_topics()
     ```
 * statistic features/vectorization
-  - count vectorization
+  - count vectorization [sklearn doc](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer.get_feature_names)
     ```
     from sklearn.feature_extraction.text import CountVectorizer
-    out = CountVectorizer().fit_transform(df[textcol]) #convert textcol to many columns and each col is one word
-    out = CountVectorizer(analyzer=afun).fit_transform(df[textcol]) # apply customized functions before fit
+    out = CountVectorizer()
+    out.fit_transform(df[textcol]) #convert textcol to many columns and each col is one word
+    out = CountVectorizer(analyzer=afun)
+    out.fit_transform(df[textcol]) # apply customized functions before fit
     out.get_feature_names() #give all unique words
     # output will be sparse matrix so need to convert to df
     df = pd.DataFrame(out.toarray())
@@ -320,6 +322,7 @@ results_ARIMA = model.fit(disp=-1)
     model.fit(train_vectors, train_labels)
     model.predict(test_vectors)
     ```
+  - sklearn (random forest)
 * text matching/similarity
   - Phonetic Matching
     ```

@@ -44,8 +44,7 @@
     ```
     df['col'] = df['col'].astype('category')
 
-    df.col1 = pd.Categorical(df.col1)
-    df['code'] = df.col.cat.codes
+    df.col1 = pd.Categorical(df.col1).codes
 
     df.index = pd.CategoricalIndex(df.col1)
     ```
