@@ -46,8 +46,47 @@
   KMeans(n_clusters=2, random_state=0).fit(df)
   kmeans.labels_
   ```
-
-*
+* MiniBatchKMeans
+  ```
+  from sklearn.cluster import MiniBatchKMeans
+  outcluters = MiniBatchKMeans(n_clusters=3).fit(dfcluster)
+  ```
+* Birch
+  ```
+  from sklearn.cluster import Birch
+  outcluters = Birch(n_clusters=3,threshold=0.2).fit(dfcluster)
+  ```
+* MeanShift
+  ```
+  from sklearn.cluster import MeanShift,estimate_bandwidth
+  bandwidth = estimate_bandwidth(dfcluster, quantile=.4)
+  outcluters = MeanShift(bandwidth=bandwidth, bin_seeding=True).fit(dfcluster)
+  ```
+* AffinityPropagation
+  ```
+  from sklearn.cluster import AffinityPropagation
+  outcluters = AffinityPropagation(damping=0.9).fit(dfcluster)
+  ```
+* AgglomerativeClustering
+  ```
+  from sklearn.cluster import AgglomerativeClustering
+  outcluters = AgglomerativeClustering(n_clusters=3).fit(dfcluster)
+  ```
+* SpectralClustering
+  ```
+  from sklearn.cluster import SpectralClustering
+  outcluters = SpectralClustering(n_clusters=3,eigen_solver='arpack',affinity="nearest_neighbors").fit(dfcluster)
+  ```
+* DBSCAN
+  ```
+  from sklearn.cluster import DBSCAN
+  outcluters = DBSCAN(eps=dfcluster[df_features[1]].median()).fit(dfcluster)
+  ```
+* GaussianMixture
+  ```
+  from sklearn.mixture import GaussianMixture
+  outcluters = GaussianMixture(n_components=3,covariance_type='full').fit(dfcluster)
+  ```
 
 ### Regression
 * linear regression [link](http://scikit-learn.org/stable/modules/linear_model.html)
