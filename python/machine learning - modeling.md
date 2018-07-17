@@ -82,6 +82,14 @@
   clf.predict(X_test)
   clf.feature_importances_
   ```
+* lightgbm [doc](https://lightgbm.readthedocs.io/en/latest/Python-Intro.html)
+  ```
+  import lightgbm as lgb
+  param = {'num_leaves':31, 'num_trees':100, 'objective':'binary',
+    'metric':['auc', 'binary_logloss']}
+  model = lgb.train(param, dftrain,num_round=10,valid_sets=[dftest])
+  model.predict(dftest)
+  ```
 * random forest [link](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
   ```
   from sklearn.ensemble import RandomForestRegressor
@@ -105,7 +113,13 @@
     + n_jobs: 1 run 1 tree each time, -1 run all trees parallel
     + max_depth: None till min leaf, 4 num of leaves
     + n_estimators: 10 trees in forest
-
+* naive bayes
+  - GaussianNB
+    ```
+    from sklearn.naive_bayes import GaussianNB
+    GaussianNB().fit(X,y)
+    ```
+  - 
 
 
 

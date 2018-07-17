@@ -35,7 +35,13 @@
     model_gbr.fit(df_train[ls_train_cols], df_train.target_col)
     df_test['predict'] = model_gbr.predict(df_test[ls_train_cols])
     ```
-*
+* lightgbm
+  ```
+  import lightgbm as lgb
+  param = {'num_leaves':31, 'num_trees':100, 'objective':'binary',
+    'metric':['auc', 'binary_logloss']}
+  model = lgb.cv(param,dftrain,num_round=10,nfold=5)
+  ```
 
 
 
@@ -88,7 +94,11 @@
     ```
       + pos_label: the label to measure
       + average:
-  - 
+  - accuracy score
+    ```
+    from sklearn.metrics import accuracy_score
+    accuracy_score(ypredict,ylabel)
+    ```
 * cross validation
   - what is over-fitting [link](https://elitedatascience.com/overfitting-in-machine-learning#how-to-detect)
   - kfold
