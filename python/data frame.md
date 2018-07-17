@@ -48,6 +48,10 @@
 
     df.index = pd.CategoricalIndex(df.col1)
     ```
+  * convert multiple col to categorical col
+    ```
+    df[df.select_dtypes(include=['object']).columns.values] = df[df.select_dtypes(include=['object']).columns.values].apply(lambda x:pd.Categorical(x).codes)
+    ```
   * select certain datatype columns [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.select_dtypes.html)
 
     `df.select_dtypes(include=['float64'])`

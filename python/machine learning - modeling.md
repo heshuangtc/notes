@@ -1,42 +1,4 @@
-### basic info
-* store a model object
-  - save a pickle file [pickle doc](https://docs.python.org/2/library/pickle.html)
-    ```
-    import pickle
-    output = open('./path/filename.pkl', 'wb')
-    pickle.dump(model, output)
-    output.close()
-    ```
-  - load a pickle file
-    ```
-    import pickle
-    pkl_file = open('./path/filename.pkl', 'rb')
-    model = pickle.load(pkl_file)
-    pkl_file.close()
-    ```
-*
-
-### data preparation
-* split data frame into train/test
-  - sklearn [link](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
-  ```
-  from sklearn.model_selection import train_test_split
-  X_train, X_test= train_test_split(X, test_size=0.33, random_state=42)
-  ```
-  - 
-*
-
-### normalization
-* normalization with sklearn
-  ```
-  from sklearn.preprocessing import normalize
-  df = normalize(df,method='l2',copy=True)
-  ```
-* normalization with equavilent
-  * z score `(df-df.mean())/df.std()`
-  * min max `(df-df.min())/(df.max()-df.min())`
-
-###clustering
+## ------- clustering -------
 * pca with sklearn
 * sklearn clustering list [link](http://scikit-learn.org/stable/modules/clustering.html)
 * kmeans
@@ -88,7 +50,11 @@
   outcluters = GaussianMixture(n_components=3,covariance_type='full').fit(dfcluster)
   ```
 
-### Regression
+
+
+
+
+## ------- Regression -------
 * linear regression [link](http://scikit-learn.org/stable/modules/linear_model.html)
   - linear regression
   ```
@@ -116,31 +82,20 @@
   clf.predict(X_test)
   clf.feature_importances_
   ```
-* grid search cv
-  - this is to try parameters combinations in each model to find the better model
-  - linear regression
-    ```
-    from sklearn.model_selection import GridSearchCV
-    from sklearn import linear_model
-    model = linear_model.LinearRegression()
-    parameters = {'fit_intercept':[True,False], 'normalize':[True,False]} 
-    #all parameters for linear regression
-    reg = GridSearchCV(model,parameters,cv=5,n_jobs=-1)
-    reg.fit(df_train)
-    df_test['predict'] = reg.predict(df_test)
-    ```
-  - gbr
-    ```
-    parameters_gbr = {'n_estimators': [5,10], 'max_depth': [3,4], 'min_samples_split': [2,5]}
-    model = ensemble.GradientBoostingRegressor()
-    model_gbr = GridSearchCV(model, parameters_gbr)
-    model_gbr.fit(df_train[ls_train_cols], df_train.target_col)
-    df_test['predict'] = model_gbr.predict(df_test[ls_train_cols])
-    ```
-*
+* random forest [link](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+  ```
+  from sklearn.ensemble import RandomForestRegressor
+  regr = RandomForestRegressor(n_estimators=10 ,max_depth=2, random_state=0, n_jobs=-1)
+  regr.fit(features, label)
+  regr.feature_importances_
+  ```
 
 
-### classification
+
+
+
+
+## ------- classification -------
 * random forest
   - sklearn
     ```
@@ -152,47 +107,43 @@
     + n_estimators: 10 trees in forest
 
 
-### Time Series
-#### moveing average
+
+
+
+
+## ------- Time Series -------
+### moving average
 * pandas pkg
 ```
 import pandas as pd
 pd.rolling_mean(df.col1, avg_length)
 ```
 
-
-#### holt-winters
+### holt-winters
 * knowledge of method
 actually it is triple exponential smoothing
-
 * fecon235 pkg [link](https://github.com/rsvp/fecon235#dt_2015-08-01_094628)
-
 * seasonal pkg [link](https://github.com/welch/seasonal/blob/master/examples/hw.py)
-
 * pycast pkg
 `pycast.methods.exponentialsmoothing.HoltWintersMethod`
 
-#### auto regression
+### auto regression
 * knowledge of method
-
   * ARIMA: Auto-Regressive Integrated Moving Averages [link](https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/)
-
 * [statsmodels ARIMA](http://www.statsmodels.org/0.6.1/generated/statsmodels.tsa.arima_model.ARIMA.html)
-
   * MA
   ```
   from statsmodels.tsa.arima_model import ARIMA
   model = ARIMA(ts_df, order=(0, 1, 2))  
   results_MA = model.fit(disp=-1) 
   ```
-  
   * AR
   ```
   from statsmodels.tsa.arima_model import ARIMA
   model = ARIMA(ts_df, order=(2, 1, 0))  
   results_AR = model.fit(disp=-1)
   ```
-  
+
 * pyflux [link](http://www.pyflux.com/)
 ```
 import pyflux as pf
@@ -202,56 +153,23 @@ x.summary()
 model.predict(100) 
 #or model.simulation_smoother(data, beta)
 ```
-
 * Combined Model
 ```
 model = ARIMA(ts_log, order=(2, 1, 2))  
 results_ARIMA = model.fit(disp=-1)
 ```
 
-
-### validation
-* mean squared error
-  - sklearn
-    ```
-    from sklearn.metrics import mean_squared_error
-    mse = mean_squared_error(y_real, y_predict)
-    print("MSE: %.4f" % mse)
-    ```
-  - 
-* r2/variance
-  - linear `model_linear.score(df_test[ls_train_cols],df_test.hist_target)`
-* score
-  - precision, recall,fscore,support
-    ```
-    from sklearn.metrics import precision_recall_fscore_support as score
-    precision,recall,fscore,support = score(ytest,ypredict,pos_label='yes',average='binary')
-    ```
-      + pos_label: the label to measure
-      + average:
-  - 
-* cross validation
-  - what is over-fitting [link](https://elitedatascience.com/overfitting-in-machine-learning#how-to-detect)
-  - kfold
-    ```
-    from sklearn.model_selection import KFold,cross_val_score
-    cross_val_score(model_object,dffeatures,dflabel,cv=KFold(n_splits=5))
-    # cv: select which index/row
-    ```
-  - on train side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
-    ```
-    from sklearn.model_selection import cross_val_score
-    cross_val_score(model_object, X_train[['dayofweek','month','year','dayofmonth']], X_train[['order_count']], cv=5, n_jobs=-1, scoring='accuracy')
-    ```
-    + scoring: accuracy, precision, recall
-  - on test side, by given model object, dependent variables, target variable, predict and calculate accuracy rate
-    ```
-    from sklearn.model_selection import cross_val_score
-    cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
-    ```
+### prophet package
 
 
-## Natural Language Processing
+
+
+
+
+
+
+
+## ------- Natural Language Processing -------
 * intro with python [link](https://www.analyticsvidhya.com/blog/2017/01/ultimate-guide-to-understand-implement-natural-language-processing-codes-in-python/)
 * install packages
   - `pip install nltk` The complete toolkit for all NLP techniques.
