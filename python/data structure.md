@@ -29,6 +29,9 @@
 
 
 ### string
+* assign value to string, make string as name/object/variable
+  - obj[string] = value `setattr(obj, string, value)`
+  - string = value `exec(string + '= value')`
 * find certain str index in string 
   - forewards `string.index('a')`
   - backwards `string.rindex('b')`

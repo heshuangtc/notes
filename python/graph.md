@@ -86,6 +86,13 @@
     plt.subplot(223) #left bottom one in 2*2 net
     plt.plot(x,y)
     ```
+  - groupby to generate plots
+    ```
+    plt.figure(figsize = (10,8))
+    df.groupby('group_col').plot_col.count().plot(kind="bar")
+    plt.title("plot_col per group_col")
+    plt.show()
+    ```
 * plot options
   - size of graph [link](http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure)
     `plt.figure(figsize=(8, 6),dpi=80)` size(width,height)
@@ -274,3 +281,28 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
 
   ```
 * circle marker
+
+
+## wordcloud
+* sample
+  ```
+  from wordcloud import WordCloud, STOPWORDS
+  plt.figure(figsize = (15,15))
+
+  stopwords = set(STOPWORDS)
+
+  wordcloud = WordCloud(
+                            background_color='black',
+                            stopwords=stopwords,
+                            max_words=1000,
+                            max_font_size=120, 
+                            random_state=42
+                           ).generate(str(df[str_col]))
+
+  print(wordcloud)
+  fig = plt.figure(1)
+  plt.imshow(wordcloud)
+  plt.title("WORD CLOUD - str_col")
+  plt.axis('off')
+  plt.show()
+  ```
