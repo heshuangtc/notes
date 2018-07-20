@@ -424,7 +424,8 @@
   df.to_csv(filename ,  index = False, encoding='UTF-8')
   df = pd.read_csv(filename ,  index = False)
   ```
-
+* read tsv file
+  - pandas `pd.read_csv('../input/train.tsv',delimiter='\t',encoding='utf-8')`
 
 ### create
 * create df from list
