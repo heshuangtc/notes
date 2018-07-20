@@ -58,10 +58,11 @@
 * linear regression [link](http://scikit-learn.org/stable/modules/linear_model.html)
   - linear regression
   ```
-  from sklearn import linear_model
-  reg = linear_model.LinearRegression()
+  from sklearn.linear_model import LinearRegression
+  reg = LinearRegression()
   reg.fit(df_train)
   reg.predict(df_test)
+  reg.score(X,y) # r square
   ```
   - Ridge regression: Ridge regression addresses some of the problems of Ordinary Least Squares by imposing a penalty on the size of coefficients. 
   `reg = linear_model.Ridge (alpha = .5)`
@@ -119,7 +120,17 @@
     from sklearn.naive_bayes import GaussianNB
     GaussianNB().fit(X,y)
     ```
-  - 
+* SVM
+  - sklearn
+    ```
+    from sklearn.svm import SVC
+    model = SVC(kernel='linear') #poly,rbf,sigmoid etc
+    model.fit(X,y)
+    model.predict(Xtest)
+    ```
+    + kernel: function is to convert raw data into another format. let problem from non-linear question to linear question.
+    + c: control tradeoff between smooth/straight or non-smooth boundary. higher - non-smooth (possible over-fitting)
+    + gamma:
 
 
 

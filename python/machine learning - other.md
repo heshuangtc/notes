@@ -60,13 +60,20 @@
 
 
 
-## ------- normalization -------
+## ------- normalization / feature scaling -------
+* feature scaling will affect svm(rbf kernel) and kmeans instead of decision tree or linear regression
 * normalization with sklearn
-  ```
-  from sklearn.preprocessing import normalize
-  df = normalize(df,method='l2',copy=True)
-  ```
-* normalization with equavilent
+  - L2
+    ```
+    from sklearn.preprocessing import normalize
+    df = normalize(df,method='l2',copy=True)
+    ```
+  - min/max sklearn
+    ```
+    from sklearn.preprocessing import MinMaxScaler
+    MinMaxScaler.fit_transform(df.col)
+    ```
+* normalization with equivalent
   * z score `(df-df.mean())/df.std()`
   * min max `(df-df.min())/(df.max()-df.min())`
 

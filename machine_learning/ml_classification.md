@@ -3,6 +3,7 @@
 * Decision Tree
   - works for both categorical and continuous dependent variables. split the population into two or more homogeneous sets. To split the population into different heterogeneous groups, it uses various techniques like Gini, Information Gain, Chi-square, entropy.
   - This is done based on most significant attributes/ independent variables to make as distinct groups as possible.
+    + information gain: `entropy(parent)- weight_avg*entropy(children)`. entropy = `sum(p*log2(p))` and if children only has 1 class(1 p), entropy=0. bigger better. [udacity](https://classroom.udacity.com/courses/ud120/lessons/2258728540/concepts/24033885800923)
 
 * SVM (Support Vector Machine)
   - plot each data item as a point in n-dimensional space (where n is number of features you have) with the value of each feature being the value of a particular coordinate.

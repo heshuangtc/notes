@@ -73,7 +73,7 @@
 |The derivative of L2 is 2 * weight|The derivative of L1 is k (a constant, whose value is independent of weight)|
 |removes x% of the weight every time|subtracts some constant from the weight every time|
 
-
+* feature scaling will affect svm(rbf kernel) and kmeans instead of decision tree or linear regression
 
 
 
