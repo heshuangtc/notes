@@ -213,6 +213,7 @@ results_ARIMA = model.fit(disp=-1)
     ```
     from nltk.stem.wordnet import WordNetLemmatizer
     WordNetLemmatizer().lemmatize('multiplying', 'v')
+    WordNetLemmatizer().lemmatize('word')
     ## 'multiply'
     ```
   - Stemming
@@ -305,6 +306,12 @@ results_ARIMA = model.fit(disp=-1)
     model.predict(test_vectors)
     ```
   - sklearn (random forest)
+    ```
+    from sklearn.ensemble import RandomForestClassifier
+    model = RandomForestClassifier(n_estimators,max_depth)
+    model.fit(X,y)
+    model.predict(Xtest)
+    ```
 * text matching/similarity
   - Phonetic Matching
     ```
