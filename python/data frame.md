@@ -3,19 +3,19 @@
 
 
 ### basic info
-* Try using 
-
-  `.loc[row_indexer,col_indexer] = value` instead
-
+* Try using `df.loc[row_indexer,col_indexer] = value` instead
 * `.copy()` before subset
-
 * frequency table
   - `pandas.crosstab(index=df.col_label,columns=df.col_count)` [link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.crosstab.html)
-
 * set up pandas display
   - width of table col by num of char
     `pd.set_option('display.max_colwidth',100)`
   - 
+* summary data frame/overview of data frame
+  - describe all numeric columns `df.describe()`
+  - describe all columns `df.describe(include='all')`
+  - get type/names/nullable `df.info()`
+
 
 ### column
 * col has same values or not
@@ -210,9 +210,10 @@
 
   `df[df['closing_price'].between(99, 101, inclusive=True)]`
 
-* subset dataframe if col1 values in array [link](http://pandas.pydata.org/pandas-docs/stable/indexing.html)
+* subset dataframe if col1 values in/not in array [link](http://pandas.pydata.org/pandas-docs/stable/indexing.html)
 
-  `df = df[df.col1.isin(array)]`
+  - in `df = df[df.col1.isin(array)]`
+  - not in `df[df.col1.isin(alist)==False]`
 
 * cut data by date
   ```
@@ -248,14 +249,13 @@
   `pd.merge(left, right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=True, suffixes=('_x', '_y'), copy=True, indicator=False)`
 
 * left/right join
-
-  if left has additional key than right, keep left. but if right has additions, drop it. vice versa
-
-  `result = pd.merge(left, right, on=['key1', 'key2'], how='left')`
+  - if left has additional key than right, keep left. but if right has additions, drop it. vice versa
+  - merge `result = pd.merge(left, right, on=['key1', 'key2'], how='left')`
+  - join `df.join(df2,on='key',how='left')`
 
 * merge on keys inner join
-
-  `result = pd.merge(left, right, on=['key1', 'key2'], how='inner')`
+  - merge `result = pd.merge(left, right, on=['key1', 'key2'], how='inner')`
+  - join `df.join(df2,on='key')`
 
 * full join[link](https://stackoverflow.com/questions/35265613/pandas-cross-join-no-columns-in-common)
   add a common col for both table and make single value in it.merge on this new common col.

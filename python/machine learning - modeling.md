@@ -49,7 +49,13 @@
   from sklearn.mixture import GaussianMixture
   outcluters = GaussianMixture(n_components=3,covariance_type='full').fit(dfcluster)
   ```
-
+* nearest neighbors
+  - sklearn
+    ```
+    from sklearn.neighbors import NearestNeighbors
+    model = NearestNeighbors(n_neighbors=1).fit(X)
+    model.kneighbors(xtest) #second array provide index in X which closest to xtest
+    ```
 
 
 
@@ -320,4 +326,18 @@ results_ARIMA = model.fit(disp=-1)
     model('word1')
     model('word2')
     ```
-  - 
+
+
+
+## recommendation system
+* find correlation with given series
+  - `df.corrwith(df2)` df2 has only 1 series/column
+* utility matrix
+  - turn rating df into matrix with fill na with 0`df.pivot_table(values='rating',index='userid',columns='itemsid',fill_value=0)`
+* SVD (reduce #cols)
+  ```
+  from sklearn.decomposition import TruncatedSVD
+  TruncatedSVD(n_components=12,random_state=17).fit_transform(df)
+  ```
+*
+*

@@ -1,3 +1,10 @@
+## basic 
+* types of analytics
+  - descriptive analytics: what happened?
+  - diagnostic analytics: why this happened?
+  - predictive analytics: what will happen?
+  - prescriptive analytics: what can improve?
+
 
 ### representation learning
 

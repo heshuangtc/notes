@@ -84,6 +84,7 @@
 
 ## ------- validation -------
 * mean squared error
+  - lower better
   - sklearn
     ```
     from sklearn.metrics import mean_squared_error
@@ -125,3 +126,13 @@
     from sklearn.model_selection import cross_val_score
     cross_val_score(model_object, X_test[['dayofweek','month','year','dayofmonth']], X_test[['order_count']], cv=5)
     ```
+  - classification report (precision,recall,f1-score,support)
+  ```
+  from sklearn.metrics import classification_report
+  classification_report(y,ypredict)
+  ```
+
+
+
+## optimization
+* find minimum goal by tweaking numbers `import scipy; fmin_cg()`
