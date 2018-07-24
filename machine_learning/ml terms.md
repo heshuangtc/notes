@@ -4,7 +4,12 @@
   - diagnostic analytics: why this happened?
   - predictive analytics: what will happen?
   - prescriptive analytics: what can improve?
-
+* types of algorithms
+  - supervised
+  - unsupervised
+  - reinforcement : semi-supervised. improve model behavior based on rewards
+![ml algorithm map](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_algomap.png)
+>> reference: Data Science for Dummies, Chapter 4
 
 ### representation learning
 
