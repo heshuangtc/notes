@@ -56,6 +56,14 @@
   - Spearman's rank correlation: detect correlation between ordinal variable, non-linearly, non-normally distribution
   - 
 
+* outlier
+  - extreme value
+  - univariate analysis
+    + Tukey outlier labeling/Tukey boxplot/
+    + `IQR=Q3-Q1`
+    + `Q1-1.5IQR` or `Q3+1.5IQR`
+  - multivariate analysis
+    + scatter-plot matrix/boxplot/density-based clustering/PCA
 
 
 ## ------- validation -------

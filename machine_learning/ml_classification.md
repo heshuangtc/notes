@@ -25,7 +25,18 @@
     + KNN is computationally expensive
     + Variables should be normalized else higher range variables can bias it
     + Works on pre-processing stage more before going for kNN like outlier, noise removal
-
+  - advantage
+    + low on noise
+    + free of outliers
+    + composed of distinguishable groups
+    + composed only of relevant selected features
+  - disadvantage
+    + (lazy ml)good for small dataset
+  - use case
+    + CRM (customer relationship) to find similar customer information
+* average nearest neighbors
+  - classify observations based on average of arithmetic distances between observations to identify and group observations by average similarity
+  - average(difference(any 2 rows of any col) all col)
 
 
 
