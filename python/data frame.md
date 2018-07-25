@@ -34,7 +34,8 @@
   `df.col.value_counts()`
 
 * if is duplicates `df.duplicated([col1,col2])`
-
+* convert categorical col into dummy cols
+  - `pd.get_dummies(df,columns=['col1','col2'])`
 * col type
   * change col type
 

@@ -14,6 +14,9 @@
   - Even if these features depend on each other or upon the existence of the other features, a naive Bayes classifier would consider all of these properties to independently contribute to the probability.
   - Naive Bayesian model is easy to build and particularly useful for very large data sets.
   - `P(c|x)` is the posterior probability of class (target) given predictor (attribute) / `P(c)` the prior probability of class. / `P(x|c)` the likelihood which is the probability of predictor given class.  / `P(x)` the prior probability of predictor. ![ml_terms-Bayes_rule](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/ml_terms-Bayes_rule.png)
+    + multinomial NB: discrete frequency counts, categorical or continuous or binary
+    + bernoulli NB: continuous variables
+    + gaussian NB: feature are normal distribution
 
 * kNN (k- Nearest Neighbors)
   - can be used for both classification and regression problems

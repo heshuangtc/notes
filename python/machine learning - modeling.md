@@ -78,6 +78,12 @@
   ```
   reg = linear_model.LogisticRegression()
   ```
+  - regression with lasso regularization
+    ```
+    import sklearn.linear_model.Lasso
+    model = Lasso().fit(X,y)
+    model.predict(Xtest)
+    ```
 * Gradient Boosting Regression [link](http://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html)
   - ensemble.GradientBoostingRegressor
   ```
@@ -270,10 +276,18 @@ results_ARIMA = model.fit(disp=-1)
     ```
     from sklearn.feature_extraction.text import TfidfVectorizer
     out = TfidfVectorizer().fit_transform(['a sentence', 'b sentence'])
+    out = TfidfVectorizer(sbulinear_tf=True,max_df=0.5,stop_words='english').fit_transform(['a sentence', 'b sentence'])
+    # remove stop words with tf_idf, and only keep 50% common words
     out = TfidfVectorizer(analyzer=customized_fun).fit_transform(df[textcol]) # customized_fun can do some cleaning or transformation before vectorized
     # output will be sparse matrix so need to convert to df
     df = pd.DataFrame(out.toarray())
     ```
+* only choose most import x% features
+  ```
+  from sklearn.feature_selection import SelectPercentile,f_classif
+  model = SelectPercentile(f_classif,percentile=x)
+  model.fit(X,y).transform(X).toarray()
+  ```
 * Word embedding
   - word2vec
     ```

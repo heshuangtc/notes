@@ -7,12 +7,17 @@
     pickle.dump(model, output)
     output.close()
     ```
-  - load a pickle file
+  - load a pickle file with pickle pkg
     ```
     import pickle
     pkl_file = open('./path/filename.pkl', 'rb')
     model = pickle.load(pkl_file)
     pkl_file.close()
+    ```
+  - load a pickle file with sklearn pkg
+    ```
+    from sklearn.externals import joblib
+    joblib.load('mode.pkl')
     ```
 * grid search cv
   - this is to try parameters combinations in each model to find the better model
@@ -53,8 +58,32 @@
   from sklearn.model_selection import train_test_split
   X_train, X_test= train_test_split(X, test_size=0.33, random_state=42)
   ```
-  - 
-
+* feature selection
+  - select top n% features
+    ```
+    from sklearn.feature_selections import selectKBest
+    ```
+  - select n features
+    ```
+    from sklearn.feature_selections import SelectPercentile
+    ```
+* reduce features dimension
+  - PCA
+    ```
+    from sklearn.decomposition import PCA
+    model = PCA(n_components=2).fit(df)
+    model.explained_variance_ratio_ # percentage of data explained
+    model.components_[0] #first component
+    out = model.transform(df)
+    ```
+    + PCA output graph
+      ```
+      for ii,jj in zip(out,df)
+        plt.scatter(model.components_[0]*ii[0],model.components_[0]*ii[0],color='r') # first component
+        plt.scatter(model.components_[1]*ii[1],model.components_[1]*ii[1],color='c') # second component
+        plt.scatter(jj[0],jj[1], color='b')
+      ```
+  - SVD
 
 
 

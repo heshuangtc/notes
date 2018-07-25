@@ -9,11 +9,52 @@
   - unsupervised
   - reinforcement : semi-supervised. improve model behavior based on rewards
 ![ml algorithm map](https://github.com/karina7rang/notes/blob/master/machine_learning/picture/machine_learning-ml_algomap.png)
+* types of algorithms
+  - association rule learning algorithm: discover associations between features
+  - instance-based algorithm: classify based on similarity
+  - regularizing algorithm: prevent model overgitting or solve an ill-posed problem
+  - naive bayes method: predict likelihood of an event occurring
+  - decision tree:
+  - clustering algorithm
+  - dimension reduction method: remove redundant information, noise and outliers, dimension reduction analysis
+  - neural network: use layers of interconnected units
+  - deep learning method:incorporate transitional neural networks
+  - ensemble algorithm: 
 >> reference: Data Science for Dummies, Chapter 4
 
-### representation learning
 
-* autoencoder
+## ------- data preparation -------
+### dimension reduction
+* PCA (principle component analysis)
+  - for uncorrelated features, present most information
+  - output: reduced set of meaningful, non-information-redundant principle variables
+  - assumptions:
+    + multivariate normal features
+    + continuous features
+  - how many components should use
+    + top n% components
+    + trails on train/test and based on performance
+* SVD(singular value decomposition)
+  - reduce number of columns
+  - `A = u * S * v` 
+  - A(original matrix) `m*n`
+  - u(left orthogonal matrix: holds important non-redundant information about observations) `m*r`
+  - v(right orthogonal matrix: holds important non-redundant information about columns) `r*n`
+  - S(diagonal matrix: information about the decomposition processes performed during the compression) (square rot of eigenvalue of A) `r*r`
+* factor analysis
+  - filter out redundant information and noise. the greater feature variance, the more information feature contains. find cause of shared variance.
+  - output: reduced set of meaningful, non-information-redundant latent variables
+  - assumptions:
+    + features are numeric variables (continuous or ordinal)
+    + 100+rows and 5+columns
+    + Pearson's R > 0.3 between features
+
+
+
+* correlation
+  - Pearson's R: linear relationship (1 positive, 0 none, -1 negative) for numeric continuous variable, normal distribution
+  - Spearman's rank correlation: detect correlation between ordinal variable, non-linearly, non-normally distribution
+  - 
 
 
 
@@ -95,3 +136,7 @@ alphago zero nature article [link](https://www.nature.com/nature/journal/v550/n7
 field-aware factorization machines
 
 factorization machines
+
+### representation learning
+
+* autoencoder
