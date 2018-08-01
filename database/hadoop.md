@@ -1,5 +1,5 @@
 ## basic
-|-----|-----|
+|-------|-------|
 |storage|HDFS or DBFS or Cloud-based file (AWS S3， GCP cloud storage, Azure blob)|
 |compute|MapReduce or Spark |
 |management|YARN or Mesos|
@@ -16,7 +16,7 @@
     - Apache Storm
 * Hadoop pipeline
     - streaming ingest services
-    |-----|-----|
+    |-------|-------|
     |apache kafka|open source|
     |amazon kinesis|cloud|
     |google cloud pub/sub|cloud|
@@ -29,4 +29,17 @@
         + consumer API (subscribe to topics)
         + streams API (input/output streams)
         + connector API (connects to existing system)
-        
+
+## databricks
+*layout
+  - Home
+  - workspaces : create scripts/notebooks (notebook display data frame can easily convert it to graph)
+  - recent
+  - tables: create/load/manipulate data tables
+  - clusters: computing cluster (free version is 6g with 1 node)
+  - jobs: spark jobs (will also to notify in notebook when run a cube)
+  - search
+* packages
+  - import packages from workspaces
+  - python(pyspark), r(sparkr), sql(sparksql),ml(mllib) visualization(graphX) packages can be used on top of spark
+* 

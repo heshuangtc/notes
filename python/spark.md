@@ -101,7 +101,7 @@
 
 
 ## clustering
-*
+* k-means
 *
 *
 *
