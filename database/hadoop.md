@@ -1,4 +1,5 @@
 ## basic
+|function|features|
 |-------|-------|
 |storage|HDFS or DBFS or Cloud-based file (AWS S3， GCP cloud storage, Azure blob)|
 |compute|MapReduce or Spark |
@@ -16,6 +17,7 @@
     - Apache Storm
 * Hadoop pipeline
     - streaming ingest services
+    |product|type|
     |-------|-------|
     |apache kafka|open source|
     |amazon kinesis|cloud|
