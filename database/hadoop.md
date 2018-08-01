@@ -17,6 +17,7 @@
     - Apache Storm
 * Hadoop pipeline
     - streaming ingest services
+
     |product|type|
     |-------|-------|
     |apache kafka|open source|
