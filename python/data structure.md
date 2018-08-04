@@ -26,7 +26,10 @@
 
 * fractions
   - `from fractions import Fraction; Fraction(16, -10)`
-
+* check if nan value
+  - `import math; math.isnan(x)`
+  - `x == np.nan`
+  - `x == float('nan')`
 
 ### string
 * assign value to string, make string as name/object/variable

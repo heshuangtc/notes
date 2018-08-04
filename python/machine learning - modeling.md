@@ -1,5 +1,12 @@
 ## ------- clustering -------
 * pca with sklearn
+  ```
+  from sklearn.decomposition import PCA
+  model = PCA(n_components=2).fit(X)
+  model.explained_variance_ratio_
+  model.singular_values_
+  df = model.transform(X)
+  ```
 * sklearn clustering list [link](http://scikit-learn.org/stable/modules/clustering.html)
 * kmeans
   - sklearn [link](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
@@ -7,6 +14,7 @@
   from sklearn.cluster import KMeans
   KMeans(n_clusters=2, random_state=0).fit(df)
   kmeans.labels_
+  plt.scatter(x,y,c=kmeans.labels_)
   ```
 * MiniBatchKMeans
   ```

@@ -8,6 +8,9 @@
   use it where needed
   `import another_script`
 
+* list all objects
+  - `locals()`
+  - `globals()`
 * a variable exist or not `'var' in globals()`
 
 * syntax: wrap too long line
