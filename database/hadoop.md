@@ -1,4 +1,25 @@
 ## basic
+* terms
+  - HDFS: Hadoop Distributed Files System
+  - Data Node: contains the blocks for HDHS and has the actual data
+  - Name Node: knows which DataNode each block exist on
+  - three block redundancy for fault tolerance
+  - YARN: Yet Another Resource Negotiator (maybe next generation of MapReduce)
+  - Tez: execution engine
+  - Hive: Hadoop SQL engine
+* command
+  - `distcp` launches a MapReduce job that will stream data from one cluster to another
+  - `hadoop fs ls /hadoop/data/path` list items in path folder
+  - `hadoop fs -put /a/local/path/file /hadoop/data/path/` upload file into a new folder
+  - `head =15 /hadoop/data/path/file` read first few lines in a file
+  - `hadoop fs -mkdir /hadoop/data/path` make a folder/path
+  - `hadoop fs - cp /hadoop/old/path/file /hadoop/new/path/` copy file into new folder
+  - `hadoop fs -rm /hadoop/file` romve a file
+  - `hadoop fs -mv /hadoop/old/file /hadoop/new/path` move file to a new folder
+  - `hadoop fs -rmdir /hadoop/path` remove a folder when folder is empty
+  - `hadoop fs -rm -R /hadoop/path` remove a folder and also files in folder
+  - 
+
 |function|features|
 |-------|-------|
 |storage|HDFS or DBFS or Cloud-based file (AWS S3， GCP cloud storage, Azure blob)|

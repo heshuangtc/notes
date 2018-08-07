@@ -82,10 +82,6 @@
   `reg = linear_model.Ridge (alpha = .5)`
   - Lasso regression:The Lasso is a linear model that estimates sparse coefficients. It is useful in some contexts due to its tendency to prefer solutions with fewer parameter values, effectively reducing the number of variables upon which the given solution is dependent. 
   `reg = linear_model.Lasso(alpha = 0.1)`
-  - logistic regression
-  ```
-  reg = linear_model.LogisticRegression()
-  ```
   - regression with lasso regularization
     ```
     import sklearn.linear_model.Lasso
@@ -151,9 +147,18 @@
     + kernel: function is to convert raw data into another format. let problem from non-linear question to linear question.
     + c: control tradeoff between smooth/straight or non-smooth boundary. higher - non-smooth (possible over-fitting)
     + gamma:
-
-
-
+* GradientBoostingClassifier[link](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier)
+  ```
+  from sklearn.ensemble import GradientBoostingClassifier
+  model = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,
+    max_depth=1, random_state=0).fit(X_train, y_train)
+  model.score(X_test, y_test)
+  ```
+* logistic regression
+  ```
+  from sklearn.linear_model import LogisticRegression
+  reg = LogisticRegression(random_state=1)
+  ```
 
 
 ## ------- Time Series -------

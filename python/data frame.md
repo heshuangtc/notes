@@ -36,6 +36,9 @@
 * if is duplicates `df.duplicated([col1,col2])`
 * convert categorical col into dummy cols
   - `pd.get_dummies(df,columns=['col1','col2'])`
+* convert continuous col into category [link](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html)
+  - by number of bins `pd.cut(df.col, bins=4)` if want index instead of label, `labels=False`, default `labels=True`
+  - by list of values `pd.cut(df.col, bins = [0,1,2]` # two bins actually
 * col type
   * change col type
 
@@ -286,7 +289,8 @@
   `df.col = df.col.astype('int64')`
   `df.col = df.col.astype('int32')`
   `df.col = df.col.astype('int')`
-*
+* convert boolean to numeric
+  - `df.col = df.col.astype('int32')`
 
 #### datetime
 * convert timedelta to int
