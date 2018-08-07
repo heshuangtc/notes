@@ -247,11 +247,19 @@ results_ARIMA = model.fit(disp=-1)
     PorterStemmer().stem('multiplying')
     ## 'multipli'
     ```
-* speech tagging
-  ```
-  from nltk import word_tokenize, pos_tag
-  pos_tag(word_tokenize(a_sentence))
-  ```
+* entity extraction with nltk
+  - speech tagging
+    ```
+    from nltk import word_tokenize, pos_tag
+    pos_tag(word_tokenize(a_sentence))
+    ```
+  - name entity
+    ```
+    from nltk import ne_chunk, pos_tag, word_tokenize
+    from nltk.tree import Tree
+    out = ne_chunk(pos_tag(word_tokenize(text)))
+    [w for w in out if type(w)==Tree]
+    ```
 * entity extraction
   - Latent Dirichlet Allocation (LDA)
     ```
@@ -259,16 +267,18 @@ results_ARIMA = model.fit(disp=-1)
     import corpora
     dictionary = corpora.Dictionary(str.split())
     doc_term_matrix = [dictionary.doc2bow(doc) for doc in str.split()]
-
+    ```
+  - topic features
+    ```
     # train matrix to get topics
-    import gensim from gensim
-    gensim.models.ldamodel.LdaModel(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50).print_topics()
+    from gensim import models
+    models.ldamodel.LdaModel(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50).print_topics()
     ```
 * statistic features/vectorization
   - count vectorization [sklearn doc](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer.get_feature_names)
     ```
     from sklearn.feature_extraction.text import CountVectorizer
-    out = CountVectorizer()
+    out = CountVectorizer(stop_words='english')
     out.fit_transform(df[textcol]) #convert textcol to many columns and each col is one word
     out = CountVectorizer(analyzer=afun)
     out.fit_transform(df[textcol]) # apply customized functions before fit

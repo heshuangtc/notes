@@ -93,7 +93,7 @@
 * regular expression subset string `df.col.str.extract('(^[0-9]+/[0-9]+)',expand=False)`
 [test re](https://regex101.com/#python)
 
-* a-z chr(65)-chr(90) , A-Z chr(97)-chr(122)
+* a-z  chr(97)-chr(122), A-Z chr(65)-chr(90)
 
 * convert from other data type
 
@@ -175,6 +175,9 @@ calendar().holidays(start='2016-12-01',end='2017-12-31',return_name=True)
 * convert timedelta to int
   `timedelta/np.timedelta64(1, 'D')`
 
+
+
+
 ### list
 * find index of item in a list `["foo", "bar", "baz"].index("bar")`
 * find every 2 elements in first 5 elements of a list `alist[1:5:2]`
@@ -219,6 +222,15 @@ np.random.choice(df.col, replace=False) #pick unique values
 
 * unlist a list
   - `flat_list = [item for sublist in nested_list for item in sublist]`
+* regular expression
+  - filter elements with match
+    ```
+    import re
+    [i for i in ls_col if re.match('[0-9]+',i)]
+    ```
+  - 
+
+
 
 
 ### function
