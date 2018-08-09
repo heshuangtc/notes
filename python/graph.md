@@ -20,6 +20,8 @@
     - bar charts
     - scatter plot [plt.scatter](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html)
       `plt.scatter(x,y)`
+    - parallel coordinates graph
+    - 
   
 * Add a vertical line across the axes [link](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axvline)
 
@@ -70,7 +72,7 @@
     ax1.plot(x, y1, 'g-')
     ax2.plot(x, y2, 'b-')
     ```
-    - multiple subplots
+    - multiple subplots arrange multiple plots
     ```
     # plt.subplot(nrows, ncols, index, **kwargs)
     # nrow and ncols define how many plots in rows/cols
@@ -153,13 +155,12 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
 
 
 ### pandas
+[pandas doc](https://pandas.pydata.org/pandas-docs/stable/visualization.html#visualization-parallel-coordinates)
 * single line
-
-  `df.plot(x='col1',y='col2')`
+`df.plot(x='col1',y='col2')`
 
 * multiple lines in one graph
-
-  `df.plot()` df only has those data want to be in graph
+`df.plot()` df only has those data want to be in graph
 
 * multiple hist graph by group
   - `df['value_col'].hist(by=df['group_col'])`
@@ -171,7 +172,19 @@ in sumbline actually i need `plt.close()` to release memory not `plt.clf()`
   plt.suptitle('') #get rid of default title
   plt.title('new title')
   ```
-
+* parallel coordinates graph
+  ```
+  from pandas.plotting import parallel_coordinates
+  import matplotlib.pyplot as plt
+  plt.figure()
+  parallel_coordinates(df,'class_label')
+  ```
+* lag plot
+* pie chart
+```
+df.col.plot.pie(figsize=(5,5))
+```
+* 
 
 ### graphviz
 * installation

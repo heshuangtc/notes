@@ -48,6 +48,8 @@ those temporary tables can be used in same with and immediate next select clause
 
   `select * from t1 inner join t2 on t1.key = t2.key and t1.key2=t2.key2`
 
+### UNION
+* `UNION` removes duplicate records (where all columns in the results are the same), `UNION ALL` does not.
 
 ### data format
 * add few days to a date

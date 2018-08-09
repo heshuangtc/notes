@@ -289,11 +289,13 @@ results_ARIMA = model.fit(disp=-1)
   - n-grams
     ```
     from sklearn.feature_extraction.text import CountVectorizer
-    out = CountVectorizer(ngrams_range=(1,1)).fit_transform(df[textcol]) #default 1 word 1 column
-    out = CountVectorizer(ngrams_range=(1,2)).fit_transform(df[textcol]) #1gram + bigrams
-    out = CountVectorizer(ngrams_range=(2,2)).fit_transform(df[textcol]) #bigrams
+    out = CountVectorizer(ngram_range=(1,1)).fit_transform(df[textcol]) #default 1 word 1 column
+    out = CountVectorizer(ngram_range=(1,2)).fit_transform(df[textcol]) #1gram + bigrams
+    out = CountVectorizer(ngram_range=(2,2)).fit_transform(df[textcol]) #bigrams
     # output will be sparse matrix so need to convert to df
     df = pd.DataFrame(out.toarray())
+    # list of word vector combination
+    out.get_feature_names()
     ```
   - Term Frequency – Inverse Document Frequency (TF – IDF)
     ```
@@ -366,7 +368,9 @@ results_ARIMA = model.fit(disp=-1)
 
 
 
-## recommendation system
+
+
+## ---- recommendation system ----
 * find correlation with given series
   - `df.corrwith(df2)` df2 has only 1 series/column
 * utility matrix
