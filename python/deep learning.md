@@ -110,7 +110,36 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
 
 
 ## Keras
+[keras doc](https://keras.io/layers/recurrent/#lstm)
+[keras example](https://faroit.github.io/keras-docs/0.3.3/examples/#stacked-lstm-for-sequence-classification)
 
+* LSTM
+  - input is dataframe. as data frame is 2d matrix, while LSTM needs 3d matrix, need to convert data frame format first. pay attention on input_shape in LSTM. output_dim is number of label class if multiple classes.
+    ```
+    from keras.models import Sequential
+    from keras.layers import LSTM, Dense
+    from keras.utils import to_categorical
+
+    # convert data frame to 3d feature matrix and 2d target matrix
+    x_train = np.array(df_features).reshape(NrowOfDf,1,NcolOfDf)
+    y_train = np.array(df_label).reshape(NrowOfDf,1)
+    # label columns is multi-categorical column, need to convert to dummy variables
+    y_train = to_categorical(y_train) #will create numOFlabelclass columns
+
+    # create model
+    model = Sequential()
+    model.add(LSTM(32, return_sequences=True, input_shape=(1,NcolOfDf)))
+    model.add(LSTM(32, return_sequences=True))
+    model.add(LSTM(32)) 
+    model.add(Dense(numOFlabelclass, activation='softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+    model.fit(x_train, y_train, batch_size=64, nb_epoch=5,validation_split=0.3)
+
+    dfout = pd.DataFrame(model.predict(x_train))
+    ```
+  - 
+*
 ##
 
 
