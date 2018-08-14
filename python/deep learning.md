@@ -110,10 +110,11 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
 
 
 ## Keras
-[keras doc](https://keras.io/layers/recurrent/#lstm)
-[keras example](https://faroit.github.io/keras-docs/0.3.3/examples/#stacked-lstm-for-sequence-classification)
+* reference
+  - [keras doc](https://keras.io/layers/recurrent/#lstm)
+  - [keras example](https://faroit.github.io/keras-docs/0.3.3/examples/#stacked-lstm-for-sequence-classification)
 
-* LSTM
+* LSTM (RNN)
   - input is dataframe. as data frame is 2d matrix, while LSTM needs 3d matrix, need to convert data frame format first. pay attention on input_shape in LSTM. output_dim is number of label class if multiple classes.
     ```
     from keras.models import Sequential
@@ -130,7 +131,7 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
     model = Sequential()
     model.add(LSTM(32, return_sequences=True, input_shape=(1,NcolOfDf)))
     model.add(LSTM(32, return_sequences=True))
-    model.add(LSTM(32)) 
+    model.add(LSTM(32, return_sequences=False)) 
     model.add(Dense(numOFlabelclass, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
@@ -139,7 +140,85 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
     dfout = pd.DataFrame(model.predict(x_train))
     ```
   - 
-*
+* image (RNN)
+  ```
+  from keras.preporcessing.image import load_img, array_to_img
+  from.utils.np_utils import to_categorical
+  from keras.models import Sequential
+  from keras.layers import Dense
+
+  X_train.shape #(rows,xpix,ypix) 3d
+  Y_train.shape #(rows,)
+
+  # preprocessing image
+  ## reshape data into 1 layer
+  X_train.reshape(nrows,xpix*ypix)
+  X_train.shape #(rows,xpix*ypix) 2d
+  X_train = X_train.astype('float32')
+  ## scale to 0,1
+  X_train /=255 #color range is 0-255
+  ## y label has 10 classes, categorical label to binary columns
+  Y_train = to_categorical(Y_train,10)
+  Y_train.shape #(rows,10)
+
+  # model
+  ## build
+  model = Sequential()
+  model.add(Dense(num_nodes, activation='relu', input_shape=(xpix*ypix,))) # first layer
+  model.add(Dense(num_nodes, activation='relu'))
+  model.add(Dense(10, activation='softmax')) # final layer
+  ## compile
+  model.compile(optimizer='adam', loss='cateorical_crossentropy', metrics=['accuracy']) #as y labels is multi-class category, so use this loss function
+  model.summary()
+  ## train
+  model.fit(X_train,Y_train, epochs=20, validation_data=(X_train,Y_train))
+
+  #plot
+  plt.plot(history.history['acc'])
+  plt.plot(history.history['val_acc'])
+  plt.plot(history.history['loss'])
+
+  # predict
+  model.predict(X_test)
+  ```
+
+* image (CNN)
+  ```
+  from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+  from keras.models import Sequential
+  from keras.utils import to_categorical
+
+  X_train.shape #(rows,xpix,ypix) 3d
+  Y_train.shape #(rows,)
+  
+  # preprocessing image
+  ## reshape data
+  X_train.reshape(nrows,xpix,ypix,1)
+  X_train.shape #(rows,xpix,ypix,1) 4d
+  X_train = X_train.astype('float32')
+  ## scale to 0,1
+  X_train /=255
+  ## categorical label to binary columns
+  Y_train = to_categorical(Y_train,num_label_class)
+  Y_train.shape #(rows,num_label_class)
+
+  # model
+  ## build
+  model = Sequential()
+  model.add(Conv2D(32, kernel_size(5,5), input_shape=(xpix,ypix,1), pading='same', activation='relu'))
+  model.add(MaxPooling2D()) #one conv layer needs one maxpool
+  model.add(Conv2D(64, kernel_size(5,5), pading='same', activation='relu'))
+  model.add(MaxPooling2D())
+  model.add(Flatten()) # fully connection
+  model.add(Dense(1024, activation='relu')) # fully connection
+  model.add(Dense(num_label_class, activation='softmax')) #last layer
+  ## compile
+  model.compile(optimizer='adam', loss='cateorical_crossentropy', metrics=['accuracy'])
+  ## train
+  model.fit(X_train,Y_train, epochs=5, verbose=1, validation_data=(X_train,Y_train))
+  model.evaluate(X_train, Y_train)
+  ```
+
 ##
 
 

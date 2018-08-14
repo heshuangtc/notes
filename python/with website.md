@@ -1,6 +1,31 @@
-### scrap data from website
+## scrap data from website
+* read http/https with urllib and bs4
+  - no 403 error
+    ```
+    import re
+    from urllib.request import urlopen
+    from bs4 import BeautifulSoup
 
-### scrap data from Twitter
+    url_path = 'https://www.google.com/'
+    html_urllib = urlopen(url_path).read()
+    soup = BeautifulSoup(html_urllib,'html.parser')
+    ```
+  - if 403 error above, add Request first with headers
+    ```
+    import re
+    from urllib.request import Request, urlopen
+    from bs4 import BeautifulSoup
+
+    url_path = 'https://www.google.com/search?q=hybrid+cars&sourceid=chrome&ie=UTF-8'
+    html_req = Request(url_path, headers={'User-Agent': 'Mozilla/5.0'})
+    html_urllib = urlopen(html_req).read()
+    soup = BeautifulSoup(html_urllib,'html.parser')
+    ```
+
+
+
+
+## scrap data from Twitter
 * connect to twitter and pull first 200 twitters
 
   log in [https://apps.twitter.com](https://apps.twitter.com) to create app and generate token
