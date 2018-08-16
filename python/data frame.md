@@ -1,8 +1,8 @@
-### library
+## library
 * [pandas library link](http://pandas.pydata.org/pandas-docs/stable/)
 
 
-### basic info
+## basic info
 * Try using `df.loc[row_indexer,col_indexer] = value` instead
 * `.copy()` before subset
 * frequency table
@@ -17,7 +17,13 @@
   - get type/names/nullable `df.info()`
 
 
-### column
+
+## row
+* find min/max in each row
+  - return value `df.max(axis=1)`
+  - return column name `df.idxmax(axis=1)`
+
+## column
 * col has same values or not
   ```
   x = df.describe()
@@ -141,6 +147,7 @@
 
 * find min/max in each col `df.max(asxi=0)` `df.min(asxi=0)`
 
+
 * change values
   - replace values
 
@@ -188,7 +195,7 @@
 
 * 
 
-### subset
+## subset
 * select n rows
   - select first 5 rows
     `df[0:6]`or`df.ix[0:6,:]`
@@ -247,7 +254,11 @@
   ```
 
 
-### merge
+
+
+
+
+## merge
 * basic merge function[link](http://pandas.pydata.org/pandas-docs/stable/merging.html)
 
   `pd.merge(left, right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=True, suffixes=('_x', '_y'), copy=True, indicator=False)`
@@ -280,8 +291,8 @@
 
 * 
 
-### data type
-#### numeric
+## data type
+### numeric
 * change col data type to numeric[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.to_numeric.html#pandas.to_numeric)
 
   `pd.to_numeric(df.col, errors='coerce') return nan if cannot convert`
@@ -292,7 +303,7 @@
 * convert boolean to numeric
   - `df.col = df.col.astype('int32')`
 
-#### datetime
+### datetime
 * convert timedelta to int
   ```
   import numpy as np
@@ -361,7 +372,10 @@
 * 
 
 
-### save
+
+
+
+## save
 * series to dataframe[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.Series.to_frame.html)
 
   `sr.to_frame('col_name')`
@@ -377,7 +391,7 @@
   writer.save()
   ```
 
-### load 
+## load 
 * read csv[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
   - without header
     `pd.read_csv('./data/file.csv',skiprows=i,nrows=n,header=None)`
@@ -432,7 +446,7 @@
 * read tsv file
   - pandas `pd.read_csv('../input/train.tsv',delimiter='\t',encoding='utf-8')`
 
-### create
+## create
 * create df from list
 
   `df2=pd.DataFrame([[0,0,1,2]], columns=['deseas_bl','product_key','geog_key','discount_rate'])`
@@ -458,7 +472,8 @@
 * 
 
 
-### transpose
+
+## transpose
 * wide to long [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html)
 
   `pd.melt(df,id_vars = ['geography','mitm_key','baseline_discount_rate'], value_vars=[hol1,hol2,hol3])`
@@ -477,7 +492,7 @@
 * rows to columns `df.T`
 
 
-### aggregation
+## aggregation
 * calculate quantile [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.quantile.html)
   ```
   df.col.quantile(0.25)
