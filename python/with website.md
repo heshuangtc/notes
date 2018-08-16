@@ -6,7 +6,7 @@
     from urllib.request import urlopen
     from bs4 import BeautifulSoup
 
-    url_path = 'https://www.google.com/'
+    url_path = 'https://www.caranddriver.com'
     html_urllib = urlopen(url_path).read()
     soup = BeautifulSoup(html_urllib,'html.parser')
     ```
@@ -21,7 +21,14 @@
     html_urllib = urlopen(html_req).read()
     soup = BeautifulSoup(html_urllib,'html.parser')
     ```
-
+* find table
+  - with BeautifulSoup
+  ```
+  from bs4 import BeautifulSoup
+  soup = soup.body.div....div.find_all('table') #find table tag, middle structure is customized
+  x_head = soup[0].find_all('th')[0].contents #read one by one
+  x_row = soup[0].find_all('td')[0].contents
+  ```
 
 
 

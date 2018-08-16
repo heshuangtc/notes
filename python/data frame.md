@@ -467,7 +467,8 @@
   * if no index or catetory col [link](https://stackoverflow.com/questions/32651084/pivot-table-from-a-pandas-dataframe-without-an-apply-function)
   * long to wide [link](https://pandas.pydata.org/pandas-docs/stable/reshaping.html)
 
-    `df = df.pivot_table(index=['geography','mitm_key'], columns='wide_col', values='seas_use')`
+    - value are numeric `df = df.pivot_table(index=['geography','mitm_key'], columns='wide_col', values='seas_use')`
+    - value are string `pd.pivot_table(df,index=['col1','col2'],columns='col3',values='col4',aggfunc='first')`
 
 * one row to columns rest to values [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot.html)
 
