@@ -367,8 +367,17 @@
   datetime_object = datetime.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
   ```
 
-* 
-
+* add/minus hours from a datetime
+  - way1
+    ```
+    df['format_datetime'] = pd.to_datetime(df.orginaldatetime)
+    df.format_datetime - pd.to_timedelta(2, unit='h')
+    ```
+  - way2
+    ```
+    df['format_datetime'] = pd.to_datetime(df.orginaldatetime)
+    df.format_datetime - pd.DateOffset(hours=2)
+    ```
 * 
 
 
@@ -548,7 +557,9 @@
   `df.groupby(['col1','col2']).mean()`
 
 * apply a function to each row
-  `df['col'].apply(lambda x: afunction(x))` 
+  - with 1 column `df['col'].apply(lambda x: afunction(x))`
+  - with multiple columns 
+  `df.apply(lambda i: afunction(i['col1'], i['col2']), axis=1)`
 
 * 
 
