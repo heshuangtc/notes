@@ -30,6 +30,27 @@
   - `import math; math.isnan(x)`
   - `x == np.nan`
   - `x == float('nan')`
+* geographic longitude and latitude
+  - calculate distance between 2 longitude/latitude
+    ```
+    from math import radians, sin, cos, acos
+    
+    def f_earth_distance(plat,plon,dlat,dlon):
+    slat = radians(float(plat))
+    slon = radians(float(plon))
+    elat = radians(float(dlat))
+    elon = radians(float(dlon))
+    try:
+        dist = 6371.01 * acos(sin(slat)*sin(elat) + cos(slat)*cos(elat)*cos(slon - elon))
+    except:
+        dist = 0
+    return round(dist,2)
+    ```
+  - find zipcode based on longitude/latitude
+    ```
+    ```
+
+
 
 ### string
 * assign value to string, make string as name/object/variable

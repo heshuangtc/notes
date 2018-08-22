@@ -231,7 +231,7 @@ df.col.plot.pie(figsize=(5,5))
 ### folium geog graph
 * doc
   - quick start guide[link](http://folium.readthedocs.io/en/latest/quickstart.html)
-  - sample [link](https://github.com/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb) [link](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb)
+  - sample [link](https://github.com/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb) [link](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/MarkerCluster.ipynb) [national wide](https://python-visualization.github.io/folium/quickstart.html)
 * simple geog graph
   ```
   import folium
@@ -249,6 +249,10 @@ df.col.plot.pie(figsize=(5,5))
   map_nyc
   map_nyc.save('./map.html')
   ```
+* marker type
+  - cloud `folium.Marker(location = [40.7, -74], popup = 'picked here',icon=folium.Icon(icon='cloud')).add_to(map_nyc)`
+  - color `icon=folium.Icon(color='green')`
+  - 
 * clustering marker
   - normal way
   ```
