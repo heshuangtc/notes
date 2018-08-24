@@ -114,7 +114,30 @@
   regr.fit(features, label)
   regr.feature_importances_
   ```
+* xgboost
+  - print rmse in each round
+  ```
+  import xgboost as xgb
+  dftrain = xgb.DMatrix(X_train,label=y_train)
+  dftest = xgb.DMatrix(X_test,label=y_test)
 
+  model = xgb.train(
+      params={'objective':'reg:linear','eval_metric':'rmse'},
+      dtrain=dftrain, num_boost_round=20,
+      early_stopping_rounds=10, evals=[(dftrain,'test')],)
+
+  model.predict(xgb.DMatrix(dftest),
+      ntree_limit = model.best_ntree_limit)
+  ```
+  - no printing
+  ```
+  import xgboost as xgb
+  model = xgb.XGBRegressor(
+    objective ='reg:linear',eval_metric='rmse',learning_rate = 0.1,
+    num_boost_round=20,early_stopping_rounds=10)
+  model.fit(X_train,y_train)
+  prediction = model.predict(X_test)
+  ```
 
 
 

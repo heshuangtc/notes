@@ -110,9 +110,39 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
 
 
 ## Keras
+* basic info
+  - high level and based on either TensorFlow or Theoran
 * reference
   - [keras doc](https://keras.io/layers/recurrent/#lstm)
   - [keras example](https://faroit.github.io/keras-docs/0.3.3/examples/#stacked-lstm-for-sequence-classification)
+* first layer
+  - if 2d data frame(normal number) `model.add(Dense(numofnodes, input_dim=numofcol, activation='relu'))`
+  - 
+* last layer
+  - if continuous target variable `model.add(Dense(1, activation='linear'))`
+  - if categorical target `model.add(Dense(numOFlabelclass, activation='softmax'))`
+  - 
+* layers
+  - give name for a layer `model.add(Dense(1, activation='linear', name='xxx'))`
+* model fit
+  - epochs: too few - not enough accuracy, too much - waste time
+  - shuffle: train better when True
+  - verbose: =2 more detail printing when training
+* load/save mode
+  - save `model.save('name.h5')`
+  - load `from keras.models import load_model;load_mode('name.h5)`
+* logger
+  - create a TensorBoard logger
+    ```
+    logger = keras.callbacks.TensorBoard(
+      log_dir='logs', write_graph=True, histogram_freq=5
+      )
+    model.fit(....., callbacks=[logger])
+    ```
+  - display TensorBoard locally
+    + open terminal
+    + `tensorboard --logdir=path/logs`
+    + copy url to browser
 
 * LSTM (RNN)
   - input is dataframe. as data frame is 2d matrix, while LSTM needs 3d matrix, need to convert data frame format first. pay attention on input_shape in LSTM. output_dim is number of label class if multiple classes.
@@ -218,7 +248,23 @@ https://www.tensorflow.org/get_started/get_started_for_beginners
   model.fit(X_train,Y_train, epochs=5, verbose=1, validation_data=(X_train,Y_train))
   model.evaluate(X_train, Y_train)
   ```
+* image classification with exiting model
+  ```
+  import numpy as np
+  from keras.preprocessing import image
+  from keras.applications import resnet50
 
+  model = resnet50.ResNet50()
+  img = image.load_img("name.jpg", target_size=(224, 224))
+
+  x = image.img_to_array(img)
+  # Add a forth dimension since Keras expects a list of images
+  x = np.expand_dims(x, axis=0)
+  x = resnet50.preprocess_input(x)
+
+  predictions = model.predict(x)
+  predicted_classes = resnet50.decode_predictions(predictions, top=9)
+  ```
 ##
 
 
