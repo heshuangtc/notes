@@ -98,6 +98,7 @@
   clf.fit(X_train, y_train)
   clf.predict(X_test)
   clf.feature_importances_
+  pd.DataFrame({'value':clf.feature_importances_,'col':features.columns}).sort_values('value',ascending=False)
   ```
 * lightgbm [doc](https://lightgbm.readthedocs.io/en/latest/Python-Intro.html)
   ```
@@ -113,6 +114,7 @@
   regr = RandomForestRegressor(n_estimators=10 ,max_depth=2, random_state=0, n_jobs=-1)
   regr.fit(features, label)
   regr.feature_importances_
+  pd.DataFrame({'value':regr.feature_importances_,'col':features.columns}).sort_values('value',ascending=False)
   ```
 * xgboost
   - print rmse in each round
