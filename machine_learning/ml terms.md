@@ -71,11 +71,13 @@
 ### logistic regression
 * confusion matrix(for binary classification)
   - confusion table/confusion matrix
+    + type I error: reject true
+    + type II error: accept false
 
 |..|Actual True|Actual False|
 |-------|-------|-------|
-|Predict postive|True Positive (TP)|False Positive (FP) type I error|
-|Predict negative|False Negative (FN) type II error|True Negative (TN)|
+|Predict postive|True Positive (TP)|False Positive (FP) type II error|
+|Predict negative|False Negative (FN) type I error|True Negative (TN)|
 
   - accuracy = `#correct predictions/total # predictions` = `(TP+TN)/(TP+TN+FP+FN)`
   - precision = `TP/(TP+FP)` What proportion of positive identifications was actually correct? more important when care predict is real actual and not include more.
