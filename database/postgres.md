@@ -1,3 +1,9 @@
+* doc reference [tutorial 1](http://www.postgresqltutorial.com/) [tutorial 2](https://www.tutorialspoint.com/postgresql/)
+
+* comments
+  - single line `--select * from t`
+  - multiple lines `/* select... select...  */`
+
 ### select statement
 * comparison operation
 [link](https://www.postgresql.org/docs/9.1/static/functions-comparison.html)
@@ -13,7 +19,19 @@
 
 * select nest
 
-  `select p.col1, p.col2 from (select * from table) as p`
+  - `select p.col1, p.col2 from (select * from table) as p`
+  - select top 1 as nest select
+    ```
+    select * 
+    from deals
+    inner join (
+      select count(startup_id) as numofsub, startup_id
+      from deals
+      group by startup_id
+      order by numofsub desc
+      limit 1) newtable
+    on deals.startup_id = newtable.startup_id
+    ```
 
 * distinct on all columns
 
@@ -45,8 +63,39 @@ those temporary tables can be used in same with and immediate next select clause
 
 ### join
 * inner join
-
   `select * from t1 inner join t2 on t1.key = t2.key and t1.key2=t2.key2`
+* left join
+  - left join = left outer join: include every key from left. key only in left, right columns will generate null value
+  - `select * from T1 left join T2 on T1.id = T2.id`
+* only keep value in T1 but not in T2
+  - null 
+    ```
+    select *
+    from t1
+    left join t2
+    on t1.id = t2.id
+    where t1 is null ;
+    ```
+  - exist
+    ```
+    SELECT table2.id FROM table2 
+    WHERE NOT EXISTS 
+      (SELECT * 
+       FROM table1 
+       WHERE table2.id = table1.id)
+    ```
+* join multiple tables
+  - 
+  ```
+  select *
+  from table1
+  inner join locations l1
+  on l1.locatable_id = table1.table1_id1
+  inner join locations l2
+  on l2.locatable_id = table1.table1_id2
+  ```
+
+
 
 ### UNION
 * `UNION` removes duplicate records (where all columns in the results are the same), `UNION ALL` does not.
@@ -99,3 +148,16 @@ those temporary tables can be used in same with and immediate next select clause
 * rename table
 * rename table constraints
 * rename columns
+
+### create table
+* create an empty table
+  ```
+    CREATE TABLE public.deals (
+        id integer,
+        startup_id integer,
+        investor_group_id integer
+    );
+  ```
+* insert values
+  - single row `INSERT INTO deals VALUES (1,51,2);`
+  - multiple rows `INSERT INTO deals VALUES (1,51,2),(2,33,7);`
