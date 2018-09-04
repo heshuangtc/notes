@@ -15,6 +15,7 @@
   KMeans(n_clusters=2, random_state=0).fit(df)
   kmeans.labels_
   plt.scatter(x,y,c=kmeans.labels_)
+  round(silhouette_score(df,outcluters.labels_),2)
   ```
 * MiniBatchKMeans
   ```

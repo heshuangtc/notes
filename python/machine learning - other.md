@@ -112,6 +112,10 @@
 
 
 ## ------- validation -------
+* scikit learn metrics [link]( mean Silhouette Coefficient of all samples)
+  - regression
+  - classification
+  - cluster
 * mean squared error
   - lower better
   - sklearn
@@ -160,7 +164,9 @@
   from sklearn.metrics import classification_report
   classification_report(y,ypredict)
   ```
-
+* cluster metrics
+  - scikit learn doc [link](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics)
+  -  mean Silhouette Coefficient of all samples `silhouette_score(dftrain[ls_cluster_col],outcluters.labels_)`
 
 
 ## optimization

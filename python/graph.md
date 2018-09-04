@@ -72,7 +72,7 @@
     ax1.plot(x, y1, 'g-')
     ax2.plot(x, y2, 'b-')
     ```
-    - multiple subplots arrange multiple plots
+  - multiple subplots arrange multiple plots
     ```
     # plt.subplot(nrows, ncols, index, **kwargs)
     # nrow and ncols define how many plots in rows/cols
