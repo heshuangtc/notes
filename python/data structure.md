@@ -195,7 +195,8 @@ calendar().holidays(start='2016-12-01',end='2017-12-31',return_name=True)
   ```
 * convert timedelta to int
   `timedelta/np.timedelta64(1, 'D')`
-
+* different between 2 dates
+  - datetime.datetime.now() - pd.to_datetime(df.date,format='%Y-%m-%d')
 
 
 
