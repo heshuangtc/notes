@@ -444,8 +444,10 @@
   `pd.read_csv('path', sep=',', encoding='utf-8')`
 
 * read excel
-
-  `df = pd.read_excel('path')`
+  - read first sheet `df = pd.read_excel('path')`
+  - read second sheet `df = pd.read_excel('path', sheet_name=1)`
+  - list sheet name `pd.ExcelFile('Academy data scientist - data for case study.xlsx').sheet_names`
+  - read certain sheet `pd.ExcelFile('Academy data scientist - data for case study.xlsx').parse('sheetname')`
 
 * remove index from/to csv file
   ```

@@ -12,6 +12,7 @@
   - sklearn [link](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
   ```
   from sklearn.cluster import KMeans
+  from sklearn.metrics import silhouette_score
   KMeans(n_clusters=2, random_state=0).fit(df)
   kmeans.labels_
   plt.scatter(x,y,c=kmeans.labels_)
