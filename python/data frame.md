@@ -41,7 +41,8 @@
 
 * if is duplicates `df.duplicated([col1,col2])`
 * convert categorical col into dummy cols
-  - `pd.get_dummies(df,columns=['col1','col2'])`
+  - `pd.get_dummies(df.col)`
+  - rename dummy column names `pd.get_dummies(df.col,prefix='add_part')`
 * convert continuous col into category [link](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html)
   - by number of bins `pd.cut(df.col, bins=4)` if want index instead of label, `labels=False`, default `labels=True`
   - by list of values `pd.cut(df.col, bins = [0,1,2]` # two bins actually
@@ -177,7 +178,7 @@
 
     `df = df.insert(0,'col1', df['from_col'])`
 
-* rename `df = df.rename(columns={'old_col':'new_col'})`
+* rename `df = df.rename(columns={'old_col':'new_col'})` or `df.rename(columns={'old_col':'new_col'}, inplace=True)`
 
 * index
   * remove index name `df.index.name = None`
@@ -472,7 +473,8 @@
   pd.DataFrame(np.random.randn(10,5), columns=list(map(lambda x: 'col'+str(x), range(1,6))))
   ```
 
-* 
+* create a calendar
+  - `df_out = pd.DataFrame({'date':pd.date_range(start='2000-01-01',end='2018-01-01')})`
 
 * 
 
@@ -538,14 +540,31 @@
 
   df.groupby('col1').apply(a_fun)
   ```
+* groupby to find most common elements
+  - `df.groupby('indexcol').targetcol.agg(lambda i: i.value_counts().index[0])`
+  
+* about index in groupby
+  - keep index `df.groupby('indexcol',as_index=False)['targetcol'].sum()`
+  - however nunique() need use reset_index. if use as_index=False, actually wont keep original indexcol `df.groupby('indexcol')['targetcol'].sum().reset_index(drop=False)`
+  - customized function as_index=False doesnt work as well, need reset_index
 
-* rolling mean/median [link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.rolling_mean.html)
+* different between next value and previous value
+  - period is current-previous  `df.col.diff()`
+  - period is 7 cells `df.col.diff(7)`
+
+* rolling 
+  - mean/median [link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.rolling_mean.html)
   ```
   df.col1.rolling(window=10).mean()
   df.col1.rolling(window=10).median()
 
   pd.rolling_mean(df.col1,windows,min_priods)
   ```
+  - rolling by datetime [link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rolling.html)
+  ```
+  df.col.rolling('2s',on='datetimecol').sum()
+  ```
+  - rolling attributions/computing operations [link](https://pandas.pydata.org/pandas-docs/stable/computation.html)
 
 * groupby output to dataframe
   ```

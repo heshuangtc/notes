@@ -142,7 +142,11 @@
   model.fit(X_train,y_train)
   prediction = model.predict(X_test)
   ```
-
+* regression feature selection with p value
+  ```
+  from sklearn.feature_selection import f_regression
+  f_regression(X_train,y_train)[1]
+  ```
 
 
 

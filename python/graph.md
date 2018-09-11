@@ -104,6 +104,7 @@
   - figure axis range
     `plt.ylim(-70.999,-71.175);plt.xlim(42.236,42.395)`
   - scatter plot dot size `pd.scatter(y,x,s=value)`
+  - plot plot dot size `markersize=3`
 
 * clean memory
 
