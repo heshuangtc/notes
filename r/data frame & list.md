@@ -44,7 +44,8 @@
 * swift value
   - `libarary('data.table');swift(alist,lagvalue)`
 
-*
+* create dummy variables
+  - `model.matrix(~factor(df_input$age))`
 
 #### combine data frames
 
