@@ -28,7 +28,7 @@
     + Bayes classification
     + logistic regression (binary)
 
-* correlation collaborative filtering recommender - SVD (singular value decomposition)
+* correlation collaborative filtering recommender - SVD (singular value decomposition) [link](https://medium.com/@m_n_malaeb/singular-value-decomposition-svd-in-recommender-systems-for-non-math-statistics-programming-4a622de653e9)
   - utility matrix is sparse matrix (user-row, item-col, rating-values)
   - SVD reduct # cols, if recommend item, then item needs to be row when apply SVD
   - a linear algebra method that can decompose a utility matrix into three compressed matrices
