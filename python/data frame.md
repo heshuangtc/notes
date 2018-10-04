@@ -70,6 +70,8 @@
 * missing values
   - check which col has missing in df 
     `df_out.isnull().any().values`
+  - check number of rows on each have missing
+    `train.isnull().sum()`
 
   - fill missing values[link](https://pandas.pydata.org/pandas-docs/stable/missing_data.html#cleaning-filling-missing-data)
 
@@ -407,7 +409,9 @@
     `pd.read_csv('./data/file.csv',skiprows=i,nrows=n,header=None)`
   - with different delimiter
     `pd.read_csv('./data/file.csv', delimiter=None)`
-  - 
+  - define number of rows
+    `pd.read_csv('./data/file.csv',nrows=100)` or `pd.read_csv('./data/file.csv',nrows=100_000)` 
+  - skip number of rows
 * list all files in directory [glob link](https://docs.python.org/3/library/glob.html)
   ```
   from glob import glob

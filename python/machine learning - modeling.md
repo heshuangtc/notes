@@ -103,11 +103,41 @@
   pd.DataFrame({'value':clf.feature_importances_,'col':features.columns}).sort_values('value',ascending=False)
   ```
 * lightgbm [doc](https://lightgbm.readthedocs.io/en/latest/Python-Intro.html)
+  - sample 1
   ```
   import lightgbm as lgb
   param = {'num_leaves':31, 'num_trees':100, 'objective':'binary',
     'metric':['auc', 'binary_logloss']}
   model = lgb.train(param, dftrain,num_round=10,valid_sets=[dftest])
+  model.predict(dftest)
+  ```
+  - sample 2
+  ```
+  import lightgbm as lgb
+  param = {
+    'boosting_type':'gbdt',
+    'objective': 'regression',
+    'nthread': 4,
+    'num_leaves': 31,
+    'learning_rate': 0.05,
+    'max_depth': -1,
+    'subsample': 0.8,
+    'bagging_fraction' : 1,
+    'max_bin' : 5000 ,
+    'bagging_freq': 20,
+    'colsample_bytree': 0.6,
+    'metric': 'rmse',
+    'min_split_gain': 0.5,
+    'min_child_weight': 1,
+    'min_child_samples': 10,
+    'scale_pos_weight':1,
+    'zero_as_missing': True,
+    'seed':0,
+    'num_rounds':50000
+  }
+  train_set = lgbm.Dataset(x_train, y_train, silent=False,categorical_feature=['year','month'])
+  valid_set = lgbm.Dataset(x_test, y_test, silent=False,categorical_feature=['year','month'])
+  model = lgbm.train(params, train_set = train_set, num_boost_round=10000,early_stopping_rounds=500,verbose_eval=500, valid_sets=valid_set)
   model.predict(dftest)
   ```
 * random forest [link](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)

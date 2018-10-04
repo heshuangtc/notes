@@ -19,6 +19,9 @@
     from sklearn.externals import joblib
     joblib.load('mode.pkl')
     ```
+* correlation
+  - `df[['col1','col2']].corr()`
+
 * grid search cv
   - this is to try parameters combinations in each model to find the better model
   - linear regression
