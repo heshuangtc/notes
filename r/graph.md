@@ -14,6 +14,8 @@
 
   `plot()` `abline(h=mean(y$sales),v=0,col="red")`
 
+* wrap title of plot `hist(df$col, main='xxxx \n xxx`
+
 * plot with equation/function
   - `curve(x^0,0,10, xlab = 'markting effort', ylab = 'demand', main='title string')`
 
@@ -76,11 +78,13 @@
     
     `dev.off()`
     
-* Histogram with point below
-
-    `hist(df$col, col='red', break=100)`
-    
-    `rug(df$col)` break: frequency, number of bars
+* Histogram
+  - with point below `hist(df$col, col='red', break=100);rug(df$col)`
+  - breaks: frequency, number of bars `hist(df$col, breaks=10)`
+  - breaks: cutting points `hist(df$col,breaks=c(1:7))`
+  - xlab : labels on x axis
+  - labels: labels on top of bar
+  - Add a Normal Curve ``
 
 * Boxplot
 

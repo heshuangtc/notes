@@ -30,6 +30,8 @@
 * ANOVA
   - basic info/example [link](http://personality-project.org/r/r.guide/r.anova.html#oneway)
   - 1way anova `aov(y~a+b,data=df)` y usually numeric data, a/b can be string
+  - nested model `anova(model)`
+  - graph of anova `qqnorm(resid(model))` `qqline(resid(model))`
 
 * chisquare
   - tbl is numeric table `library('MASS');chisq.test(tbl)`
@@ -73,7 +75,9 @@
 
     `abline(lm_model)` or `abline(lm_model$coefficients[1],lm_model$coefficients[2])`#slop is coefficients[2][2] if there is only one x variable
 
-* `glm(y~., data=df)`
+* generalized linear models `glm(y~., data=df)`
+
+* logistic regression `glm(y ~ x1 + x2, data= dataframe, family='binomial')`
 
 * non linear regression
   - nonlinear by given a and b start value and formula `nls(y~a*exp(-b*x),start=list(a=a_start,b=b_start))`
