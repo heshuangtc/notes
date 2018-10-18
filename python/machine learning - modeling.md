@@ -282,6 +282,7 @@ results_ARIMA = model.fit(disp=-1)
 
 ## ------- Natural Language Processing -------
 * intro with python [link](https://www.analyticsvidhya.com/blog/2017/01/ultimate-guide-to-understand-implement-natural-language-processing-codes-in-python/)
+* open source book [Natural Language Processing with Python](http://www.nltk.org/book_1ed/)
 * install packages
   - `pip install nltk` The complete toolkit for all NLP techniques.
   - `pip install pattern` A web mining module for the with tools for NLP and machine learning.
