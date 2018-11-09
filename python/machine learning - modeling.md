@@ -288,6 +288,26 @@ results_ARIMA = model.fit(disp=-1)
   - `pip install pattern` A web mining module for the with tools for NLP and machine learning.
   - `pip install TextBlob` Easy to use nl p tools API, built on top of NLTK and Pattern.
   - `pip install Gensim` Topic Modelling for Humans
+### explore function
+* word only appear once
+  `FreqDist(text1).hapaxes()`
+* frequency distribution
+  - all words
+    `FreqDist(text1)`
+  - single word
+    `FreqDist(text1)['whale']`
+  - plot word distribution
+    `FreqDist(text1).plot(50,cumulative=True)`
+* find words position  [case senstive]
+  `text4.dispersion_plot(['citizens','democracy','freedom','duties','america'])`
+* find words usually come along with
+  `text2.common_contexts(['monstrous','very'])`
+* find words in text
+  `textstring.concordance('word')`
+* find similar words
+  `textstring.similar('word')`
+
+
 ### feature engineering
 * remove words
   - `import re;re.sub(string,'',source_str)`

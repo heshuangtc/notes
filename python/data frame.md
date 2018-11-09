@@ -123,8 +123,9 @@
     x['LName'] = [i[0] for i in x.Name.str.split(',')]
     ```
   - string as col pointer 
-  `df['col1'] = getattr(df, 'col1').fillna(1)`
-
+    `df['col1'] = getattr(df, 'col1').fillna(1)`
+  - change column to lowercase
+    `df.col.str.lower()`
   - select certain col based on string pattern[link](https://pandas.pydata.org/pandas-docs/stable/text.html)
   ```
   prod1.columns.str.startswith('geog')
@@ -313,7 +314,11 @@
   td = 380 #days
   (td / np.timedelta64(1, 'D')).astype(int)
   ```
-
+* convert timedelta64[ns] type to float64
+  ```
+  df.track_day = df.date1 - df.date2
+  df.track_day.astype('timedelta64[D]')
+  ```
 * datetime to date
   `df.td_col.dt.days`
 
@@ -417,6 +422,9 @@
   from glob import glob
   glob('./path/file_pattarn.csv')
   ```
+* read sas export csv file with Unicode error[link](https://stackoverflow.com/questions/5552555/unicodedecodeerror-invalid-continuation-byte)
+  `pd.read_csv('file.csv', sep=',', encoding='latin-1')`
+
 
 * read partial csv
 
@@ -517,7 +525,12 @@
   x=df.col.quantile([0.25,0.5,0.75])
   x[0.25] will be value of 25% on df.col
   ```
-
+* calculate cumulative sum on list
+  ```
+  import numpy as np
+  a = [4,6,12]
+  np.cumsum(a) #array([4, 10, 22])
+  ```
 * groupby built-in functions [link](https://pandas.pydata.org/pandas-docs/stable/api.html#groupby)
 
 * count unique elements in group. cannot user as_index=False when grouping and only can apply to single col

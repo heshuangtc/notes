@@ -319,6 +319,14 @@ np.random.choice(df.col, replace=False) #pick unique values
 
 * delete items from list `np.delete(array, index)` `array.remove(index)`
 
+* add col to matrix/np.array
+  ```
+  a = np.array([list(range(1,5)),list(range(3,7))])
+  b = np.array(list(range(0,2)))
+  b = b.reshape(2,1)
+  c = np.append(a,b,1) 
+  ```
+
 ### class
 * define object1 in a class, which can be called by class functions to get global variables
   ```
