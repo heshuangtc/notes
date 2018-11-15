@@ -37,3 +37,16 @@
   replace;
   run;
   ```
+
+* do loop [link](http://support.sas.com/documentation/cdl/en/mcrolref/62978/HTML/default/viewer.htm#p0ri72c3ud2fdtn1qzs2q9vvdiwk.htm)
+  ```
+  %macro create(howmany);
+     %do i=1 %to &howmany;
+        data month&i;
+           infile in&i;
+           input product cost date;
+        run;
+     %end;
+  %mend create;
+  %create(3)
+  ```

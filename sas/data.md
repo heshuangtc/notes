@@ -61,6 +61,40 @@
   by var1;
   run;
   ```
+* append all similar names datasets
+  ```
+  data work.tmp ;
+    set work.lz_output_summ: ;
+  run;
+  ```
+* nested if statement
+  ```
+  data tb_out;
+  set tb_in;
+  if var1=1 then
+      if var2=2 then newvar = 0;
+      else newvar=1;
+  else
+      if var3=3 then newvar=2;
+      else newvar=3;
+  run;
+  ```
+* merge with the indicator in which source
+  
+  proc sort both tb1&tb2 first
+  ```
+  data work.tb_out;
+      merge tb1(in=a obs=1000)
+            tb2(in=b obs=1000);
+      by key_id;
+      if a=1 then flag_tb1=1;
+      if b=1 then flag_tb2=1;
+  run;
+  ```
+
+
+
+
 
 ## FORMAT
 * DateTime

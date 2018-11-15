@@ -110,6 +110,12 @@
   ```
   mod : if append header no need if dont need header
 
+* get duplicate records
+  ```
+  proc sort data=TEST_TABLE nodupkey dupout=dups; 
+   by Address; 
+  run; 
+  ```
 
 ## transpose
 * Convert data table structure
@@ -166,5 +172,15 @@
   run;
   ```
 
-
-*
+* calculate subtotal and percentage for each group [link](http://support.sas.com/documentation/cdl/en/sqlproc/63043/HTML/default/viewer.htm#n112pviu616u5rn1uileli1b03zb.htm)
+  ```
+  proc sql;
+     select survey.groupid, cntid, count(cntid) as Count,
+            calculated Count/Subtotal as Percent format=percent8.2
+     from survey,
+          (select groupid, count(*) as Subtotal from survey
+              group by groupid) as survey2
+     where survey.groupid=survey2.groupid
+     group by survey.groupid, cntid;
+  quit;
+  ```
