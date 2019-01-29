@@ -395,7 +395,7 @@
 * series to dataframe[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.Series.to_frame.html)
   `sr.to_frame('col_name')`
 
-* save a excel file
+* save to excel file
 
   - simple file `df.to_excel('path')`
   - multiple sheets
@@ -405,6 +405,9 @@
     df2.to_excel(writer,'Sheet2')
     writer.save()
     ```
+* save to csv file `df.to_csv('filename.csv', index = False)`
+  
+
 
 ## load 
 * read csv[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
