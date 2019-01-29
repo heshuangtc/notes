@@ -18,7 +18,7 @@
   np.random.randn(dim0,dim2...) #dimension
   ```
 * define inf value. cannot directly use inf as it is treated as object name instead of infinite number `float('inf')`
-
+ 
 * bool + int `True +0 =1`
 
 * divide
