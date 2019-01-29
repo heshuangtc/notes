@@ -607,3 +607,5 @@
 
 
 
+### Series to DataFrame
+to_frame('rename')
