@@ -16,7 +16,7 @@
   - describe all columns `df.describe(include='all')`
   - get type/names/nullable `df.info()`
 
- 
+
 
 ## row
 * find min/max in each row
