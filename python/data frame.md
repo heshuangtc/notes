@@ -186,10 +186,9 @@
 * index
   * remove index name `df.index.name = None`
   * reset index by dropping `df = df.reset_index(drop=True)`
-
+  * reset index and rename `df.reset_index(name='name_for_index')`
 * 
 
-* 
 
 * 
 
@@ -394,19 +393,18 @@
 
 ## save
 * series to dataframe[link](http://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.Series.to_frame.html)
-
   `sr.to_frame('col_name')`
 
 * save a excel file
 
   - simple file `df.to_excel('path')`
   - multiple sheets
-  ```
-  writer = pd.ExcelWriter('output.xlsx')
-  df1.to_excel(writer,'Sheet1')
-  df2.to_excel(writer,'Sheet2')
-  writer.save()
-  ```
+    ```
+    writer = pd.ExcelWriter('output.xlsx')
+    df1.to_excel(writer,'Sheet1')
+    df2.to_excel(writer,'Sheet2')
+    writer.save()
+    ```
 
 ## load 
 * read csv[link](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
@@ -607,5 +605,3 @@
 
 
 
-### Series to DataFrame
-to_frame('rename')
