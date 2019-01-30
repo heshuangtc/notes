@@ -607,4 +607,5 @@
 * 
 
 
-
+### Others
+* adding prefix to all column names `df.columns = ["_".join(x) for x in df.columns.ravel()]`
