@@ -609,3 +609,57 @@
 
 ### Others
 * adding prefix to all column names `df.columns = ["_".join(x) for x in df.columns.ravel()]`
+`
+import pandas as pd
+import pandas.rpy.common as com
+import numpy as np
+
+data = com.load_data('Loblolly')
+print(data.head())
+#     height  age Seed
+# 1     4.51    3  301
+# 15   10.89    5  301
+# 29   28.72   10  301
+# 43   41.74   15  301
+# 57   52.70   20  301
+
+df = data.groupby('Seed').agg(
+    {'age':['sum'],
+     'height':['mean', 'std']})
+print(df.head())
+#       age     height           
+#       sum        std       mean
+# Seed                           
+# 301    78  22.638417  33.246667
+# 303    78  23.499706  34.106667
+# 305    78  23.927090  35.115000
+# 307    78  22.222266  31.328333
+# 309    78  23.132574  33.781667
+
+df.columns = df.columns.droplevel(0)
+print(df.head())
+yields
+
+      sum        std       mean
+Seed                           
+301    78  22.638417  33.246667
+303    78  23.499706  34.106667
+305    78  23.927090  35.115000
+307    78  22.222266  31.328333
+309    78  23.132574  33.781667
+Alternatively, to keep the first level of the index:
+
+df = data.groupby('Seed').agg(
+    {'age':['sum'],
+     'height':['mean', 'std']})
+df.columns = ["_".join(x) for x in df.columns.ravel()]
+yields
+
+      age_sum   height_std  height_mean
+Seed                           
+301        78    22.638417    33.246667
+303        78    23.499706    34.106667
+305        78    23.927090    35.115000
+307        78    22.222266    31.328333
+309        78    23.132574    33.781667
+`
