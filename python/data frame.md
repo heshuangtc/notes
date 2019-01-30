@@ -609,7 +609,7 @@
 
 ### Others
 * adding prefix to all column names `df.columns = ["_".join(x) for x in df.columns.ravel()]`
-`
+```
 import pandas as pd
 import pandas.rpy.common as com
 import numpy as np
@@ -662,4 +662,4 @@ Seed
 305        78    23.927090    35.115000
 307        78    22.222266    31.328333
 309        78    23.132574    33.781667
-`
+```
