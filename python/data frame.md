@@ -663,3 +663,10 @@ Seed
 307        78    22.222266    31.328333
 309        78    23.132574    33.781667
 ```
+
+* renaming dataframe 
+  - `df.rename(columns={"A": "a", "C": "c"})`
+  - `df.columns = ({})`
+
+* Series -- One-dimensional ndarray with axis labels (including time series)
+  - sorted_series = df.isnull().sum().sort_values(ascending=False)
