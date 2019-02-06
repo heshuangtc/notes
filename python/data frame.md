@@ -670,3 +670,15 @@ Seed
 
 * Series -- One-dimensional ndarray with axis labels (including time series)
   - sorted_series = df.isnull().sum().sort_values(ascending=False)
+
+
+* count unique combination of Major Minor [link](https://stackoverflow.com/questions/22105452/pandas-what-is-the-equivalent-of-sql-group-by-having)
+   -`
+  fullfusion_test_skus.drop_duplicates(['group_code','major','minor'])\
+                    .groupby(['group_code'])\
+                    .filter(lambda x: len(x)>1)\
+                    .groupby(['group_code'])\
+                    .group_code.count()\
+                    .to_frame('uniq_mm')\
+  `
+  
