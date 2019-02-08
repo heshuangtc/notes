@@ -677,7 +677,7 @@ Seed
                     .to_frame('uniq_mm')\
   `
 
-* transpose dataframe columns into rows: df.melt [link](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html)
+* transpose dataframe columns into rows: df.melt [link](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html) 
   `
   In [41]: cheese = pd.DataFrame({'first': ['John', 'Mary'],
                                 'last': ['Doe', 'Bo'],
