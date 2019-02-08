@@ -600,11 +600,6 @@
   - with multiple columns 
   `df.apply(lambda i: afunction(i['col1'], i['col2']), axis=1)`
 
-* 
-
-* 
-
-* 
 
 
 ### Others
@@ -668,12 +663,12 @@ Seed
   - `df.rename(columns={"A": "a", "C": "c"})`
   - `df.columns = ({})`
 
-* Series -- One-dimensional ndarray with axis labels (including time series)
+* Series: One-dimensional ndarray with axis labels (including time series)
   - sorted_series = df.isnull().sum().sort_values(ascending=False)
 
 
 * count unique combination of Major Minor [link](https://stackoverflow.com/questions/22105452/pandas-what-is-the-equivalent-of-sql-group-by-having)
-   -`
+  `
   fullfusion_test_skus.drop_duplicates(['group_code','major','minor'])\
                     .groupby(['group_code'])\
                     .filter(lambda x: len(x)>1)\
@@ -685,29 +680,30 @@ Seed
 * transpose dataframe columns into rows: df.melt [link](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html)
   `
   In [41]: cheese = pd.DataFrame({'first': ['John', 'Mary'],
-   ....:                        'last': ['Doe', 'Bo'],
-   ....:                        'height': [5.5, 6.0],
-   ....:                        'weight': [130, 150]})
-   ....: 
-In [42]: cheese
-Out[42]: 
-  first last  height  weight
-0  John  Doe     5.5     130
-1  Mary   Bo     6.0     150
+                                'last': ['Doe', 'Bo'],
+                                'height': [5.5, 6.0],
+                                'weight': [130, 150]})
 
-In [43]: cheese.melt(id_vars=['first', 'last'])
-Out[43]: 
-  first last variable  value
-0  John  Doe   height    5.5
-1  Mary   Bo   height    6.0
-2  John  Doe   weight  130.0
-3  Mary   Bo   weight  150.0
+  In [42]: cheese
+  Out[42]: 
+    first last  height  weight
+  0  John  Doe     5.5     130
+  1  Mary   Bo     6.0     150
 
-In [44]: cheese.melt(id_vars=['first', 'last'], var_name='quantity')
-Out[44]: 
-  first last quantity  value
-0  John  Doe   height    5.5
-1  Mary   Bo   height    6.0
-2  John  Doe   weight  130.0
-3  Mary   Bo   weight  150.0
-`
+  In [43]: cheese.melt(id_vars=['first', 'last'])
+  Out[43]: 
+    first last variable  value
+  0  John  Doe   height    5.5
+  1  Mary   Bo   height    6.0
+  2  John  Doe   weight  130.0
+  3  Mary   Bo   weight  150.0
+
+  In [44]: cheese.melt(id_vars=['first', 'last'], var_name='quantity')
+  Out[44]: 
+    first last quantity  value
+  0  John  Doe   height    5.5
+  1  Mary   Bo   height    6.0
+  2  John  Doe   weight  130.0
+  3  Mary   Bo   weight  150.0
+  `
+*
