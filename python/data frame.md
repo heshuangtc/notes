@@ -668,22 +668,21 @@ Seed
 
 
 * count unique combination of Major Minor [link](https://stackoverflow.com/questions/22105452/pandas-what-is-the-equivalent-of-sql-group-by-having)
-  `
+  ```
   fullfusion_test_skus.drop_duplicates(['group_code','major','minor'])\
                     .groupby(['group_code'])\
                     .filter(lambda x: len(x)>1)\
                     .groupby(['group_code'])\
                     .group_code.count()\
                     .to_frame('uniq_mm')\
-  `
+  ```
 
 * transpose dataframe columns into rows: df.melt [link](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html) 
-  `
+  ```
   In [41]: cheese = pd.DataFrame({'first': ['John', 'Mary'],
                                 'last': ['Doe', 'Bo'],
                                 'height': [5.5, 6.0],
                                 'weight': [130, 150]})
-
   In [42]: cheese
   Out[42]: 
     first last  height  weight
@@ -705,5 +704,5 @@ Seed
   1  Mary   Bo   height    6.0
   2  John  Doe   weight  130.0
   3  Mary   Bo   weight  150.0
-  `
+  ```
 *
