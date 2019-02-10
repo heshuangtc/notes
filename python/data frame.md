@@ -705,4 +705,4 @@ Seed
   2  John  Doe   weight  130.0
   3  Mary   Bo   weight  150.0
   ```
-*
+* add prefix to rename after aggregation `sum().add_prefix("Sum_of_")`
