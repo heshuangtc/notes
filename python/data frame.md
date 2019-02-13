@@ -705,6 +705,7 @@ Seed
   2  John  Doe   weight  130.0
   3  Mary   Bo   weight  150.0
   ```
+<<<<<<< HEAD
 *Creating a new column based on if-elif-else condition
   ```
   df = pd.DataFrame({'A': [2,3,1],
@@ -739,5 +740,6 @@ Seed
 
 
 
-
-* shallow copy V.S. deep copy
+=======
+* add prefix to rename after aggregation `sum().add_prefix("Sum_of_")`
+>>>>>>> ccb6bad210c0af7e288a2c37fd01d5cf9a0410ff
