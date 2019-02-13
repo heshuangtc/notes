@@ -705,4 +705,39 @@ Seed
   2  John  Doe   weight  130.0
   3  Mary   Bo   weight  150.0
   ```
-*
+*Creating a new column based on if-elif-else condition
+  ```
+  df = pd.DataFrame({'A': [2,3,1],
+                     'B': [2,1,3]})
+
+  def f(row):
+      if row['A'] == row['B']:
+          val = 0
+      elif row['A'] > row['B']:
+          val = 1
+      else:
+          val = -1
+      return val
+
+
+  df['C'] = df.apply(f, axis=1)
+
+  df
+  ```
+
+  - or use .loc
+  ```
+  df.loc[df['A'] == df['B'], 'C'] = 0
+  df.loc[df['A'] > df['B'], 'C'] = 1
+  df.loc[df['A'] < df['B'], 'C'] = -1
+  ```
+* equivalent to SQL group by ... having ...
+
+
+
+* dataframe, view V.S. copy [link]:(https://stackoverflow.com/questions/48173980/pandas-knowing-when-an-operation-affects-the-original-dataframe)
+
+
+
+
+* shallow copy V.S. deep copy
