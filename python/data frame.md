@@ -742,4 +742,6 @@ Seed
 
 =======
 * add prefix to rename after aggregation `sum().add_prefix("Sum_of_")`
->>>>>>> ccb6bad210c0af7e288a2c37fd01d5cf9a0410ff
+
+
+* update existing dataframe. df1.update(df2), which is an inplace operation
