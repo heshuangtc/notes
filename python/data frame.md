@@ -744,6 +744,7 @@ Seed
 * add prefix to rename after aggregation `sum().add_prefix("Sum_of_")`
 
 
+<<<<<<< HEAD
 * add row number `GroupBy.cumcount(ascending=True)[source]` Number each item in each group from 0 to the length of that group - 1.
 
 
@@ -753,3 +754,10 @@ Seed
 
 
 
+=======
+* update existing dataframe. df1.update(df2), which is an inplace operation
+
+
+
+
+>>>>>>> 62e57cb1ea4f24ecda4b209fe2b7045ca7725df4
