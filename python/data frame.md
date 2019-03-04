@@ -748,4 +748,20 @@ Seed
 * add prefix to rename after aggregation `sum().add_prefix("Sum_of_")`
 
 
+<<<<<<< HEAD
+* add row number `GroupBy.cumcount(ascending=True)[source]` Number each item in each group from 0 to the length of that group - 1.
+
+
+* dataframe boolean, can not use df.col1 == df.col2   should use df['df1'] == df['col2']
+
+* also when creating new column, can not use df.new_col = ..., should use df['new_col'] = ...
+
+
+
+=======
 * update existing dataframe. df1.update(df2), which is an inplace operation
+
+
+
+
+>>>>>>> 62e57cb1ea4f24ecda4b209fe2b7045ca7725df4
