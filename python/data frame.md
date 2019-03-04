@@ -676,7 +676,11 @@ Seed
                     .group_code.count()\
                     .to_frame('uniq_mm')\
   ```
-
+  or
+  ```
+  df1 = df.groupby('id')['airport'].nunique().reset_index().query('airport > 3')
+  ```
+  
 * transpose dataframe columns into rows: df.melt [link](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html) 
   ```
   In [41]: cheese = pd.DataFrame({'first': ['John', 'Mary'],
