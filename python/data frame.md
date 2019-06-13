@@ -83,7 +83,16 @@
     df['col1'] = fillna(replacement)
     df['col1'] = fillna(method='bfill')
     df['col1'] = fillna(method='ffill')
+
+    different replacement for different columns by using dictionary
+    values = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
+    df.fillna(value=values)
+
     ```
+  - limit values in an array
+    `numpy.clip(a, a_min, a_max, out=None)`
+
+
 
   - drop na if row has
 
